@@ -14,6 +14,8 @@ const BoxDefault: React.FC<TypeDefault> = ({
   paddingX,
   paddingY,
   margin,
+  marginTop,
+  marginBottom,
   marginX,
   marginY,
   xsmall,
@@ -27,12 +29,24 @@ const BoxDefault: React.FC<TypeDefault> = ({
   height,
   width,
   media,
-  gap
+  gap,
+  radius,
+  radiusTopLeft,
+  radiusTopRight,
+  radiusBottomLeft,
+  radiusBottomRight,
+  isGridRepeat,
+  display,
+  isBorder,
+  border,
+  as,
+  ...props
 }) => {
   return (
     <Styles.BoxDefaultStyle
       bgtext={bgtext}
       bgcolor={bgcolor}
+      textcolor={props.textcolor}
       fontSize={fontSize}
       direction={direction}
       jcontent={jcontent}
@@ -43,8 +57,6 @@ const BoxDefault: React.FC<TypeDefault> = ({
       large={large}
       xlarge={xlarge}
       xxlarge={xxlarge}
-      isVisibility={isVisibility}
-      isDisplay={isDisplay}
       height={height}
       width={width}
       media={media}
@@ -52,9 +64,28 @@ const BoxDefault: React.FC<TypeDefault> = ({
       paddingX={paddingX}
       paddingY={paddingY}
       margin={margin}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
       marginX={marginX}
       marginY={marginY}
+      radius={radius}
+      radiusTopLeft={radiusTopLeft}
+      radiusTopRight={radiusTopRight}
+      radiusBottomLeft={radiusBottomLeft}
+      radiusBottomRight={radiusBottomRight}
       gap={gap}
+      isVisibility={isVisibility}
+      isDisplay={isDisplay}
+      display={display}
+      isBorder={isBorder}
+      border={border}
+      as={as}
+      isGridRepeat={isGridRepeat}
+      isImgRadius={props.isImgRadius}
+      isBoxShadow={props.isBoxShadow}
+      flexWrap={props.flexWrap}
+      flexGrow={props.flexGrow}
+      alignSelf={props.alignSelf}
     >
       {children}
     </Styles.BoxDefaultStyle>

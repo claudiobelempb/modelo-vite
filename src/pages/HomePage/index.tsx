@@ -2,29 +2,34 @@ import { BoxDefault } from '@componets/BoxDefault';
 import { ContainerDefault } from '@componets/ContainerDefault';
 import { ContentDefault } from '@componets/ContentDefault';
 import { HeadingDefault } from '@componets/HeadingDefault';
-import { NavBarDefault } from '@componets/NavBarDefault';
 import { TextDefault } from '@componets/TextDefault';
 
 import {
-  FaBoxOpen,
-  FaCoffee,
-  FaRegClock,
-  FaShoppingCart
-} from 'react-icons/fa';
+  HomeImage,
+  ImgCard,
+  ImgClock,
+  ImgCoffeer,
+  ImgPagote
+} from '@assets/image';
+import { CardDefault } from '@componets/CardDefault';
+import { HomeLayout } from '@componets/LayoutHome';
 
-import * as Styles from './styles';
+/*
+ Nesse desafio, você vai desenvolver uma aplicação para gerenciar um carrinho de compras de uma cafeteria fictícia, que contém as seguintes funcionalidades:
 
-import { CoffeeAgua, HomeImage } from '@assets/image/icons';
-import { ButtonDefault } from '@componets/ButtonDefault';
+- Listagem de produtos (cafés) disponíveis para compra
+- Adicionar uma quantidade específicas de itens no carrinho
+- Aumentar ou remover a quantidade de itens no carrinho
+- Formulário para o usuário preencher o seu endereço
+- Exibir o total de itens no carrinho no Header
+- Exibir o valor total da soma de itens no carrinho multiplicados pelo valor
+ */
 
 const HomePage: React.FC = () => {
   return (
-    <Styles.HomeDefaultContainer>
-      <ContainerDefault as='header'>
-        <NavBarDefault />
-      </ContainerDefault>
+    <HomeLayout>
       <ContainerDefault as='section'>
-        <ContentDefault marginY='base81'>
+        <ContentDefault marginY='base81' isGridRepeat={2}>
           <BoxDefault>
             <HeadingDefault fontFamily='baloo' fontWeight='800' bgtext='title'>
               Encontre o café perfeito para qualquer hora do dia
@@ -46,12 +51,11 @@ const HomePage: React.FC = () => {
                   bgcolor='yellowDark'
                   bgtext='white'
                   width='base32'
-                  height='base32'
                   radius='base32'
                   jcontent='center'
                   aitems='center'
                 >
-                  <FaShoppingCart />
+                  <img src={ImgCard} alt='' />
                 </TextDefault>
                 <TextDefault as='span'>Compra simples e segura</TextDefault>
               </BoxDefault>
@@ -61,12 +65,11 @@ const HomePage: React.FC = () => {
                   bgcolor='text'
                   bgtext='white'
                   width='base32'
-                  height='base32'
                   radius='base32'
                   jcontent='center'
                   aitems='center'
                 >
-                  <FaBoxOpen />
+                  <img src={ImgPagote} alt='' />
                 </TextDefault>
                 <TextDefault as='span'>
                   Embalagem mantém o café intacto
@@ -85,12 +88,11 @@ const HomePage: React.FC = () => {
                   bgcolor='yellow'
                   bgtext='white'
                   width='base32'
-                  height='base32'
                   radius='base32'
                   jcontent='center'
                   aitems='center'
                 >
-                  <FaRegClock />
+                  <img src={ImgClock} alt='' />
                 </TextDefault>
                 <TextDefault as='span'>Entrega rápida e rastreada</TextDefault>
               </BoxDefault>
@@ -100,12 +102,11 @@ const HomePage: React.FC = () => {
                   bgcolor='purple'
                   bgtext='white'
                   width='base32'
-                  height='base32'
                   radius='base32'
                   jcontent='center'
                   aitems='center'
                 >
-                  <FaCoffee />
+                  <img src={ImgCoffeer} alt='' />
                 </TextDefault>
                 <TextDefault as='span'>
                   O café chega fresquinho até você
@@ -113,84 +114,32 @@ const HomePage: React.FC = () => {
               </BoxDefault>
             </BoxDefault>
           </BoxDefault>
-          <BoxDefault jcontent='center' aitems='center'>
+          <BoxDefault jcontent='end' aitems='center'>
             <img src={HomeImage} alt='' />
           </BoxDefault>
         </ContentDefault>
+        <ContentDefault>
+          <HeadingDefault fontSize='base32' fontFamily='baloo' as='h2'>
+            Nossos cafés
+          </HeadingDefault>
+        </ContentDefault>
+        <ContentDefault
+          as='article'
+          marginBottom='base54'
+          paddingY='base54'
+          isGridRepeat={3}
+          jcontent='spaceBetween'
+          flexWrap='wrap'
+        >
+          <CardDefault />
+          <CardDefault />
+          <CardDefault />
+          <CardDefault />
+          <CardDefault />
+          <CardDefault />
+        </ContentDefault>
       </ContainerDefault>
-
-      <ContentDefault
-        as='article'
-        direction='column'
-        bgcolor='card'
-        isPosition='relative'
-        aitems='center'
-      >
-        <BoxDefault isPosition='absolute' jcontent='center' aitems='center'>
-          <img src={CoffeeAgua} alt='' />
-        </BoxDefault>
-        <TextDefault
-          paddingX='base8'
-          paddingY='base5'
-          bgcolor='yellowLight'
-          bgtext='yellowDark'
-          jcontent='center'
-          fontWeight='bold'
-          fontSize='base10'
-          width='base81'
-          height='base20'
-        >
-          Tradicional
-        </TextDefault>
-        <HeadingDefault
-          bgtext='title'
-          as='h2'
-          fontSize='base24'
-          fontFamily='baloo'
-        >
-          Expresso Tradicional
-        </HeadingDefault>
-        <TextDefault bgtext='label' fontSize='base14'>
-          O tradicional café feito com água quente e grãos moídos
-        </TextDefault>
-
-        <BoxDefault direction='row'>
-          <BoxDefault
-            direction='row'
-            bgtext='text'
-            aitems='center'
-            jcontent='center'
-          >
-            <TextDefault fontFamily='baloo' fontSize='base14'>
-              R$
-            </TextDefault>
-            <TextDefault
-              margin='base5'
-              fontWeight='bold'
-              fontFamily='baloo'
-              fontSize='base24'
-            >
-              9,90
-            </TextDefault>
-          </BoxDefault>
-          <BoxDefault
-            direction='row'
-            bgcolor='button'
-            aitems='center'
-            jcontent='center'
-            width='base81'
-            height='base36'
-          >
-            <ButtonDefault>-</ButtonDefault>
-            <TextDefault>1</TextDefault>
-            <ButtonDefault>+</ButtonDefault>
-          </BoxDefault>
-          <BoxDefault>
-            <FaShoppingCart />
-          </BoxDefault>
-        </BoxDefault>
-      </ContentDefault>
-    </Styles.HomeDefaultContainer>
+    </HomeLayout>
   );
 };
 

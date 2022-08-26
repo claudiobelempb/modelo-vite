@@ -16,13 +16,22 @@ const ContentDefault: React.FC<TypeDefault> = ({
   paddingX,
   paddingY,
   margin,
+  marginTop,
+  marginBottom,
   marginX,
   marginY,
-  gridRepeat,
+  isGridRepeat,
   isVisibility,
   isDisplay,
-  isHeight,
-  media
+  height,
+  width,
+  media,
+  radius,
+  radiusTopLeft,
+  radiusTopRight,
+  radiusBottomLeft,
+  radiusBottomRight,
+  flexWrap
 }) => {
   return (
     <Styles.ContentDefaultStyle
@@ -38,13 +47,22 @@ const ContentDefault: React.FC<TypeDefault> = ({
       paddingX={paddingX}
       paddingY={paddingY}
       margin={margin}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
       marginX={marginX}
       marginY={marginY}
-      gridRepeat={gridRepeat}
+      isGridRepeat={isGridRepeat}
       isVisibility={isVisibility}
       isDisplay={isDisplay}
-      isHeight={isHeight}
+      height={height}
+      width={width}
       media={media}
+      radius={radius}
+      radiusTopLeft={radiusTopLeft}
+      radiusTopRight={radiusTopRight}
+      radiusBottomLeft={radiusBottomLeft}
+      radiusBottomRight={radiusBottomRight}
+      flexWrap={flexWrap}
     >
       {children}
     </Styles.ContentDefaultStyle>

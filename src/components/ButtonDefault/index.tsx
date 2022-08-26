@@ -24,7 +24,11 @@ const ButtonDefault: React.FC<TypeDefault> = ({
   paddingY,
   margin,
   marginX,
-  marginY
+  marginY,
+  width,
+  height,
+  gap,
+  isUppercase
 }) => {
   return (
     <Styles.ButtonDefaultContainer
@@ -46,6 +50,10 @@ const ButtonDefault: React.FC<TypeDefault> = ({
       margin={margin}
       marginX={marginX}
       marginY={marginY}
+      height={height}
+      width={width}
+      gap={gap}
+      isUppercase={isUppercase}
     >
       {isIconLeft && children}
       {title ? title : ''}

@@ -1,28 +1,6 @@
-import {
-  ThemeColorsText,
-  ThemeFlexText,
-  ThemeSizeText
-} from '@assets/styles/themes/ThemeType';
 import { TypeDefault } from '@assets/styles/themes/TypeDefault';
-import { ReactNode } from 'react';
 
 import * as Styles from './styles';
-
-type InputDefaultType = {
-  title?: string;
-  children?: ReactNode;
-  type?: 'search' | 'text' | 'number';
-  placeholder?: string;
-  isIconLeft?: boolean;
-  isIconRight?: boolean;
-  fontSize?: ThemeSizeText;
-  bgtext?: ThemeColorsText;
-  bgcolor?: ThemeColorsText;
-  direction?: ThemeFlexText;
-  jcontent?: ThemeFlexText;
-  aitems?: ThemeFlexText;
-  onChange?: () => void;
-};
 
 const InputDefault: React.FC<TypeDefault> = ({
   type,
@@ -30,22 +8,72 @@ const InputDefault: React.FC<TypeDefault> = ({
   fontSize,
   bgtext,
   bgcolor,
+  as,
+  width,
+  height,
+  isUppercase,
+  fontFamily,
+  fontWeight,
+  lineHeight = 'base130',
+  padding,
+  paddingX,
+  paddingY,
+  margin,
+  marginX,
+  marginY,
+  marginTop,
+  marginBottom,
+  radius,
+  radiusTopLeft,
+  radiusTopRight,
+  radiusBottomLeft,
+  radiusBottomRight,
+  flexWrap,
+  gap,
   direction,
-  jcontent,
   aitems,
-  onChange
+  jcontent,
+  onChange,
+  children,
+  ...props
 }) => {
   return (
     <Styles.InputDefaultContainer
-      bgtext={bgtext}
-      bgcolor={bgcolor}
-      fontSize={fontSize}
-      direction={direction}
-      jcontent={jcontent}
-      aitems={aitems}
+      width={width}
+      height={height}
       type={type}
       placeholder={placeholder}
+      as={as}
+      fontSize={fontSize}
+      bgcolor={bgcolor}
+      bgtext={bgtext}
+      bgInput={props.bgInput}
+      textInput={props.textInput}
+      isUppercase={isUppercase}
+      fontFamily={fontFamily}
+      fontWeight={fontWeight}
+      lineHeight={lineHeight}
+      padding={padding}
+      paddingX={paddingX}
+      paddingY={paddingY}
+      margin={margin}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
+      marginX={marginX}
+      marginY={marginY}
+      radius={radius}
+      radiusTopLeft={radiusTopLeft}
+      radiusTopRight={radiusTopRight}
+      radiusBottomLeft={radiusBottomLeft}
+      radiusBottomRight={radiusBottomRight}
+      gap={gap}
+      flexWrap={flexWrap}
+      direction={direction}
+      aitems={aitems}
+      jcontent={jcontent}
       onChange={onChange}
+      colorFocus={props.colorFocus}
+      flexGrow={props.flexGrow}
     />
   );
 };

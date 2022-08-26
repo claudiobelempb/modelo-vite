@@ -14,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 62.5%;
-      scroll-behavior: smooth;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -29,6 +29,7 @@ export const GlobalStyles = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     ${({ theme }) => css`
       font-family: ${theme.fonts.fontFamile};
+      font-size: ${theme.size.base16};
     `}
   }
 
@@ -36,20 +37,54 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
     background-color: inherit;
+    width: 100%;
+    text-align: center;
   }
 
-  ul {
-    list-style-type: none;
+  img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem; */
   }
 
-  /* main {
+  .radius {
+    border-radius: 50%;
+  }
+
+  main {
     display: flex;
     flex: 1 1;
     flex-direction: column;
-  } */
+  }
 
   .table {
     width: 100%;
     overflow-y: auto;
+  }
+
+  ol,
+  ul {
+    list-style-position: inside;
+    list-style-type: none;
+  }
+
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: "";
+    content: none;
+  }
+  table {
+    width: 100%;
+      overflow-y: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
   }
 `;

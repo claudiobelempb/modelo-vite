@@ -36,6 +36,8 @@ export default {
     input: '#EDEDED',
     background: '#FAFAFA',
     label: '#8D8686',
+    textHover: 'blue',
+    bgHover: '#FFFFFF',
     card: '#F3F2F2'
   },
   size: {

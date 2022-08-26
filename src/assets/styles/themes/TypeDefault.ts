@@ -15,12 +15,20 @@ export type TypeDefault = {
   onClick?: () => void;
   target?: '_blank' | '_self';
   href?: string;
-  isAfter?: boolean;
-  isIconLeft?: boolean;
-  isIconRight?: boolean;
-  isFlex?: boolean;
+
   title?: string;
-  type?: 'text' | 'image' | 'search' | 'text' | 'number';
+  subTitle?: string;
+  description?: string;
+  type?:
+    | 'text'
+    | 'image'
+    | 'search'
+    | 'text'
+    | 'number'
+    | 'password'
+    | 'email'
+    | 'submit'
+    | 'reset';
   text?: string;
   src?: string;
   xsmall?: ThemeMediaText;
@@ -31,8 +39,14 @@ export type TypeDefault = {
   xxlarge?: ThemeMediaText;
   children?: ReactNode;
   bgcolor?: ThemeColorsText;
+  textcolor?: ThemeColorsText;
   bgtext?: ThemeColorsText;
-
+  bgHover?: ThemeColorsText;
+  textHover?: ThemeColorsText;
+  bgInput?: ThemeColorsText;
+  textInput?: ThemeColorsText;
+  colorFocus?: ThemeColorsText;
+  border?: ThemeColorsText;
   as?:
     | 'header'
     | 'main'
@@ -40,6 +54,7 @@ export type TypeDefault = {
     | 'section'
     | 'article'
     | 'aside'
+    | 'nav'
     | 'h1'
     | 'h2'
     | 'h3'
@@ -50,6 +65,8 @@ export type TypeDefault = {
     | 'span'
     | 'small'
     | 'form'
+    | 'img'
+    | 'figure'
     | 'strong';
   jcontent?: ThemeFlexText;
   aitems?: ThemeFlexText;
@@ -59,9 +76,12 @@ export type TypeDefault = {
   paddingX?: ThemeSpaceTypeText;
   paddingY?: ThemeSpaceTypeText;
   margin?: ThemeSpaceTypeText;
+  marginTop?: ThemeSpaceTypeText;
+  marginBottom?: ThemeSpaceTypeText;
   marginX?: ThemeSpaceTypeText;
   marginY?: ThemeSpaceTypeText;
-  gridRepeat?:
+
+  isGridRepeat?:
     | 1
     | 2
     | 3
@@ -78,10 +98,10 @@ export type TypeDefault = {
     | 14
     | 15
     | 16;
-  isVisibility?: ThemeMediaText;
   visibility?: 'visible' | 'hidden' | 'collapse' | 'initial' | 'inherit';
   fontFamily?: ThemeFontFamilyDefaultText;
   fontSize?: ThemeSizeText;
+  fontStyle?: 'normal' | 'italic' | 'oblique' | 'initial' | 'inherit';
   lineHeight?: ThemeLineHeightDefaultText;
   fontWeight?:
     | '100'
@@ -95,20 +115,50 @@ export type TypeDefault = {
     | '900'
     | 'bold'
     | 'extraBold';
-  isDisplay?: ThemeMediaText;
   width?: ThemeSpaceTypeText;
   height?: ThemeSpaceTypeText;
   radius?: ThemeSpaceTypeText;
+  radiusTopLeft?: ThemeSpaceTypeText;
+  radiusTopRight?: ThemeSpaceTypeText;
+  radiusBottomLeft?: ThemeSpaceTypeText;
+  radiusBottomRight?: ThemeSpaceTypeText;
+  isAfter?: boolean;
+  isIconLeft?: boolean;
+  isIconRight?: boolean;
+  isFlex?: boolean;
+  isHover?: boolean;
+  isVisibility?: ThemeMediaText;
+  isDisplay?: ThemeMediaText;
+  display?:
+    | 'flex'
+    | 'grid'
+    | 'block'
+    | 'inline-block'
+    | 'inline-flex'
+    | 'inline-grid'
+    | 'none'
+    | 'initial'
+    | 'inherit'
+    | 'unset';
   isUppercase?: boolean;
+  isImgRadius?: boolean;
+  isBoxShadow?: boolean;
+  isBorder?: boolean;
   isPosition?: 'static' | 'relative' | 'fixed' | 'absolute' | 'sticky';
+  isOverflow?: 'visible' | 'hidden' | 'scroll' | 'auto';
+  isOpenNav?: boolean;
   left?: ThemeSpaceTypeText;
   right?: ThemeSpaceTypeText;
   top?: ThemeSpaceTypeText;
   bottom?: ThemeSpaceTypeText;
-  isOverflow?: 'visible' | 'hidden' | 'scroll' | 'auto';
   media?: ThemeMediaText;
   zIndex?: number;
-  isOpenNav?: boolean;
+  flexWrap?: ThemeFlexText;
+  flexShrink?: ThemeFlexText;
+  alignSelf?: ThemeFlexText;
+  flexBasis?: ThemeFlexText;
+  flexGrow?: ThemeFlexText;
+  textAling?: ThemeFlexText;
   links?: [
     {
       children: string;

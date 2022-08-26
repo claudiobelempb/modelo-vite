@@ -1,4 +1,5 @@
 import {
+  textDecoration,
   THEME_COLORS_DEFAULT,
   THEME_FLEX_DEFAULT,
   THEME_SIZE_DEFAULT,
@@ -27,15 +28,23 @@ export const ButtonDefaultContainer = styled.button<TypeDefault>`
     paddingY,
     margin,
     marginX,
-    marginY
+    marginY,
+    width = 'base100p',
+    height,
+    gap,
+    isUppercase
   }) => css`
+    width: ${width && THEME_SPACE_DEFAULT[width]};
+    height: ${height && THEME_SPACE_DEFAULT[height]};
     position: ${isPosition ? isPosition : 'relative'};
-    left: ${left && THEME_SIZE_DEFAULT[left]};
-    right: ${right && THEME_SIZE_DEFAULT[right]};
-    top: ${top && THEME_SIZE_DEFAULT[top]};
-    bottom: ${bottom && THEME_SIZE_DEFAULT[bottom]};
-    margin: ${margin && THEME_SIZE_DEFAULT[margin]};
-    padding: ${padding && THEME_SIZE_DEFAULT[padding]};
+    left: ${left && THEME_SPACE_DEFAULT[left]};
+    right: ${right && THEME_SPACE_DEFAULT[right]};
+    top: ${top && THEME_SPACE_DEFAULT[top]};
+    bottom: ${bottom && THEME_SPACE_DEFAULT[bottom]};
+    margin: ${margin && THEME_SPACE_DEFAULT[margin]};
+    padding: ${padding && THEME_SPACE_DEFAULT[padding]};
+    gap: ${gap && THEME_SPACE_DEFAULT[gap]};
+    ${textDecoration(isUppercase ? isUppercase : false)}
     border-radius: 0.6rem;
     display: flex;
     border: 0;
@@ -46,8 +55,8 @@ export const ButtonDefaultContainer = styled.button<TypeDefault>`
     /* padding: ${theme.size.base16}; */
     font-weight: ${theme.fonts.fontWeight.bold};
 
-    color: inherit;
-    background-color: inherit;
+    /* color: inherit;
+    background-color: inherit; */
     ${bgtext &&
     css`
       color: ${bgtext && THEME_COLORS_DEFAULT[bgtext]};
