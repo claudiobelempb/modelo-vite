@@ -1,12 +1,14 @@
 import {
-  borderDefault,
+  isBorderDefault,
+  isTextDecoretionLineThroughDefault,
   textDecoration,
   THEME_COLORS_DEFAULT,
   THEME_FLEX_DEFAULT,
   THEME_FONT_FAMILY_DEFAULT,
   THEME_LINE_HEIGHT_DEFAULT,
   THEME_SIZE_DEFAULT,
-  THEME_SPACE_DEFAULT
+  THEME_SPACE_DEFAULT,
+  THEME_SPACE_DINAMIC_DEFAULT
 } from '@assets/styles/themes/ThemeType';
 import { TypeDefault } from '@assets/styles/themes/TypeDefault';
 import styled, { css } from 'styled-components';
@@ -53,7 +55,7 @@ export const ContainerTextDefault = styled.p<TypeDefault>`
     border,
     ...props
   }) => css`
-    position: ${isPosition && isPosition};
+
     top: ${top && THEME_SPACE_DEFAULT[top]};
     bottom: ${bottom && THEME_SPACE_DEFAULT[bottom]};
     left ${left && THEME_SPACE_DEFAULT[left]};
@@ -67,7 +69,9 @@ export const ContainerTextDefault = styled.p<TypeDefault>`
     margin-top: ${marginTop && THEME_SPACE_DEFAULT[marginTop]};
     margin-bottom: ${marginBottom && THEME_SPACE_DEFAULT[marginBottom]};
 
-    font-size: ${fontSize && THEME_SIZE_DEFAULT[fontSize]};
+    font-size: ${
+      props.fontSizeStatic && THEME_SPACE_DEFAULT[props.fontSizeStatic]
+    };
     font-weight: ${fontWeight ? fontWeight : '400'};
     width: ${width && THEME_SPACE_DEFAULT[width]};
     height: ${height && THEME_SPACE_DEFAULT[height]};
@@ -99,7 +103,119 @@ export const ContainerTextDefault = styled.p<TypeDefault>`
     align-self: ${props.alignSelf && THEME_FLEX_DEFAULT[props.alignSelf]};
 
     ${textDecoration(isUppercase ? isUppercase : false)}
-    ${borderDefault(isBorder ? isBorder : false)}
+    ${isBorderDefault(isBorder ? isBorder : false)}
+    ${isTextDecoretionLineThroughDefault(
+      props.isTextDecoretionLineThrough
+        ? props.isTextDecoretionLineThrough
+        : false
+    )}
+
+    ${
+      props.fontSizeDynamic === '1' &&
+      css`
+        font-size: calc(1rem + 1vw);
+      `
+    }
+    ${
+      props.fontSizeDynamic === '1.5' &&
+      css`
+        font-size: calc(1rem + 1.5vw);
+      `
+    }
+    ${
+      props.fontSizeDynamic === '2' &&
+      css`
+        font-size: calc(1rem + 2vw);
+      `
+    }
+    ${
+      props.fontSizeDynamic === '2.5' &&
+      css`
+        font-size: calc(2rem + 2.5vw);
+      `
+    }
+
+    ${
+      props.fontSizeDynamic === '3' &&
+      css`
+        font-size: calc(2rem + 3vw);
+      `
+    }
+
+    ${
+      props.fontSizeDynamic === '3.5' &&
+      css`
+        font-size: calc(3rem + 3.5vw);
+      `
+    }
+
+    ${
+      props.isPaddingCustom &&
+      css`
+        padding-left: calc(
+          ${props.paddingStaticX && THEME_SPACE_DEFAULT[props.paddingStaticX]} +
+            ${props.paddingDynamicX &&
+            THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicX]}
+        );
+        padding-right: calc(
+          ${props.paddingStaticX && THEME_SPACE_DEFAULT[props.paddingStaticX]} +
+            ${props.paddingDynamicX &&
+            THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicX]}
+        );
+        padding-top: calc(
+          ${props.paddingStaticY && THEME_SPACE_DEFAULT[props.paddingStaticY]} +
+            ${props.paddingDynamicY &&
+            THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicY]}
+        );
+        padding-bottom: calc(
+          ${props.paddingStaticY && THEME_SPACE_DEFAULT[props.paddingStaticY]} +
+            ${props.paddingDynamicY &&
+            THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicY]}
+        );
+      `
+    }
+
+    ${
+      props.isMarginCustom &&
+      css`
+        margin-left: calc(
+          ${props.marginStaticX && THEME_SPACE_DEFAULT[props.marginStaticX]} +
+            ${props.marginDynamicX &&
+            THEME_SPACE_DINAMIC_DEFAULT[props.marginDynamicX]}
+        );
+        margin-right: calc(
+          ${props.marginStaticX && THEME_SPACE_DEFAULT[props.marginStaticX]} +
+            ${props.marginDynamicX &&
+            THEME_SPACE_DINAMIC_DEFAULT[props.marginDynamicX]}
+        );
+        margin-top: calc(
+          ${props.marginStaticY && THEME_SPACE_DEFAULT[props.marginStaticY]} +
+            ${props.marginDynamicY &&
+            THEME_SPACE_DINAMIC_DEFAULT[props.marginDynamicY]}
+        );
+        margin-bottom: calc(
+          ${props.marginStaticY && THEME_SPACE_DEFAULT[props.marginStaticY]} +
+            ${props.marginDynamicY &&
+            THEME_SPACE_DINAMIC_DEFAULT[props.marginDynamicY]}
+        );
+      `
+    }
+
+    ${
+      props.isGridRow &&
+      css`
+        grid-row: ${props.gridRowStartSpan} ${props.gridRowStart} /
+          ${props.gridRowEndSpan} ${props.gridRowEnd};
+      `
+    }
+
+    ${
+      props.isGridColumn &&
+      css`
+        grid-column: ${props.gridColumnStartSpan} ${props.gridColumnStart} /
+          ${props.gridColumnEndSpan} ${props.gridColumnEnd};
+      `
+    }
 
     ${
       props.textcolor &&

@@ -2,12 +2,12 @@ import { ImgClock, ImgDolares, ImgEntregar, ImgLocal } from '@assets/image';
 import { BoxDefault } from '@componets/BoxDefault';
 import { ContentDefault } from '@componets/ContentDefault';
 import { HeadingDefault } from '@componets/HeadingDefault';
-import { HomeLayout } from '@componets/LayoutHome';
+import { HomeLayoutDefault } from '@componets/HomeLayoutDefault';
 import { TextDefault } from '@componets/TextDefault';
 
 const MsgSuccessPage: React.FC = () => {
   return (
-    <HomeLayout>
+    <HomeLayoutDefault>
       <ContentDefault isGridRepeat={2} gap='base32' marginBottom='base32'>
         <BoxDefault>
           <HeadingDefault
@@ -65,7 +65,7 @@ const MsgSuccessPage: React.FC = () => {
           <img src={ImgEntregar} />
         </BoxDefault>
       </ContentDefault>
-    </HomeLayout>
+    </HomeLayoutDefault>
   );
 };
 

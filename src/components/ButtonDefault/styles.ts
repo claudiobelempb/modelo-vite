@@ -32,11 +32,12 @@ export const ButtonDefaultContainer = styled.button<TypeDefault>`
     width = 'base100p',
     height,
     gap,
-    isUppercase
+    isUppercase,
+    ...props
   }) => css`
     width: ${width && THEME_SPACE_DEFAULT[width]};
     height: ${height && THEME_SPACE_DEFAULT[height]};
-    position: ${isPosition ? isPosition : 'relative'};
+    position: ${props.position ? props.position : 'relative'};
     left: ${left && THEME_SPACE_DEFAULT[left]};
     right: ${right && THEME_SPACE_DEFAULT[right]};
     top: ${top && THEME_SPACE_DEFAULT[top]};
@@ -49,17 +50,104 @@ export const ButtonDefaultContainer = styled.button<TypeDefault>`
     display: flex;
     border: 0;
     cursor: pointer;
+    justify-content: center;
     /* flex-flow: row wrap; */
-    font-weight: 400;
     font-size: ${fontSize && THEME_SIZE_DEFAULT[fontSize]};
     /* padding: ${theme.size.base16}; */
-    font-weight: ${theme.fonts.fontWeight.bold};
+    font-weight: ${props.fontWeight
+      ? props.fontWeight
+      : theme.fonts.fontWeight.regular};
 
     /* color: inherit;
     background-color: inherit; */
+
+    /* props isWidth */
+    ${props.isWidth === 'isWidthR' &&
+    css`
+      width: calc(${props.widthCalc} * ${props.widthR + 'rem'});
+    `}
+    ${props.isWidth === 'isWidthP' &&
+    css`
+      width: calc(${props.widthCalc} * ${props.widthP + '%'});
+    `}
+    ${props.isWidth === 'isWidthPX' &&
+    css`
+      width: calc(${props.widthCalc} * ${props.widthPX + 'px'});
+    `}
+    ${props.isWidth === 'isWidthVW' &&
+    css`
+      width: calc(${props.widthCalc} * ${props.widthVW + 'vw'});
+    `}
+    ${props.isWidth === 'isWidthVH' &&
+    css`
+      width: calc(${props.widthCalc} * ${props.widthVH + 'vh'});
+    `}
+
+     /* props isHeight */
+    ${props.isHeight === 'isHeightR' &&
+    css`
+      height: calc(${props.heightCalc} * ${props.heightR + 'rem'});
+    `}
+    ${props.isHeight === 'isHeightP' &&
+    css`
+      height: calc(${props.heightCalc} * ${props.heightP + '%'});
+    `}
+    ${props.isHeight === 'isHeightPX' &&
+    css`
+      height: calc(${props.heightCalc} * ${props.heightPX + 'px'});
+    `}
+    ${props.isHeight === 'isHeightVW' &&
+    css`
+      height: calc(${props.heightCalc} * ${props.heightVW + 'vw'});
+    `}
+    ${props.isHeight === 'isHeightVH' &&
+    css`
+      height: calc(${props.heightCalc} * ${props.heightVH + 'vh'});
+    `}
+
+    /* props isBorderDefault */
+    ${props.isBorderDefault &&
+    css`
+      border: ${props.borderWidth}px ${props.borderStyle}
+        ${props.borderColor && THEME_COLORS_DEFAULT[props.borderColor]};
+      border-top-color: ${props.borderTopColor &&
+      THEME_COLORS_DEFAULT[props.borderTopColor]};
+      border-top-style: ${props.borderTopStyle};
+      border-top-width: ${props.borderTopWidth};
+      border-right-color: ${props.borderRightColor &&
+      THEME_COLORS_DEFAULT[props.borderRightColor]};
+      border-right-style: ${props.borderRightStyle};
+      border-right-width: ${props.borderRightWidth};
+      border-bottom-color: ${props.borderBottomColor &&
+      THEME_COLORS_DEFAULT[props.borderBottomColor]};
+      border-bottom-style: ${props.borderBottomStyle};
+      border-bottom-width: ${props.borderBottomWidth};
+      border-left-color: ${props.borderLeftColor &&
+      THEME_COLORS_DEFAULT[props.borderLeftColor]};
+      border-left-style: ${props.borderLeftStyle};
+      border-left-width: ${props.borderLeftWidth};
+      border-image-source: initial;
+      border-image-slice: initial;
+      border-image-width: initial;
+      border-image-outset: initial;
+      border-image-repeat: initial;
+    `}
+
+    & svg {
+      background-color: ${props.iconBgcolor &&
+      THEME_COLORS_DEFAULT[props.iconBgcolor]};
+      color: ${props.iconColor && THEME_COLORS_DEFAULT[props.iconColor]};
+      font-size: ${props.iconSize && THEME_SPACE_DEFAULT[props.iconSize]};
+    }
+
     ${bgtext &&
     css`
       color: ${bgtext && THEME_COLORS_DEFAULT[bgtext]};
+    `}
+
+    ${props.textcolor &&
+    css`
+      color: ${props.textcolor && THEME_COLORS_DEFAULT[props.textcolor]};
     `}
     ${bgcolor &&
     css`

@@ -23,15 +23,14 @@ const ContentDefault: React.FC<TypeDefault> = ({
   isGridRepeat,
   isVisibility,
   isDisplay,
-  height,
-  width,
   media,
   radius,
   radiusTopLeft,
   radiusTopRight,
   radiusBottomLeft,
   radiusBottomRight,
-  flexWrap
+  flexWrap,
+  ...props
 }) => {
   return (
     <Styles.ContentDefaultStyle
@@ -40,9 +39,12 @@ const ContentDefault: React.FC<TypeDefault> = ({
       bgcolor={bgcolor}
       fontSize={fontSize}
       direction={direction}
+      display={props.display}
       jcontent={jcontent}
       aitems={aitems}
       gap={gap}
+      rowGap={props.rowGap}
+      columnGap={props.columnGap}
       padding={padding}
       paddingX={paddingX}
       paddingY={paddingY}
@@ -51,11 +53,11 @@ const ContentDefault: React.FC<TypeDefault> = ({
       marginBottom={marginBottom}
       marginX={marginX}
       marginY={marginY}
-      isGridRepeat={isGridRepeat}
       isVisibility={isVisibility}
       isDisplay={isDisplay}
-      height={height}
-      width={width}
+      isGridRepeat={isGridRepeat}
+      height={props.height}
+      width={props.width}
       media={media}
       radius={radius}
       radiusTopLeft={radiusTopLeft}
@@ -63,6 +65,81 @@ const ContentDefault: React.FC<TypeDefault> = ({
       radiusBottomLeft={radiusBottomLeft}
       radiusBottomRight={radiusBottomRight}
       flexWrap={flexWrap}
+      gridTemplateRows={props.gridTemplateRows}
+      gridTemplateColumns={props.gridTemplateColumns}
+      gridColumnStart={props.gridColumnStart}
+      gridColumnEnd={props.gridColumnEnd}
+      gridRowStart={props.gridRowStart}
+      gridRowEnd={props.gridRowEnd}
+      gridArea={props.gridArea}
+      isOverall={props.isOverall}
+      isGridTemplateColumns={props.isGridTemplateColumns}
+      isAfter={props.isAfter}
+      isAfterTransform={props.isAfterTransform}
+      isTransform={props.isTransform}
+      afterClipPath={props.afterClipPath}
+      afterPosition={props.afterPosition}
+      afterBackgroundColor={props.afterBackgroundColor}
+      afterBackgroundImg={props.afterBackgroundImg}
+      afterLeft={props.afterLeft}
+      afterRight={props.afterRight}
+      afterTop={props.afterTop}
+      afterBottom={props.afterBottom}
+      afterZindex={props.afterZindex}
+      afterWidth={props.afterWidth}
+      afterHeight={props.afterHeight}
+      isBefore={props.isBefore}
+      isBeforeTransform={props.isBeforeTransform}
+      beforeClipPath={props.beforeClipPath}
+      beforePosition={props.beforePosition}
+      beforeBackgroundColor={props.beforeBackgroundColor}
+      beforeBackgroundImg={props.beforeBackgroundImg}
+      beforeLeft={props.beforeLeft}
+      beforeRight={props.beforeRight}
+      beforeTop={props.beforeTop}
+      beforeBottom={props.beforeBottom}
+      beforeZindex={props.beforeZindex}
+      beforeWidth={props.beforeWidth}
+      beforeHeight={props.beforeWidth}
+      isPosition={props.isPosition}
+      position={props.position}
+      left={props.left}
+      right={props.right}
+      top={props.top}
+      bottom={props.bottom}
+      zIndex={props.zIndex}
+      isImgBackgroundGradient={props.isImgBackgroundGradient}
+      isImgBackground={props.isImgBackground}
+      imgBgPosition={props.imgBgPosition}
+      imgBgcolor={props.imgBgcolor}
+      imgBgSize={props.imgBgSize}
+      imgBgUrl={props.imgBgUrl}
+      psth={props.psth}
+      pdvh={props.pdvh}
+      pstw={props.pstw}
+      pdvw={props.pdvw}
+      min={props.min}
+      max={props.max}
+      isPaddingCustom={props.isPaddingCustom}
+      paddingStaticX={props.paddingStaticX}
+      paddingStaticY={props.paddingStaticY}
+      paddingDynamicX={props.paddingDynamicX}
+      paddingDynamicY={props.paddingDynamicY}
+      isMarginCustom={props.isMarginCustom}
+      marginStaticX={props.marginStaticX}
+      marginStaticY={props.marginStaticY}
+      marginDynamicX={props.marginDynamicX}
+      marginDynamicY={props.marginDynamicY}
+      isFontSizeCustom={props.isFontSizeCustom}
+      fontSizeStaticX={props.fontSizeStaticX}
+      fontSizeDynamicX={props.fontSizeDynamicX}
+      isHeight={props.isHeight}
+      heightR={props.heightR}
+      heightP={props.heightP}
+      heightPX={props.heightPX}
+      heightVW={props.heightVW}
+      heightVH={props.heightVH}
+      heightCalc={props.heightCalc}
     >
       {children}
     </Styles.ContentDefaultStyle>

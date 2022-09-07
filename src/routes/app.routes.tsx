@@ -5,6 +5,7 @@ import { MsgSuccessPage } from '@pages/MsgSuccessPage';
 import { PhoxulPage } from '@pages/PhoxulPage';
 import { ServicePage } from '@pages/ServicePage';
 import { SignInPage } from '@pages/SignInPage';
+import { SignUpPage } from '@pages/SignUpPage';
 import { TestePage } from '@pages/TestePage';
 import { ZealAdaptivePage } from '@pages/ZealAdaptivePage';
 import { useRoutes } from 'react-router-dom';
@@ -21,8 +22,9 @@ const AppRoutes: React.FC = () => {
     { path: '/phoxul', element: <PhoxulPage /> },
     { path: '/zeal', element: <ZealAdaptivePage /> },
     { path: '/event', element: <EventGridsPage /> },
-    { path: '/post', element: <BlogPage /> },
+    { path: '/blog', element: <BlogPage /> },
     { path: '/signin', element: <SignInPage /> },
+    { path: '/signup', element: <SignUpPage /> },
     { path: '/service', element: <ServicePage /> },
     {
       path: '*',

@@ -1,4 +1,5 @@
 import {
+  isBorderDefault,
   textDecoration,
   THEME_COLORS_DEFAULT,
   THEME_FLEX_DEFAULT,
@@ -76,9 +77,17 @@ export const InputDefaultContainer = styled.input<TypeDefault>`
     flex-wrap: ${flexWrap && THEME_FLEX_DEFAULT[flexWrap]};
     flex-grow: ${flexGrow && flexGrow};
     ${textDecoration(isUppercase ? isUppercase : false)}
-    border: 3px solid transparent;
-    outline: none;
-    background-color: none;
+    /* border: 3px solid transparent; */
+    /* outline: none; */
+    background-color: transparent;
+    ${isBorderDefault(props.isBorder ? props.isBorder : false)}
+
+    & svg {
+      background-color: ${props.iconBgcolor &&
+      THEME_COLORS_DEFAULT[props.iconBgcolor]};
+      color: ${props.iconColor && THEME_COLORS_DEFAULT[props.iconColor]};
+      font-size: ${props.iconSize && THEME_SPACE_DEFAULT[props.iconSize]};
+    }
 
     &:focus {
       border: 3px solid ${colorFocus && THEME_COLORS_DEFAULT[colorFocus]};
@@ -91,15 +100,16 @@ export const InputDefaultContainer = styled.input<TypeDefault>`
       color: ${textInput && THEME_COLORS_DEFAULT[textInput]};
     }
 
-    &[type='submit']:focus {
+    &[type='text'],
+    &[type='email'],
+    &[type='password'],
+    &[type='number'],
+    &[type='submit'],
+    &[type='reset']:focus {
       outline: none;
-      border: none;
-      cursor: pointer;
       padding: 1rem 2rem;
-    }
-
-    &[type='submit']:hover {
-      cursor: pointer;
+      border-radius: 1rem;
+      /* border: none; */
     }
 
     ${paddingX &&
@@ -143,5 +153,13 @@ export const InputDefaultContainer = styled.input<TypeDefault>`
       display: flex;
       justify-content: ${jcontent && THEME_FLEX_DEFAULT[jcontent]};
     `}
+  `}
+`;
+
+export const LabelDefaultContainer = styled.label<TypeDefault>`
+  ${({ theme, ...props }) => css`
+    font-size: 1.6rem;
+    color: ${theme.colors.label};
+    margin-bottom: 0.5rem;
   `}
 `;

@@ -4,11 +4,11 @@ import { ThemeProvider } from 'styled-components';
 import { Routes } from './routes';
 
 import { GlobalStyles } from '@assets/styles/global';
-import themeDefault from '@assets/styles/themes/themeDefault';
+import themePhoxul from '@assets/styles/themes/themePhoxul';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider theme={themeDefault}>
+    <ThemeProvider theme={themePhoxul}>
       <GlobalStyles />
       <Routes />
     </ThemeProvider>

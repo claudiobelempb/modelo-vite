@@ -21,7 +21,8 @@ export const ContainerDefaultStyle = styled.div<TypeDefault>`
     paddingY,
     margin,
     marginX,
-    marginY
+    marginY,
+    ...props
   }) => css`
     width: 100%;
     color: ${bgtext && THEME_COLORS_DEFAULT[bgtext]};
@@ -30,6 +31,55 @@ export const ContainerDefaultStyle = styled.div<TypeDefault>`
 
     padding: ${padding && THEME_SPACE_DEFAULT[padding]};
     margin: ${margin && THEME_SPACE_DEFAULT[margin]};
+
+    ${props.isImgBackgroundGradient &&
+    css`
+      background: linear-gradient(
+          to bottom,
+          ${props.imgBgcolor && THEME_COLORS_DEFAULT[props.imgBgcolor]},
+          ${props.imgBgcolor && THEME_COLORS_DEFAULT[props.imgBgcolor]}
+        ),
+        url(${props.url});
+      background-size: ${props.imgBgSize &&
+      THEME_FLEX_DEFAULT[props.imgBgSize]};
+      background-position: ${props.imgBgPosition &&
+      THEME_FLEX_DEFAULT[props.imgBgPosition]};
+    `}
+
+    ${props.isImgBackground &&
+    css`
+      background-image: url(${props.url});
+      background-size: ${props.imgBgSize &&
+      THEME_FLEX_DEFAULT[props.imgBgSize]};
+      background-position: ${props.imgBgPosition &&
+      THEME_FLEX_DEFAULT[props.imgBgPosition]};
+    `}
+
+    ${props.isAfter &&
+    css`
+      content: '';
+      position: ${props.position ? props.position : ''};
+      z-index: ${props.zIndex ? props.zIndex : ''};
+      top: ${props.top ? THEME_SPACE_DEFAULT[props.top] : ''};
+      left: ${props.left ? THEME_SPACE_DEFAULT[props.left] : ''};
+      right: ${props.right ? THEME_SPACE_DEFAULT[props.right] : ''};
+      width: ${props.width ? THEME_SPACE_DEFAULT[props.width] : ''};
+      height: ${props.height ? THEME_SPACE_DEFAULT[props.height] : ''};
+      background-image: url(${props.url});
+    `}
+
+    ${props.isBefore &&
+    css`
+      content: '';
+      position: ${props.position ? props.position : ''};
+      z-index: ${props.zIndex ? props.zIndex : ''};
+      top: ${props.top ? THEME_SPACE_DEFAULT[props.top] : ''};
+      left: ${props.left ? THEME_SPACE_DEFAULT[props.left] : ''};
+      right: ${props.right ? THEME_SPACE_DEFAULT[props.right] : ''};
+      width: ${props.width ? THEME_SPACE_DEFAULT[props.width] : ''};
+      height: ${props.height ? THEME_SPACE_DEFAULT[props.height] : ''};
+      background-image: url(${props.url});
+    `}
 
     ${paddingX &&
     css`
@@ -71,6 +121,24 @@ export const ContainerDefaultStyle = styled.div<TypeDefault>`
     css`
       display: flex;
       justify-content: ${jcontent && THEME_FLEX_DEFAULT[jcontent]};
+    `}
+
+    ${props.isGridTemplateColumns &&
+    css`
+      display: grid;
+      grid-template-columns:
+        [container-start] repeat(12, minmax(min-content, 12.5rem))
+        [container-end];
+
+      grid-template-rows: repeat(9, min-content);
+      justify-content: center;
+      /* background-color: green; */
+    `}
+
+    ${props.isOverall &&
+    css`
+      grid-column: container-start / container-end;
+      background-color: blue;
     `}
   `}
 `;

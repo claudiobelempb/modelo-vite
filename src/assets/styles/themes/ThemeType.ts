@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { TypeDefault } from './TypeDefault';
 
 export const THEME_LINE_HEIGHT_DEFAULT = {
   base65: '65%',
@@ -42,21 +43,30 @@ export const THEME_FLEX_DEFAULT = {
   columnReverse: 'column-reverse',
   nowRap: 'nowrap',
   wrap: 'wrap',
-  wrapReverse: 'wrap-reverse'
+  wrapReverse: 'wrap-reverse',
+  repeat: 'repeat',
+  noRepeat: 'no-repeat',
+  cover: 'cover',
+  contain: 'contain'
 };
 
 export const THEME_COLORS_DEFAULT = {
-  green: 'green',
-  greenDark: '#FFFFFF',
-  greenLight: '#0093ab',
-  blue: '#6a67ce',
-  blueDark: '#2155cd',
-  blueLight: '#79dae8',
+  grayHsla: 'hsla(0, 0%, 11%, 0.4)',
+  grayDarkHsl: 'hsl(0, 0%, 17%)',
+  grayLightHsl: 'hsl(0, 1%, 50%)',
+  whiteHsl: 'hsl(0, 0%, 100%);',
+  blackHsl: 'hsl(0, 0%, 11%)',
+  green: '#2f8f9d',
+  greenDark: '#1d5c63',
+  greenLight: '#3bacb6',
+  blue: '#2155cd',
+  blueDark: '#242f9b',
+  blueLight: '#dbdffd',
   red: 'red',
   redDark: '#FFFFFF',
   redLight: '#eb5353',
   gray: '#FFFFFF',
-  grayDark: '#FFFFFF',
+  grayDark: '#251d3a',
   grayLight: '#FFFFFF',
   grayRgba: 'rgba(0 0 0 / 0.5)',
   white: '#FFFFFF',
@@ -67,7 +77,7 @@ export const THEME_COLORS_DEFAULT = {
   purple: '#8047F8',
   purpleDark: '#4B2995',
   purpleLight: '#EBE5F9',
-  title: '#272221',
+  title: 'hsl(0, 0%, 100%)',
   subTitle: '#403937',
   text: '#574F4D',
   hover: '#D7D5D5',
@@ -77,7 +87,8 @@ export const THEME_COLORS_DEFAULT = {
   label: '#8D8686',
   card: '#F3F2F2',
   bgHover: '#FFFFFF',
-  textHover: 'blue'
+  textHover: 'hsl(0, 0%, 17%)',
+  transparent: 'transparent'
 };
 
 export const THEME_SIZE_DEFAULT = {
@@ -97,6 +108,10 @@ export const THEME_SIZE_DEFAULT = {
   base56: '5.6rem',
   base64: '6.4rem',
   base81: '8.1rem'
+};
+
+export type BaseDefautType = {
+  base80?: '80rem' | '80%' | '80vw' | '80vh';
 };
 
 export const THEME_SPACE_DEFAULT = {
@@ -122,6 +137,7 @@ export const THEME_SPACE_DEFAULT = {
   base16: '1.6rem',
   base18: '1.8rem',
   base20: '2rem',
+  base30: '3rem',
   base20n: '-2rem',
   base24: '2.4rem',
   base32: '3.2rem',
@@ -129,7 +145,10 @@ export const THEME_SPACE_DEFAULT = {
   base40: '4rem',
   base48: '4.8rem',
   base50: '5rem',
+  base500: '5rem',
+  base600: '6rem',
   base50n: '-5rem',
+  base50p: '50%',
   base54: '5.4rem',
   base56: '5.6rem',
   base64: '6.4rem',
@@ -151,7 +170,107 @@ export const THEME_SPACE_DEFAULT = {
   base100vh: '100vh',
   base100vw: '100vw',
   base256: '25.6rem',
-  base310: '31rem'
+  base310: '31rem',
+  base1VW: '1vw',
+  base2VW: '2vw',
+  base3VW: '3vw',
+  base4VW: '4vw',
+  base5VW: '5vw',
+  base6VW: '6vw',
+  base7VW: '7vw',
+  base8VW: '8vw',
+  base9VW: '9vw',
+  base10VW: '10vw',
+  base11VW: '11vw',
+  base12VW: '12vw',
+  base1VH: '1vh',
+  base2VH: '2vh',
+  base3VH: '3vh',
+  base4VH: '4vh',
+  base5VH: '5vh',
+  base6VH: '6vh',
+  base7VH: '7vh',
+  base8VH: '8vh',
+  base9VH: '9vh',
+  base10VH: '10vh',
+  base11VH: '11vh',
+  base12VH: '12vh',
+  base80R: '80rem',
+  base80P: '80%',
+  base80VW: '80vw',
+  base80VH: '80vh',
+
+  /*----------*----------*----------* Padding */
+  /*
+        --------------------- Sizing Nature
+        d     = dynamic
+        st    = static
+
+        --------------------- Sizing
+
+        l     = large
+        m     = medium
+        s     = small
+        xs    = extra small
+        c     = customized
+
+
+        --------------------- Orientation
+        v  = vertical   (top & bottom)
+        h  = horizontal (right & left)
+  */
+
+  /* Padding Dynamic */
+  padding_d_lh: 'calc(2rem + 12vw)',
+  padding_d_mc_v: 'calc(1rem + 4vh)',
+  padding_d_mc_h: 'calc(1rem + 4vw)',
+  padding_d_mv: 'calc(1rem + 2vh)',
+  padding_d_mh: 'calc(1rem + 2vw)',
+  padding_d_sv: 'calc(1rem + 1vh)',
+  padding_d_sh: 'calc(1rem + 1vw)',
+  /* Padding Static */
+  padding_st_lv: '2rem',
+  padding_st_lh: '3rem',
+  padding_st_mv: '1.5rem',
+  padding_st_mh: '2.5rem',
+  padding_st_sh: '1rem',
+  padding_st_sv: '2rem',
+  /*----------*----------*----------* Typography */
+
+  /*
+      --------------------- Sizing Nature
+      d     = dynamic
+      st    = static
+
+      --------------------- Sizing
+      xl    = extra large
+      l     = large
+      m     = medium
+      s     = small
+      xs    = extra small
+      c     = customized
+
+      --------------------- Family
+      font-family: 'Oswald', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+*/
+
+  /* Dynmaic */
+  /* Font Dynmaic */
+  fontSize_d_lc: 'calc(3rem + 3.5vw)',
+  fontSize_d_l: 'calc(2rem + 3vw)',
+  fontSize_d_mc: 'calc(2rem + 2.5vw)',
+  fontSize_d_m: 'calc(1rem + 2vw)',
+  fontSize_d_sc: 'calc(1rem + 1.5vw)',
+  fontSize_d_s: 'calc(1rem + 1vw)',
+  /* Font Static */
+  fontSize_st_xl: '4rem',
+  fontSize_st_lc: '3.5rem',
+  fontSize_st_l: '3rem',
+  fontSize_st_mc: '2.5rem',
+  fontSize_st_m: '2rem',
+  fontSize_st_sc: '1.5rem',
+  fontSize_st_s: '1rem'
 };
 
 export const THEME_MEDIA_DEFAULT = {
@@ -166,6 +285,30 @@ export const THEME_MEDIA_DEFAULT = {
 
 export type ThemeFontFamilyDefaultText = 'roboto' | 'baloo' | 'secondary';
 export type ThemeLineHeightDefaultText = 'base65' | 'base130' | 'base160';
+
+export type PlansTypeOptionDefault = {
+  title?: string;
+  isCheck?: boolean;
+};
+
+export type PLansTypeDefault = {
+  id: number;
+  title: string;
+  btnTitle: string;
+  subTitle: string;
+  priceCut: number;
+  lowerPrice: number;
+  description: string;
+  bgcolor: ThemeColorsText;
+  textcolor: ThemeColorsText;
+  options: PlansTypeOptionDefault[];
+};
+
+export type LinksTypeDefault = {
+  children: string;
+  href: string;
+  target: '_blank' | '_self';
+};
 
 export type ThemeFlexText =
   | 'base0'
@@ -197,6 +340,10 @@ export type ThemeFlexText =
   | 'columnReverse'
   | 'nowRap'
   | 'wrap'
+  | 'cover'
+  | 'contain'
+  | 'repeat'
+  | 'noRepeat'
   | 'wrapReverse';
 
 export type ThemeSizeText =
@@ -218,6 +365,32 @@ export type ThemeSizeText =
   | 'base81';
 
 export type ThemeSpaceTypeText =
+  | 'padding_d_lh'
+  | 'padding_d_mc_v'
+  | 'padding_d_mc_h'
+  | 'padding_d_mv'
+  | 'padding_d_mh'
+  | 'padding_d_sv'
+  | 'padding_d_sh'
+  | 'padding_st_lv'
+  | 'padding_st_lh'
+  | 'padding_st_mv'
+  | 'padding_st_mh'
+  | 'padding_st_sh'
+  | 'padding_st_sv'
+  | 'fontSize_d_lc'
+  | 'fontSize_d_l'
+  | 'fontSize_d_mc'
+  | 'fontSize_d_m'
+  | 'fontSize_d_sc'
+  | 'fontSize_d_s'
+  | 'fontSize_st_xl'
+  | 'fontSize_st_lc'
+  | 'fontSize_st_l'
+  | 'fontSize_st_mc'
+  | 'fontSize_st_m'
+  | 'fontSize_st_sc'
+  | 'fontSize_st_s'
   | 'auto'
   | 'maxContent'
   | 'minContent'
@@ -242,16 +415,24 @@ export type ThemeSpaceTypeText =
   | 'base20'
   | 'base20n'
   | 'base24'
+  | 'base30'
   | 'base32'
   | 'base36'
   | 'base40'
   | 'base48'
   | 'base50'
+  | 'base50p'
+  | 'base500'
+  | 'base600'
   | 'base50n'
   | 'base54'
   | 'base56'
   | 'base64'
   | 'base81'
+  | 'base80R'
+  | 'base80P'
+  | 'base80VW'
+  | 'base80VH'
   | 'base90'
   | 'base100'
   | 'base100p'
@@ -274,6 +455,11 @@ export type ThemeSpaceTypeText =
   | 'base310';
 
 export type ThemeColorsText =
+  | 'grayHsla'
+  | 'grayDarkHsl'
+  | 'grayLightHsl'
+  | 'whiteHsl'
+  | 'blackHsl'
   | 'green'
   | 'greenDark'
   | 'greenLight'
@@ -305,7 +491,8 @@ export type ThemeColorsText =
   | 'label'
   | 'bgHover'
   | 'textHover'
-  | 'card';
+  | 'card'
+  | 'transparent';
 
 export type ThemeMediaText =
   | 'xsmall'
@@ -347,9 +534,18 @@ export type ThemeFlexType = {
   nowRap: string;
   wrap: string;
   wrapReverse: string;
+  cover: string;
+  contain: string;
+  repeat: string;
+  noRepeat: string;
 };
 
 export type ThemeColors = {
+  grayHslaw: string;
+  grayDarkHsl?: string;
+  grayLightHsl?: string;
+  whiteHsl?: string;
+  blackHsl?: string;
   green?: string;
   greenDark?: string;
   greenLight?: string;
@@ -384,6 +580,7 @@ export type ThemeColors = {
   textHover?: string;
   textInput?: string;
   bgInput?: string;
+  transparent?: string;
 };
 
 export type ThemeSize = {
@@ -408,10 +605,10 @@ export type ThemeSpaceType = {
   auto?: string;
   maxContent: String;
   minContent: String;
-  inherit: String;
+  inherit: string;
   initial: String;
-  revert: String;
-  revertLayer: String;
+  revert: string;
+  revertLayer: string;
   unset: String;
   base0?: string;
   base4?: string;
@@ -429,14 +626,22 @@ export type ThemeSpaceType = {
   base20?: string;
   base20n?: string;
   base24?: string;
+  base30?: string;
   base32?: string;
   base36?: string;
   base40?: string;
   base48?: string;
   base50?: string;
+  base50p?: string;
+  base500?: string;
+  base600?: string;
   base50n?: string;
   base54?: string;
   base81?: string;
+  base80R?: string;
+  base80P?: string;
+  base80VW?: string;
+  base8VH?: string;
   base90?: string;
   base100?: string;
   base100p?: string;
@@ -453,6 +658,210 @@ export type ThemeSpaceType = {
   base200?: string;
   base256?: string;
   base310?: string;
+  base80?: BaseDefautType;
+  padding_d_lh?: string;
+
+  padding_d_mc_v?: string;
+  padding_d_mc_h?: string;
+
+  padding_d_mv?: string;
+  padding_d_mh?: string;
+
+  padding_d_sv?: string;
+  padding_d_sh?: string;
+
+  padding_st_lv?: string;
+  padding_st_lh?: string;
+
+  padding_st_mv?: string;
+  padding_st_mh?: string;
+
+  padding_st_sh?: string;
+  padding_st_sv?: string;
+
+  /* Font Dynmaic */
+  fontSize_d_lc?: string;
+  fontSize_d_l?: string;
+  fontSize_d_mc?: string;
+  fontSize_d_m?: string;
+  fontSize_d_sc?: string;
+  fontSize_d_s?: string;
+  /* Font Static */
+  fontSize_st_xl?: string;
+  fontSize_st_lc?: string;
+  fontSize_st_l?: string;
+  fontSize_st_mc?: string;
+  fontSize_st_m?: string;
+  fontSize_st_sc?: string;
+  fontSize_st_s?: string;
+};
+
+export const THEME_SPACE_DINAMIC_DEFAULT = {
+  base1VW: '1vw',
+  base2VW: '2vw',
+  base3VW: '3vw',
+  base4VW: '4vw',
+  base5VW: '5vw',
+  base6VW: '6vw',
+  base7VW: '7vw',
+  base8VW: '8vw',
+  base9VW: '9vw',
+  base10VW: '10vw',
+  base11VW: '11vw',
+  base12VW: '12vw',
+  base1VH: '1vh',
+  base2VH: '2vh',
+  base3VH: '3vh',
+  base4VH: '4vh',
+  base5VH: '5vh',
+  base6VH: '6vh',
+  base7VH: '7vh',
+  base8VH: '8vh',
+  base9VH: '9vh',
+  base10VH: '10vh',
+  base11VH: '11vh',
+  base12VH: '12vh'
+};
+
+export const THEME_SPACE_DINAMIC_X_DEFAULT = {
+  base1VW: '1vw',
+  base2VW: '2vw',
+  base3VW: '3vw',
+  base4VW: '4vw',
+  base5VW: '5vw',
+  base6VW: '6vw',
+  base7VW: '7vw',
+  base8VW: '8vw',
+  base9VW: '9vw',
+  base10VW: '10vw',
+  base11VW: '11vw',
+  base12VW: '12vw'
+};
+
+export const THEME_SPACE_DINAMIC_Y_DEFAULT = {
+  base1VH: '1vh',
+  base2VH: '2vh',
+  base3VH: '3vh',
+  base4VH: '4vh',
+  base5VH: '5vh',
+  base6VH: '6vh',
+  base7VH: '7vh',
+  base8VH: '8vh',
+  base9VH: '9vh',
+  base10VH: '10vh',
+  base11VH: '11vh',
+  base12VH: '12vh'
+};
+
+export type ThemeSpaceDinamicText =
+  | 'base1VW'
+  | 'base2VW'
+  | 'base3VW'
+  | 'base4VW'
+  | 'base5VW'
+  | 'base6VW'
+  | 'base7VW'
+  | 'base8VW'
+  | 'base9VW'
+  | 'base10VW'
+  | 'base11VW'
+  | 'base12VW'
+  | 'base1VH'
+  | 'base2VH'
+  | 'base3VH'
+  | 'base4VH'
+  | 'base5VH'
+  | 'base6VH'
+  | 'base7VH'
+  | 'base8VH'
+  | 'base9VH'
+  | 'base10VH'
+  | 'base11VH'
+  | 'base12VH';
+
+export type ThemeSpaceDinamicXText =
+  | 'base1VW'
+  | 'base2VW'
+  | 'base3VW'
+  | 'base4VW'
+  | 'base5VW'
+  | 'base6VW'
+  | 'base7VW'
+  | 'base8VW'
+  | 'base9VW'
+  | 'base10VW'
+  | 'base11VW'
+  | 'base12VW';
+
+export type ThemeSpaceDinamicYText =
+  | 'base1VH'
+  | 'base2VH'
+  | 'base3VH'
+  | 'base4VH'
+  | 'base5VH'
+  | 'base6VH'
+  | 'base7VH'
+  | 'base8VH'
+  | 'base9VH'
+  | 'base10VH'
+  | 'base11VH'
+  | 'base12VH';
+
+export type ThemeSpaceDinamicType = {
+  base1VW: string;
+  base2VW: string;
+  base3VW: string;
+  base4VW: string;
+  base5VW: string;
+  base6VW: string;
+  base7VW: string;
+  base8VW: string;
+  base9VW: string;
+  base10VW: string;
+  base11VW: string;
+  base12VW: string;
+  base1VH: string;
+  base2VH: string;
+  base3VH: string;
+  base4VH: string;
+  base5VH: string;
+  base6VH: string;
+  base7VH: string;
+  base8VH: string;
+  base9VH: string;
+  base10VH: string;
+  base11VH: string;
+  base12VH: string;
+};
+
+export type ThemeSpaceDinamicXType = {
+  base1VW: string;
+  base2VW: string;
+  base3VW: string;
+  base4VW: string;
+  base5VW: string;
+  base6VW: string;
+  base7VW: string;
+  base8VW: string;
+  base9VW: string;
+  base10VW: string;
+  base11VW: string;
+  base12VW: string;
+};
+
+export type ThemeSpaceDinamicYType = {
+  base1VH: string;
+  base2VH: string;
+  base3VH: string;
+  base4VH: string;
+  base5VH: string;
+  base6VH: string;
+  base7VH: string;
+  base8VH: string;
+  base9VH: string;
+  base10VH: string;
+  base11VH: string;
+  base12VH: string;
 };
 
 export type ThemeMediaType = {
@@ -477,6 +886,46 @@ export type ThemeLineHeightDefaultType = {
   base160: string;
 };
 
+export type CategoryDefault = {
+  id?: number;
+  title?: string;
+};
+
+export type TypeThemeNumberDefault =
+  | 0
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | -1
+  | -2
+  | -3
+  | -4
+  | -5
+  | -6
+  | -7
+  | -8
+  | -9
+  | -10
+  | -11
+  | -12
+  | -13
+  | -14
+  | -15
+  | -16;
+
 export type ThemeType = {
   title?: string;
   colors?: ThemeColors;
@@ -500,6 +949,28 @@ export type ThemeType = {
   lineHeight?: ThemeLineHeightDefaultType;
 };
 
+export const gridColumnsDefault = (
+  start: TypeThemeNumberDefault,
+  span: 'span' | '',
+  end: TypeThemeNumberDefault
+) => css`
+  display: grid;
+  grid-column: ${start} ${span} / ${end};
+`;
+
+export const gridRows = (
+  isGridRow: boolean,
+  start: number,
+  end: number,
+  span: string
+) => css`
+  ${isGridRow &&
+  css`
+    display: grid;
+    grid-row: ${start} ${span} / ${end};
+  `}
+`;
+
 export const textDecoration = (isUppercase: boolean) => css`
   ${isUppercase &&
   css`
@@ -507,10 +978,10 @@ export const textDecoration = (isUppercase: boolean) => css`
   `}
 `;
 
-export const borderDefault = (isBorder: boolean) => css`
+export const isBorderDefault = (isBorder: boolean) => css`
   ${isBorder &&
   css`
-    border: 1px solid #e6e5e5;
+    border: 3px solid #e6e5e5;
   `}
 `;
 
@@ -529,3 +1000,59 @@ export const isBoxShadowDefault = (isBoxShadow: boolean) => css`
     box-shadow: 2px 2px 30px 2px lightgrey;
   `}
 `;
+
+export const isTextDecoretionLineThroughDefault = (
+  isTextDecoretion: boolean
+) => css`
+  ${isTextDecoretion &&
+  css`
+    color: rgba(222, 222, 222, 0.5);
+    /* color: rgba(0, 0, 0, 0.5); */
+    /* text-decoration: line-through 2px solid rgba(0, 0, 0, 0.5); */
+    text-decoration: line-through;
+  `}
+`;
+
+// export const isBackgrondImgDefault = ({
+//   isBackgrondImgDefault,
+//   url,
+//   size = 'cover',
+//   position = 'center',
+//   repeat = 'noRepeat'
+// }: TypeDefault) => css`
+//   ${isBackgrondImgDefault &&
+//   css`
+//     width: 100%;
+//     height: 100%;
+//     background-image: url(${url});
+//     background-size: ${size};
+//     background-repeat: ${repeat};
+//     background-position: ${position};
+//   `}
+// `;
+
+export const isBackgrondImgDefault = ({
+  url,
+  size,
+  position,
+  repeat
+}: TypeDefault) =>
+  css`
+    width: 100%;
+    height: 100%;
+    background-image: url(${url});
+    background-size: ${size};
+    background-repeat: ${repeat};
+    background-position: ${position};
+  `;
+
+export const paddingCustom = (
+  paddingX: ThemeSpaceTypeText,
+  paddingY: ThemeSpaceTypeText
+) =>
+  css`
+    padding: calc(
+      ${paddingX && THEME_SPACE_DEFAULT[paddingX]} +
+        ${paddingY && THEME_SPACE_DEFAULT[paddingY]}
+    );
+  `;

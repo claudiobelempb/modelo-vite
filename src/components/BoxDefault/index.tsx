@@ -3,7 +3,6 @@ import { TypeDefault } from '@assets/styles/themes/TypeDefault';
 import * as Styles from './styles';
 
 const BoxDefault: React.FC<TypeDefault> = ({
-  children,
   bgcolor,
   bgtext,
   fontSize,
@@ -86,8 +85,55 @@ const BoxDefault: React.FC<TypeDefault> = ({
       flexWrap={props.flexWrap}
       flexGrow={props.flexGrow}
       alignSelf={props.alignSelf}
+      isGridRow={props.isGridRow}
+      gridRowStart={props.gridRowStart}
+      gridRowStartSpan={props.gridRowStartSpan}
+      gridRowEnd={props.gridRowEnd}
+      gridRowEndSpan={props.gridRowEndSpan}
+      isGridColumn={props.isGridColumn}
+      gridColumnStart={props.gridColumnStart}
+      gridColumnStartSpan={props.gridColumnStartSpan}
+      gridColumnEnd={props.gridColumnEnd}
+      gridColumnEndSpan={props.gridColumnEndSpan}
+      gridTemplateRows={props.gridTemplateRows}
+      gridTemplateColumns={props.gridTemplateColumns}
+      gridArea={props.gridArea}
+      iconBgcolor={props.iconBgcolor}
+      iconColor={props.iconColor}
+      iconSize={props.iconSize}
+      isAfter={props.isAfter}
+      isBefore={props.isBefore}
+      position={props.position}
+      left={props.left}
+      right={props.right}
+      top={props.top}
+      bottom={props.bottom}
+      zIndex={props.zIndex}
+      flexBasis={props.flexBasis}
+      isBorderDefault={props.isBorderDefault}
+      borderWidth={props.borderWidth}
+      borderStyle={props.borderStyle}
+      borderColor={props.borderColor}
+      borderTopColor={props.borderTopColor}
+      borderTopStyle={props.borderTopStyle}
+      borderTopWidth={props.borderTopWidth}
+      borderRightColor={props.borderRightColor}
+      borderRightStyle={props.borderRightStyle}
+      borderRightWidth={props.borderRightWidth}
+      borderBottomColor={props.borderBottomColor}
+      borderBottomStyle={props.borderBottomStyle}
+      borderBottomWidth={props.borderBottomWidth}
+      borderLeftColor={props.borderLeftColor}
+      borderLeftStyle={props.borderLeftStyle}
+      borderLeftWidth={props.borderLeftWidth}
+      borderImageSource={props.borderImageSource}
+      borderImageSlice={props.borderImageSlice}
+      borderImageWidth={props.borderImageWidth}
+      borderImageOutset={props.borderImageOutset}
+      borderImageRepeat={props.borderImageRepeat}
+      gridColumnsDefault={props.gridColumnsDefault}
     >
-      {children}
+      {props.children}
     </Styles.BoxDefaultStyle>
   );
 };

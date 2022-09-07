@@ -1,28 +1,29 @@
 import { createGlobalStyle, css } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  * {
-    margin: 0;
+  /*----------*----------*----------*----------*---------- Reset */
+  *,
+  *::before,
+  *::after {
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
   }
-  #root {
+  /* #root {
     height: 100vh;
     display: flex;
     flex-direction: column;
-  }
+  } */
 
-  html {
-    font-size: 62.5%;
-    scroll-behavior: smooth;
-  }
-
-  body {
+  html, body {
     ${({ theme }) => css`
       font-family: ${theme.fonts.fontFamile};
       font-size: ${theme.size.base16};
       font-weight: ${theme.fonts.fontWeight.regular};
       -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+      font-size: 62.5%;
+      background-color: ${theme.colors.background};
     `}
   }
 
@@ -30,34 +31,23 @@ export const GlobalStyles = createGlobalStyle`
     ${({ theme }) => css`
       font-family: ${theme.fonts.fontFamile};
       font-size: ${theme.size.base16};
+      color: ${theme.colors.title};
     `}
   }
 
   a {
     text-decoration: none;
     color: inherit;
-    background-color: inherit;
-    width: 100%;
-    text-align: center;
+    /* background-color: inherit; */
+    /* width: 100%; */
+    /* text-align: center; */
   }
 
-  img {
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem; */
-  }
-
-  .radius {
-    border-radius: 50%;
-  }
-
-  main {
+  /* main {
     display: flex;
     flex: 1 1;
     flex-direction: column;
-  }
+  } */
 
   .table {
     width: 100%;
@@ -83,7 +73,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   table {
     width: 100%;
-      overflow-y: auto;
+    overflow-y: auto;
     border-collapse: collapse;
     border-spacing: 0;
   }

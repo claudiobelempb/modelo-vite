@@ -46,6 +46,29 @@ const TextDefault: React.FC<TypeDefault> = ({ children, ...props }) => {
         right={props.right}
         border={props.border}
         gap={props.gap}
+        isTextDecoretionLineThrough={props.isTextDecoretionLineThrough}
+        isGridRow={props.isGridRow}
+        gridRowStart={props.gridRowStart}
+        gridRowStartSpan={props.gridRowStartSpan}
+        gridRowEnd={props.gridRowEnd}
+        gridRowEndSpan={props.gridRowEndSpan}
+        isGridColumn={props.isGridColumn}
+        gridColumnStart={props.gridColumnStart}
+        gridColumnStartSpan={props.gridColumnStartSpan}
+        gridColumnEnd={props.gridColumnEnd}
+        gridColumnEndSpan={props.gridColumnEndSpan}
+        isPaddingCustom={props.isPaddingCustom}
+        paddingStaticX={props.paddingStaticX}
+        paddingStaticY={props.paddingStaticY}
+        paddingDynamicX={props.paddingDynamicX}
+        paddingDynamicY={props.paddingDynamicY}
+        isMarginCustom={props.isMarginCustom}
+        marginStaticX={props.marginStaticX}
+        marginStaticY={props.marginStaticY}
+        marginDynamicX={props.marginDynamicX}
+        marginDynamicY={props.marginDynamicY}
+        fontSizeStatic={props.fontSizeStatic}
+        fontSizeDynamic={props.fontSizeDynamic}
       >
         {children}
       </Styles.ContainerTextDefault>

@@ -28,12 +28,14 @@ const ButtonDefault: React.FC<TypeDefault> = ({
   width,
   height,
   gap,
-  isUppercase
+  isUppercase,
+  ...props
 }) => {
   return (
     <Styles.ButtonDefaultContainer
       bgtext={bgtext}
       bgcolor={bgcolor}
+      textcolor={props.textcolor}
       direction={direction}
       fontSize={fontSize}
       jcontent={jcontent}
@@ -54,6 +56,30 @@ const ButtonDefault: React.FC<TypeDefault> = ({
       width={width}
       gap={gap}
       isUppercase={isUppercase}
+      iconBgcolor={props.iconBgcolor}
+      iconColor={props.iconColor}
+      iconSize={props.iconSize}
+      isBorderDefault={props.isBorderDefault}
+      borderWidth={props.borderWidth}
+      borderStyle={props.borderStyle}
+      borderColor={props.borderColor}
+      borderTopColor={props.borderTopColor}
+      borderTopStyle={props.borderTopStyle}
+      borderTopWidth={props.borderTopWidth}
+      borderRightColor={props.borderRightColor}
+      borderRightStyle={props.borderRightStyle}
+      borderRightWidth={props.borderRightWidth}
+      borderBottomColor={props.borderBottomColor}
+      borderBottomStyle={props.borderBottomStyle}
+      borderBottomWidth={props.borderBottomWidth}
+      borderLeftColor={props.borderLeftColor}
+      borderLeftStyle={props.borderLeftStyle}
+      borderLeftWidth={props.borderLeftWidth}
+      borderImageSource={props.borderImageSource}
+      borderImageSlice={props.borderImageSlice}
+      borderImageWidth={props.borderImageWidth}
+      borderImageOutset={props.borderImageOutset}
+      borderImageRepeat={props.borderImageRepeat}
     >
       {isIconLeft && children}
       {title ? title : ''}

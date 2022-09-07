@@ -7,7 +7,7 @@ const ContainerDefault: React.FC<TypeDefault> = ({
   bgcolor,
   bgtext,
   fontSize,
-  as = 'section',
+  as,
   direction,
   jcontent,
   aitems,
@@ -16,7 +16,8 @@ const ContainerDefault: React.FC<TypeDefault> = ({
   paddingY,
   margin,
   marginX,
-  marginY
+  marginY,
+  ...props
 }) => {
   return (
     <Styles.ContainerDefaultStyle
@@ -33,6 +34,22 @@ const ContainerDefault: React.FC<TypeDefault> = ({
       margin={margin}
       marginX={marginX}
       marginY={marginY}
+      isOverall={props.isOverall}
+      isGridTemplateColumns={props.isGridTemplateColumns}
+      isAfter={props.isAfter}
+      isBefore={props.isBefore}
+      position={props.position}
+      left={props.left}
+      right={props.right}
+      top={props.height}
+      bottom={props.height}
+      zIndex={props.zIndex}
+      isImgBackgroundGradient={props.isImgBackgroundGradient}
+      isImgBackground={props.isImgBackground}
+      imgBgPosition={props.imgBgPosition}
+      imgBgcolor={props.imgBgcolor}
+      imgBgSize={props.imgBgSize}
+      imgBgUrl={props.imgBgUrl}
     >
       {children}
     </Styles.ContainerDefaultStyle>

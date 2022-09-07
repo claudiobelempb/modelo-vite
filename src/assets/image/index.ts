@@ -69,3 +69,37 @@ export const ImgGridShirtWomen = './src/assets/image/grid/t-shirt-women.jpg';
 // export { ImgEntregar, ImgDelete, ImgBrand };
 
 // export { ReactComponent as ReactjsTrail } from "./reactjs.svg";
+
+export const ImgClient1 =
+  './src/assets/image/phoxulPageImg/clients/client-1.png';
+export const ImgClient2 =
+  './src/assets/image/phoxulPageImg/clients/client-2.png';
+export const ImgClient3 =
+  './src/assets/image/phoxulPageImg/clients/client-3.png';
+export const ImgClient4 =
+  './src/assets/image/phoxulPageImg/clients/client-4.png';
+export const ImgMyWorks1 =
+  './src/assets/image/phoxulPageImg/my-works/my-work-1.jpg';
+export const ImgMyWorks2 =
+  './src/assets/image/phoxulPageImg/my-works/my-work-2.jpg';
+export const ImgMyWorks3 =
+  './src/assets/image/phoxulPageImg/my-works/my-work-3.jpg';
+export const ImgMyWorks4 =
+  './src/assets/image/phoxulPageImg/my-works/my-work-4.jpg';
+export const ImgMyWorks5 =
+  './src/assets/image/phoxulPageImg/my-works/my-work-5.jpg';
+export const ImgMyWorks6 =
+  './src/assets/image/phoxulPageImg/my-works/my-work-6.jpg';
+export const ImgMyWorks7 =
+  './src/assets/image/phoxulPageImg/my-works/my-work-7.jpg';
+export const ImgMyWorks8 =
+  './src/assets/image/phoxulPageImg/my-works/my-work-8.jpg';
+export const ImgMyWorks9 =
+  './src/assets/image/phoxulPageImg/my-works/my-work-9.jpg';
+export const ImgContact = './src/assets/image/phoxulPageImg/contact-img.jpg';
+export const ImgDot = './src/assets/image/phoxulPageImg/dot.png';
+export const ImgFooter = './src/assets/image/phoxulPageImg/footer-bg.jpg';
+export const ImgHero = './src/assets/image/phoxulPageImg/hero-bg.jpg';
+export const ImgNews = './src/assets/image/phoxulPageImg/news-img.jpeg';
+export const ImgPersonal =
+  './src/assets/image/phoxulPageImg/personal-info-img.jpg';

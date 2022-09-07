@@ -12,7 +12,7 @@ import {
   ImgPagote
 } from '@assets/image';
 import { CardDefault } from '@componets/CardDefault';
-import { HomeLayout } from '@componets/LayoutHome';
+import { HomeLayoutDefault } from '@componets/HomeLayoutDefault';
 
 /*
  Nesse desafio, você vai desenvolver uma aplicação para gerenciar um carrinho de compras de uma cafeteria fictícia, que contém as seguintes funcionalidades:
@@ -27,7 +27,7 @@ import { HomeLayout } from '@componets/LayoutHome';
 
 const HomePage: React.FC = () => {
   return (
-    <HomeLayout>
+    <HomeLayoutDefault>
       <ContainerDefault as='section'>
         <ContentDefault marginY='base81' isGridRepeat={2}>
           <BoxDefault>
@@ -139,7 +139,7 @@ const HomePage: React.FC = () => {
           <CardDefault />
         </ContentDefault>
       </ContainerDefault>
-    </HomeLayout>
+    </HomeLayoutDefault>
   );
 };
 

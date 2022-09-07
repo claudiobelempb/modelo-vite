@@ -1,10 +1,10 @@
 import { FaExclamationTriangle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { HomeLayout } from '../../components/LayoutHome';
+import { HomeLayoutDefault } from '../../components/HomeLayoutDefault';
 
 const NotFoundPage: React.FC = () => {
   return (
-    <HomeLayout>
+    <HomeLayoutDefault>
       <main className='container'>
         <div className='row'>
           <div className='col d-flex flex-column justify-content-center align-items-center'>
@@ -20,7 +20,7 @@ const NotFoundPage: React.FC = () => {
           </div>
         </div>
       </main>
-    </HomeLayout>
+    </HomeLayoutDefault>
   );
 };
 

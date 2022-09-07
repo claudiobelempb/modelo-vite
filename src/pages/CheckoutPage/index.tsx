@@ -10,13 +10,13 @@ import { ButtonDefault } from '@componets/ButtonDefault';
 import { CardCheckout } from '@componets/CardCheckout';
 import { ContentDefault } from '@componets/ContentDefault';
 import { HeadingDefault } from '@componets/HeadingDefault';
+import { HomeLayoutDefault } from '@componets/HomeLayoutDefault';
 import { InputDefault } from '@componets/InputDefault';
-import { HomeLayout } from '@componets/LayoutHome';
 import { TextDefault } from '@componets/TextDefault';
 
 const CheckoutPage: React.FC = () => {
   return (
-    <HomeLayout>
+    <HomeLayoutDefault>
       <ContentDefault isGridRepeat={2}>
         <BoxDefault display='unset'>
           <HeadingDefault
@@ -248,7 +248,7 @@ const CheckoutPage: React.FC = () => {
           </BoxDefault>
         </BoxDefault>
       </ContentDefault>
-    </HomeLayout>
+    </HomeLayoutDefault>
   );
 };
 
