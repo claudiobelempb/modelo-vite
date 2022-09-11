@@ -16,8 +16,6 @@ export const HeadingDefaultContainer = styled.h1<TypeDefault>`
     theme,
     bgtext,
     as,
-    width,
-    height,
     fontSize,
     isUppercase,
     fontFamily,
@@ -30,8 +28,6 @@ export const HeadingDefaultContainer = styled.h1<TypeDefault>`
     margin,
     marginX,
     marginY,
-    marginTop,
-    marginBottom,
     radius,
     radiusTopLeft,
     radiusTopRight,
@@ -44,11 +40,10 @@ export const HeadingDefaultContainer = styled.h1<TypeDefault>`
     jcontent,
     ...props
   }) => css`
-    width: ${width && THEME_SPACE_DEFAULT[width]};
-    height: ${height && THEME_SPACE_DEFAULT[height]};
+    width: ${props.width && props.width}%;
+    height: ${props.height && props.height}%;
+    position: ${props.position && props.position};
 
-    font-size: ${props.fontSizeStatic &&
-    THEME_SPACE_DEFAULT[props.fontSizeStatic]};
     font-style: ${fontStyle};
     font-family: ${fontFamily && THEME_FONT_FAMILY_DEFAULT[fontFamily]};
     line-height: ${lineHeight && THEME_LINE_HEIGHT_DEFAULT[lineHeight]};
@@ -71,8 +66,6 @@ export const HeadingDefaultContainer = styled.h1<TypeDefault>`
 
     padding: ${padding && THEME_SPACE_DEFAULT[padding]};
     margin: ${margin && THEME_SPACE_DEFAULT[margin]};
-    margin-top: ${marginTop && THEME_SPACE_DEFAULT[marginTop]};
-    margin-bottom: ${marginBottom && THEME_SPACE_DEFAULT[marginBottom]};
     gap: ${gap && THEME_SPACE_DEFAULT[gap]};
     flex-wrap: ${flexWrap && THEME_FLEX_DEFAULT[flexWrap]};
     ${textDecoration(isUppercase ? isUppercase : false)}
@@ -82,55 +75,137 @@ export const HeadingDefaultContainer = styled.h1<TypeDefault>`
         : false
     )}
 
-    ${props.fontSizeDynamic === '1' &&
+    ${props.paddingDynamicX &&
+    props.paddingDynamicX(props.valueStatic || 1, props.valueDynamic || 2)}
+    ${props.paddingDynamicY &&
+    props.paddingDynamicY(props.valueStatic || 1, props.valueDynamic || 2)}
+    ${props.paddingStaticY && props.paddingStaticY(props.valueStatic || 1)}
+    ${props.paddingStaticX && props.paddingStaticX(props.valueStatic || 1)}
+
+    ${props.paddingStatic &&
+    props.paddingStatic(props.valueStaticH || 1, props.valueStaticW || 1)}
+    ${props.paddingDynamic &&
+    props.paddingDynamic(
+      props.valueStaticH || 1,
+      props.valueDynamiH || 1,
+      props.valueStaticW || 1,
+      props.valueDynamicW || 2
+    )}
+    ${props.paddingTop &&
     css`
-      font-size: calc(1rem + 1vw);
+      padding-top: ${props.paddingTop}rem;
     `}
-    ${props.fontSizeDynamic === '1.5' &&
+    ${props.paddingBottom &&
     css`
-      font-size: calc(1rem + 1.5vw);
+      padding-bottom: ${props.paddingBottom}rem;
     `}
-    ${props.fontSizeDynamic === '2' &&
+    ${props.paddingLeft &&
     css`
-      font-size: calc(1rem + 2vw);
+      padding-left: ${props.paddingLeft}rem;
     `}
-    ${props.fontSizeDynamic === '2.5' &&
+    ${props.paddingRight &&
     css`
-      font-size: calc(2rem + 2.5vw);
+      padding-right: ${props.paddingRight}rem;
     `}
 
-    ${props.fontSizeDynamic === '3' &&
+    /*MARGIN  */
+
+    ${props.marginStatic &&
+    props.marginStatic(props.valueStaticH || 1, props.valueStaticW || 1)}
+    ${props.marginDynamic &&
+    props.marginDynamic(
+      props.valueStaticH || 1,
+      props.valueDynamiH || 1,
+      props.valueStaticW || 1,
+      props.valueDynamicW || 2
+    )}
+
+
+    ${props.marginTop &&
     css`
-      font-size: calc(2rem + 3vw);
+      margin-top: ${props.marginTop}rem;
+    `}
+    ${props.marginBottom &&
+    css`
+      margin-bottom: ${props.marginBottom}rem;
+    `}
+    ${props.marginLeft &&
+    css`
+      margin-left: ${props.marginLeft}rem;
+    `}
+    ${props.marginRight &&
+    css`
+      margin-right: ${props.marginRight}rem;
     `}
 
-    ${props.fontSizeDynamic === '3.5' &&
+    ${props.positionDefault && props.positionDefault()};
+    ${props.afterDefault && props.afterDefault()};
+    ${props.beforeDefault && props.beforeDefault()};
+
+    ${props.pdx &&
     css`
-      font-size: calc(3rem + 3.5vw);
+      padding-top: calc(${props.psx}rem + ${props.pdx}vw);
     `}
 
-    ${props.isPaddingCustom &&
+    ${props.psx &&
     css`
-      padding-left: calc(
-        ${props.paddingStaticX && THEME_SPACE_DEFAULT[props.paddingStaticX]} +
-          ${props.paddingDynamicX &&
-          THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicX]}
-      );
-      padding-right: calc(
-        ${props.paddingStaticX && THEME_SPACE_DEFAULT[props.paddingStaticX]} +
-          ${props.paddingDynamicX &&
-          THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicX]}
-      );
-      padding-top: calc(
-        ${props.paddingStaticY && THEME_SPACE_DEFAULT[props.paddingStaticY]} +
-          ${props.paddingDynamicY &&
-          THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicY]}
-      );
-      padding-bottom: calc(
-        ${props.paddingStaticY && THEME_SPACE_DEFAULT[props.paddingStaticY]} +
-          ${props.paddingDynamicY &&
-          THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicY]}
-      );
+      padding-top: ${props.pdx}rem;
+    `}
+
+     /*BORDER DEFAULT  */
+     ${props.borderDefault &&
+    props.borderDefault(
+      props.borderWidth || 1,
+      props.borderStyle || 'solid',
+      props.borderColor || 'grayDarkHsl'
+    )}
+
+    ${props.borderDefaultTop &&
+    props.borderDefaultTop(
+      props.borderTopWidth || 1,
+      props.borderTopStyle || 'solid',
+      props.borderTopColor || 'grayDarkHsl'
+    )}
+
+    ${props.borderDefaultRight &&
+    props.borderDefaultRight(
+      props.borderRightWidth || 1,
+      props.borderRightStyle || 'solid',
+      props.borderRightColor || 'grayDarkHsl'
+    )}
+
+    ${props.borderDefaultBottom &&
+    props.borderDefaultBottom(
+      props.borderBottomWidth || 1,
+      props.borderBottomStyle || 'solid',
+      props.borderBottomColor || 'grayDarkHsl'
+    )}
+
+    ${props.borderDefaultLeft &&
+    props.borderDefaultLeft(
+      props.borderLeftWidth || 1,
+      props.borderLeftStyle || 'solid',
+      props.borderLeftColor || 'grayDarkHsl'
+    )}
+
+
+    /*FONT SIZE DYNAMIC */
+    ${props.fontSizeDynamic &&
+    props.fontSizeDynamic(props.valueStatic || 1, props.valueDynamic || 1)}
+    /*FONT SIZE STATIC */
+    ${props.fontSizeStatic &&
+    css`
+      font-size: ${props.fontSizeStatic * 1}rem;
+    `}
+
+    ${props.fsd &&
+    css`
+      font-size: calc(${props.fsdcalc}rem + ${props.fsd}vw);
+    `}
+
+    ${props.fss &&
+    css`
+      font-size: ${props.fss}rem;
     `}
 
     ${props.isMarginCustom &&

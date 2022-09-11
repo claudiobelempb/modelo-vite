@@ -39,7 +39,7 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
     /* background-color: inherit; */
-    /* width: 100%; */
+    width: max-content;
     /* text-align: center; */
   }
 

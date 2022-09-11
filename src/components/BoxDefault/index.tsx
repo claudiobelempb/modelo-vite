@@ -13,8 +13,6 @@ const BoxDefault: React.FC<TypeDefault> = ({
   paddingX,
   paddingY,
   margin,
-  marginTop,
-  marginBottom,
   marginX,
   marginY,
   xsmall,
@@ -63,8 +61,6 @@ const BoxDefault: React.FC<TypeDefault> = ({
       paddingX={paddingX}
       paddingY={paddingY}
       margin={margin}
-      marginTop={marginTop}
-      marginBottom={marginBottom}
       marginX={marginX}
       marginY={marginY}
       radius={radius}
@@ -132,6 +128,32 @@ const BoxDefault: React.FC<TypeDefault> = ({
       borderImageOutset={props.borderImageOutset}
       borderImageRepeat={props.borderImageRepeat}
       gridColumnsDefault={props.gridColumnsDefault}
+      gridRows={props.gridRows}
+      paddingDynamicX={props.paddingDynamicX}
+      paddingDynamicY={props.paddingDynamicY}
+      paddingDynamic={props.paddingDynamic}
+      paddingStatic={props.paddingStatic}
+      paddingTop={props.paddingTop}
+      paddingBottom={props.paddingBottom}
+      paddingLeft={props.paddingLeft}
+      paddingRight={props.paddingRight}
+      marginDynamicX={props.marginDynamicX}
+      marginDynamicY={props.marginDynamicY}
+      marginDynamic={props.marginDynamic}
+      marginStatic={props.marginStatic}
+      marginTop={props.marginTop}
+      marginBottom={props.marginBottom}
+      marginLeft={props.marginLeft}
+      marginRight={props.marginRight}
+      fontSizeDynamic={props.fontSizeDynamic}
+      fontSizeStatic={props.fontSizeStatic}
+      borderDefault={props.borderDefault}
+      borderDefaultTop={props.borderDefaultTop}
+      borderDefaultRight={props.borderDefaultRight}
+      borderDefaultBottom={props.borderDefaultBottom}
+      borderDefaultLeft={props.borderDefaultLeft}
+      isPar={props.isPar}
+      isImpar={props.isImpar}
     >
       {props.children}
     </Styles.BoxDefaultStyle>

@@ -52,6 +52,7 @@ export const THEME_FLEX_DEFAULT = {
 
 export const THEME_COLORS_DEFAULT = {
   grayHsla: 'hsla(0, 0%, 11%, 0.4)',
+  grayHsl: 'hsl(0, 0%, 11%)',
   grayDarkHsl: 'hsl(0, 0%, 17%)',
   grayLightHsl: 'hsl(0, 1%, 50%)',
   whiteHsl: 'hsl(0, 0%, 100%);',
@@ -124,6 +125,7 @@ export const THEME_SPACE_DEFAULT = {
   revertLayer: 'revertLayer',
   unset: 'unset',
   base0: '0',
+  base1: '0.1rem',
   base4: '0.4rem',
   base5: '0.5rem',
   base6: '0.625rem',
@@ -400,6 +402,7 @@ export type ThemeSpaceTypeText =
   | 'revertLayer'
   | 'unset'
   | 'base0'
+  | 'base1'
   | 'base4'
   | 'base5'
   | 'base6'
@@ -456,6 +459,7 @@ export type ThemeSpaceTypeText =
 
 export type ThemeColorsText =
   | 'grayHsla'
+  | 'grayHsl'
   | 'grayDarkHsl'
   | 'grayLightHsl'
   | 'whiteHsl'
@@ -542,6 +546,7 @@ export type ThemeFlexType = {
 
 export type ThemeColors = {
   grayHslaw: string;
+  grayHsl: string;
   grayDarkHsl?: string;
   grayLightHsl?: string;
   whiteHsl?: string;
@@ -611,6 +616,7 @@ export type ThemeSpaceType = {
   revertLayer: string;
   unset: String;
   base0?: string;
+  base1?: string;
   base4?: string;
   base5?: string;
   base6?: string;
@@ -694,6 +700,133 @@ export type ThemeSpaceType = {
   fontSize_st_m?: string;
   fontSize_st_sc?: string;
   fontSize_st_s?: string;
+};
+
+export type TypeFlexText =
+  | '0'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | 'inherit'
+  | 'initial'
+  | 'revert'
+  | 'unset'
+  | 'stretch'
+  | 'baseline'
+  | 'auto'
+  | 'flexStart'
+  | 'flexEnd'
+  | 'center'
+  | 'spaceBetween'
+  | 'spaceAround'
+  | 'spaceEvenly'
+  | 'start'
+  | 'end'
+  | 'left'
+  | 'right'
+  | 'row'
+  | 'rowReverse'
+  | 'column'
+  | 'columnReverse'
+  | 'nowRap'
+  | 'wrap'
+  | 'cover'
+  | 'contain'
+  | 'repeat'
+  | 'noRepeat'
+  | 'wrapReverse';
+
+export type TypeDynamicDefault = {
+  opeation?: '+' | '-' | '*' | '/' | '%';
+  unit?: 'px' | 'rem' | '%' | 'vw' | 'vh';
+  valueStatic?: TypeSpaceNumber;
+  valueDinamic?: TypeSpaceNumber;
+};
+
+export const TYPE_SPACE_STATIC = {
+  auto: 'auto',
+  maxContent: 'max-content',
+  minContent: 'min-content',
+  inherit: 'inherit',
+  initial: 'initial',
+  revert: 'revert',
+  revertLayer: 'revertLayer',
+  unset: 'unset'
+};
+
+export type TypeSpaceStaticText =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | 'auto'
+  | 'maxContent'
+  | 'minContent'
+  | 'inherit'
+  | 'initial'
+  | 'revert'
+  | 'revertLayer'
+  | 'unset';
+
+export type TypeSpaceStatic = {
+  auto?: string;
+  maxContent: String;
+  minContent: String;
+  inherit: string;
+  initial: String;
+  revert: string;
+  revertLayer: string;
+  unset: String;
+  0?: string;
+  1?: string;
+  4?: string;
+  5?: string;
+  6?: string;
+  7?: string;
+  8?: string;
+  9?: string;
+  10?: string;
+};
+export type TypeSpaceDinamicText =
+  | '1'
+  | '1.5'
+  | '2'
+  | '2.5'
+  | '3'
+  | '3.5'
+  | '4'
+  | '4.5'
+  | '5'
+  | '5.5'
+  | '6'
+  | '6.5'
+  | '7'
+  | '7.5'
+  | '8'
+  | '8.5'
+  | '9'
+  | '9.5'
+  | '10'
+  | '10.5';
+
+export type TypeSpaceDinamic = {
+  0?: string;
+  1?: string;
+  4?: string;
+  5?: string;
+  6?: string;
+  7?: string;
+  8?: string;
+  9?: string;
+  10?: string;
 };
 
 export const THEME_SPACE_DINAMIC_DEFAULT = {
@@ -892,39 +1025,142 @@ export type CategoryDefault = {
 };
 
 export type TypeThemeNumberDefault =
+  | ''
+  | 0
+  | 0.1
+  | 0.2
+  | 0.3
+  | 0.4
+  | 0.5
+  | 0.6
+  | 0.7
+  | 0.8
+  | 0.9
+  | 1
+  | 1.5
+  | 2
+  | 2.5
+  | 3
+  | 3.5
+  | 4
+  | 4.5
+  | 5
+  | 5.5
+  | 6
+  | 6.5
+  | 7
+  | 7.5
+  | 8
+  | 8.5
+  | 9
+  | 9.5
+  | 10
+  | 10.5
+  | 11
+  | 11.5
+  | 12
+  | 12.5
+  | 13
+  | 13.5
+  | 14
+  | 14.5
+  | 15
+  | 15.5
+  | 16
+  | 16.5
+  | -0.1
+  | -0.2
+  | -0.3
+  | -0.4
+  | -0.5
+  | -0.6
+  | -0.7
+  | -0.8
+  | -0.9
+  | -1
+  | -1.5
+  | -2
+  | -2.5
+  | -3
+  | -3.5
+  | -4
+  | -4.5
+  | -5
+  | -5.5
+  | -6
+  | -6.5
+  | -7
+  | -7.5
+  | -8
+  | -8.5
+  | -9
+  | -9.5
+  | -10
+  | -10.5
+  | -11
+  | -11.5
+  | -12
+  | -12.5
+  | -13
+  | -13.5
+  | -14
+  | -14.5
+  | -15
+  | -15.5
+  | -16
+  | -16.5;
+
+export type TypeSpaceNumber =
+  | ''
   | 0
   | 1
+  | 1.5
   | 2
+  | 2.5
   | 3
+  | 3.5
   | 4
+  | 4.5
   | 5
+  | 5.5
   | 6
+  | 6.5
   | 7
+  | 7.5
   | 8
+  | 8.5
   | 9
+  | 9.5
   | 10
+  | 10.5
   | 11
+  | 11.5
   | 12
-  | 13
-  | 14
-  | 15
-  | 16
+  | 12.5
   | -1
+  | -1.5
   | -2
+  | -2.5
   | -3
+  | -3.5
   | -4
+  | -4.5
   | -5
+  | -5.5
   | -6
+  | -6.5
   | -7
+  | -7.5
   | -8
+  | -8.5
   | -9
+  | -9.5
   | -10
+  | -10.5
   | -11
+  | -11.5
   | -12
-  | -13
-  | -14
-  | -15
-  | -16;
+  | -12.5;
 
 export type ThemeType = {
   title?: string;
@@ -950,25 +1186,143 @@ export type ThemeType = {
 };
 
 export const gridColumnsDefault = (
-  start: TypeThemeNumberDefault,
-  span: 'span' | '',
-  end: TypeThemeNumberDefault
+  start?: TypeThemeNumberDefault,
+  span?: 'span' | '',
+  end?: TypeThemeNumberDefault
 ) => css`
-  display: grid;
-  grid-column: ${start} ${span} / ${end};
+  ${span &&
+  css`
+    grid-column: ${start} / ${span} ${end};
+  `}
+
+  ${!span &&
+  css`
+    grid-column: ${start} / ${end};
+  `}
 `;
 
 export const gridRows = (
-  isGridRow: boolean,
-  start: number,
-  end: number,
-  span: string
+  start?: TypeThemeNumberDefault,
+  span?: 'span' | '',
+  end?: TypeThemeNumberDefault
 ) => css`
-  ${isGridRow &&
+  ${span &&
   css`
-    display: grid;
-    grid-row: ${start} ${span} / ${end};
+    grid-row: ${start} / ${span} ${end};
   `}
+
+  ${!span &&
+  css`
+    grid-row: ${start} / ${end};
+  `}
+`;
+
+export type TypeNthChildformDefault = {
+  valueStatic?: TypeThemeNumberDefault;
+  valueDynamic?: TypeThemeNumberDefault;
+  borderWidth?: TypeThemeNumberDefault;
+  borderColor?: ThemeColorsText;
+  option?: 'par' | 'impa';
+};
+
+export const parOuImpar = ({
+  valueStatic = 1,
+  valueDynamic = 1,
+  borderColor = 'grayLightHsl',
+  borderWidth = 1,
+  option = 'par'
+}: TypeNthChildformDefault) => css`
+  ${option &&
+  css`
+    &:nth-child(${valueStatic}n) {
+      border-top: ${borderWidth}px solid ${THEME_COLORS_DEFAULT[borderColor]};
+    }
+  `}
+  ${option &&
+  css`
+    &:nth-child(${valueStatic}n + ${valueDynamic}) {
+      border-top: ${borderWidth}px solid ${THEME_COLORS_DEFAULT[borderColor]};
+    }
+  `}
+`;
+
+export const fcTransformDefault = (
+  scale: TypeThemeNumberDefault,
+  origin: 'top' | 'bottom' | 'left' | 'right'
+) => css`
+  transition: transform 0.5s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    transform: scale(${scale});
+    transform-origin: ${origin};
+  }
+`;
+
+export const paddingDynamicY = (
+  valueStatic: TypeSpaceNumber,
+  valueDinanmic: TypeSpaceNumber
+) => css`
+  padding-top: calc(${valueStatic}rem + ${valueDinanmic}vh);
+  padding-bottom: calc(${valueStatic}rem + ${valueDinanmic}vh);
+`;
+
+export const paddingDynamicX = (
+  valueStatic: TypeSpaceNumber,
+  valueDinanmic: TypeSpaceNumber
+) => css`
+  padding-left: calc(${valueStatic}rem + ${valueDinanmic}vw);
+  padding-right: calc(${valueStatic}rem + ${valueDinanmic}vw);
+`;
+
+export const paddingStaticY = (valueStatic: TypeSpaceNumber) => css`
+  padding-top: ${valueStatic}rem;
+  padding-bottom: ${valueStatic}rem;
+`;
+
+export const paddingStaticX = (valueStatic: TypeSpaceNumber) => css`
+  padding-left: ${valueStatic}rem;
+  padding-right: ${valueStatic}rem;
+`;
+
+export const paddingDynamic = (
+  valueStaticH: TypeSpaceNumber,
+  valueDynamicH: TypeSpaceNumber,
+  valueStaticW: TypeSpaceNumber,
+  valueDynamicW: TypeSpaceNumber
+) => css`
+  padding: calc(${valueStaticH}rem + ${valueDynamicH}vh)
+    calc(${valueStaticW}rem + ${valueDynamicW}vw);
+`;
+
+export const paddingStatic = (
+  valueStaticH: TypeSpaceNumber,
+  valueStaticW: TypeSpaceNumber
+) => css`
+  padding: ${valueStaticH}rem ${valueStaticW}rem;
+`;
+
+export const marginDynamic = (
+  valueStaticH: TypeSpaceNumber,
+  valueDynamicH: TypeSpaceNumber,
+  valueStaticW: TypeSpaceNumber,
+  valueDynamicW: TypeSpaceNumber
+) => css`
+  margin: calc(${valueStaticH}rem + ${valueDynamicH}vh)
+    calc(${valueStaticW}rem + ${valueDynamicW}vw);
+`;
+
+export const marginStatic = (
+  valueStaticH: TypeSpaceNumber,
+  valueStaticW: TypeSpaceNumber
+) => css`
+  margin: ${valueStaticH}rem ${valueStaticW}rem;
+`;
+
+export const fontSizeDynamic = (
+  valueStatic: TypeSpaceNumber,
+  valueDinanmic: TypeSpaceNumber
+) => css`
+  font-size: calc(${valueStatic}rem + ${valueDinanmic}vw);
 `;
 
 export const textDecoration = (isUppercase: boolean) => css`

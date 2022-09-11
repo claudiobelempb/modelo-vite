@@ -1,4 +1,6 @@
 import { ReactNode } from 'react';
+import { FlattenSimpleInterpolation } from 'styled-components';
+import { TypeTansFormDefault } from './functions/effectDefaults';
 import {
   CategoryDefault,
   LinksTypeDefault,
@@ -13,6 +15,8 @@ import {
   ThemeSpaceDinamicXText,
   ThemeSpaceDinamicYText,
   ThemeSpaceTypeText,
+  TypeDynamicDefault,
+  TypeSpaceNumber,
   TypeThemeNumberDefault
 } from './ThemeType';
 
@@ -121,8 +125,8 @@ export type TypeDefault = {
   paddingX?: ThemeSpaceTypeText;
   paddingY?: ThemeSpaceTypeText;
   margin?: ThemeSpaceTypeText;
-  marginTop?: ThemeSpaceTypeText;
-  marginBottom?: ThemeSpaceTypeText;
+  // marginTop?: ThemeSpaceTypeText;
+  // marginBottom?: ThemeSpaceTypeText;
   marginX?: ThemeSpaceTypeText;
   marginY?: ThemeSpaceTypeText;
   isGridRepeat?: TypeThemeNumberDefault;
@@ -146,9 +150,8 @@ export type TypeDefault = {
     | '900'
     | 'bold'
     | 'extraBold';
-  width?: ThemeSpaceTypeText;
-  height?: ThemeSpaceTypeText;
   radius?: ThemeSpaceTypeText;
+  borderRadius?: TypeDynamicDefault;
   isRadius?: ThemeSpaceTypeText;
   isRadiusTop?: boolean;
   isRadiusBottom?: boolean;
@@ -156,6 +159,9 @@ export type TypeDefault = {
   radiusTopRight?: ThemeSpaceTypeText;
   radiusBottomLeft?: ThemeSpaceTypeText;
   radiusBottomRight?: ThemeSpaceTypeText;
+  fontSizeDefault?: TypeDynamicDefault;
+  fontSizeDynamicDefault?: TypeDynamicDefault;
+  fontSizeStaticDefault?: TypeDynamicDefault;
 
   isBackgrondImgDefault?: (
     url: string,
@@ -223,11 +229,19 @@ export type TypeDefault = {
   beforeClipPath?: boolean;
   beforeZindex?: TypeThemeNumberDefault;
   position?: 'static' | 'relative' | 'fixed' | 'absolute' | 'sticky';
-  left?: ThemeSpaceTypeText;
-  right?: ThemeSpaceTypeText;
-  top?: ThemeSpaceTypeText;
-  bottom?: ThemeSpaceTypeText;
+  left?: TypeThemeNumberDefault;
+  right?: TypeThemeNumberDefault;
+  top?: TypeThemeNumberDefault;
+  bottom?: TypeThemeNumberDefault;
   zIndex?: TypeThemeNumberDefault;
+  width?: TypeThemeNumberDefault;
+  height?: TypeThemeNumberDefault;
+  backgroundColor?: ThemeColorsText;
+  backgroundImg?: string;
+  clipPath?: boolean;
+  transformX?: boolean;
+  transformY?: boolean;
+  translate?: TypeThemeNumberDefault;
   media?: ThemeMediaText;
   flexWrap?: ThemeFlexText;
   flexShrink?: ThemeFlexText;
@@ -284,34 +298,11 @@ export type TypeDefault = {
   widthVH?: TypeThemeNumberDefault;
   widthCalc?: TypeThemeNumberDefault;
 
-  // isBorderDefault
-  isBorderDefault?: boolean;
-  borderColor?: ThemeColorsText;
-  borderStyle?: 'solid' | 'dashed ';
-  borderWidth?: TypeThemeNumberDefault;
-  borderTopColor?: ThemeColorsText;
-  borderTopStyle?: 'solid' | 'dashed ';
-  borderTopWidth?: TypeThemeNumberDefault;
-  borderRightColor?: ThemeColorsText;
-  borderRightStyle?: 'solid' | 'dashed ';
-  borderRightWidth?: TypeThemeNumberDefault;
-  borderBottomColor?: ThemeColorsText;
-  borderBottomStyle?: 'solid' | 'dashed ';
-  borderBottomWidth?: TypeThemeNumberDefault;
-  borderLeftColor?: ThemeColorsText;
-  borderLeftStyle?: 'solid' | 'dashed ';
-  borderLeftWidth?: TypeThemeNumberDefault;
-  borderImageSource?: 'initial';
-  borderImageSlice?: 'initial';
-  borderImageWidth?: 'initial';
-  borderImageOutset?: 'initial';
-  borderImageRepeat?: 'initial';
-
-  isPaddingCustom?: boolean;
-  paddingDynamicX?: ThemeSpaceDinamicXText;
-  paddingDynamicY?: ThemeSpaceDinamicYText;
-  paddingStaticX?: ThemeSpaceTypeText;
-  paddingStaticY?: ThemeSpaceTypeText;
+  // isPaddingCustom?: boolean;
+  // paddingDynamicX?: ThemeSpaceDinamicXText;
+  // paddingDynamicY?: ThemeSpaceDinamicYText;
+  // paddingStaticX?: ThemeSpaceTypeText;
+  // paddingStaticY?: ThemeSpaceTypeText;
 
   isMarginCustom?: boolean;
   marginDynamicX?: ThemeSpaceDinamicXText;
@@ -322,13 +313,238 @@ export type TypeDefault = {
   end?: TypeThemeNumberDefault;
   span?: string;
   isGridColumnsDefault?: boolean;
-  gridColumnsDefault?: (
-    start: TypeThemeNumberDefault,
-    span: string,
-    end: TypeThemeNumberDefault
-  ) => void;
+  gridColumnsDefault?: () => FlattenSimpleInterpolation;
+  gridRows?: () => FlattenSimpleInterpolation;
+  parOuImparOption?: 'par' | 'impa';
+  parOuImpar?: (
+    valueStatic?: TypeThemeNumberDefault,
+    valueDynamic?: TypeThemeNumberDefault,
+    borderSize?: TypeThemeNumberDefault,
+    borderColor?: ThemeColorsText,
+    option?: 'par' | 'impa'
+  ) => FlattenSimpleInterpolation;
+  positionDefault?: (
+    position?: 'static' | 'relative' | 'fixed' | 'absolute' | 'sticky',
+    zindex?: TypeThemeNumberDefault,
+    top?: TypeThemeNumberDefault,
+    bottom?: TypeThemeNumberDefault,
+    left?: TypeThemeNumberDefault,
+    right?: TypeThemeNumberDefault,
+    width?: TypeThemeNumberDefault,
+    height?: TypeThemeNumberDefault,
+    backgroundImg?: string,
+    backgroundColor?: ThemeColorsText,
+    clipPath?: boolean,
+    transformX?: boolean,
+    transformY?: boolean,
+    translate?: TypeThemeNumberDefault
+  ) => FlattenSimpleInterpolation;
+
+  beforeDefault?: (
+    position?: 'static' | 'relative' | 'fixed' | 'absolute' | 'sticky',
+    zindex?: TypeThemeNumberDefault,
+    top?: TypeThemeNumberDefault,
+    bottom?: TypeThemeNumberDefault,
+    left?: TypeThemeNumberDefault,
+    width?: TypeThemeNumberDefault,
+    height?: TypeThemeNumberDefault,
+    backgroundImg?: string,
+    backgroundColor?: ThemeColorsText,
+    clipPath?: boolean
+  ) => FlattenSimpleInterpolation;
+
+  afterDefault?: (
+    position?: 'static' | 'relative' | 'fixed' | 'absolute' | 'sticky',
+    zindex?: TypeThemeNumberDefault,
+    top?: TypeThemeNumberDefault,
+    bottom?: TypeThemeNumberDefault,
+    left?: TypeThemeNumberDefault,
+    width?: TypeThemeNumberDefault,
+    height?: TypeThemeNumberDefault,
+    backgroundImg?: string,
+    backgroundColor?: ThemeColorsText,
+    clipPath?: boolean
+  ) => FlattenSimpleInterpolation;
+
+  backgroundImgDefault?: () => FlattenSimpleInterpolation;
+  fcTransformDefault?: () => FlattenSimpleInterpolation;
+
+  /* Padding Dynmaic */
+  pdx?: TypeSpaceNumber;
+  pdy?: TypeSpaceNumber;
+  pdt?: TypeSpaceNumber;
+  pdb?: TypeSpaceNumber;
+  pdl?: TypeSpaceNumber;
+  pdr?: TypeSpaceNumber;
+  valueStatic?: TypeSpaceNumber;
+  valueDynamic?: TypeSpaceNumber;
+  valueStaticW?: TypeSpaceNumber;
+  valueDynamicW?: TypeSpaceNumber;
+  valueStaticH?: TypeSpaceNumber;
+  valueDynamiH?: TypeSpaceNumber;
+  effectDefault?: (
+    transform?: TypeTansFormDefault,
+    property?:
+      | 'none'
+      | 'all'
+      | 'height'
+      | 'color'
+      | 'background'
+      | 'img'
+      | 'inherit'
+      | 'initial'
+      | 'revert'
+      | 'revert-layer'
+      | 'unset',
+    duration?: TypeThemeNumberDefault,
+    timingFunction?:
+      | 'ease'
+      | 'ease-in'
+      | 'ease-out'
+      | 'ease-in-out'
+      | 'linear'
+      | 'step-start'
+      | 'step-end'
+      | 'inherit'
+      | 'initial'
+      | 'revert'
+      | 'revert-layer'
+      | 'unset',
+    delay?: TypeThemeNumberDefault
+  ) => FlattenSimpleInterpolation;
+  paddingDynamicX?: (
+    valueStatic: TypeSpaceNumber,
+    valueDinamic: TypeSpaceNumber
+  ) => FlattenSimpleInterpolation;
+  paddingDynamicY?: (
+    valueStatic: TypeSpaceNumber,
+    valueDynamic: TypeSpaceNumber
+  ) => FlattenSimpleInterpolation;
+  paddingDynamic?: (
+    valueStaticH: TypeSpaceNumber,
+    valueDynamiH: TypeSpaceNumber,
+    valueStaticW: TypeSpaceNumber,
+    valueDynamiW: TypeSpaceNumber
+  ) => FlattenSimpleInterpolation;
+  paddingStatic?: (
+    valueStaticH: TypeSpaceNumber,
+    valueStaticW: TypeSpaceNumber
+  ) => FlattenSimpleInterpolation;
+  paddingStaticX?: (valueStatic: TypeSpaceNumber) => FlattenSimpleInterpolation;
+  paddingStaticY?: (valueStatic: TypeSpaceNumber) => FlattenSimpleInterpolation;
+  paddingTop?: TypeSpaceNumber;
+  paddingBottom?: TypeSpaceNumber;
+  paddingLeft?: TypeSpaceNumber;
+  paddingRight?: TypeSpaceNumber;
+
+  marginDynamic?: (
+    valueStaticH: TypeSpaceNumber,
+    valueDynamiH: TypeSpaceNumber,
+    valueStaticW: TypeSpaceNumber,
+    valueDynamiW: TypeSpaceNumber
+  ) => FlattenSimpleInterpolation;
+  marginStatic?: (
+    valueStaticH: TypeSpaceNumber,
+    valueStaticW: TypeSpaceNumber
+  ) => FlattenSimpleInterpolation;
+
+  marginTop?: TypeSpaceNumber;
+  marginBottom?: TypeSpaceNumber;
+  marginLeft?: TypeSpaceNumber;
+  marginRight?: TypeSpaceNumber;
+
+  fontSizeDynamic?: (
+    valueStatic: TypeSpaceNumber,
+    valueDynamic: TypeSpaceNumber
+  ) => FlattenSimpleInterpolation;
+
+  // isBorderDefault
+  isBorderDefault?: boolean;
+  borderWidth?: TypeSpaceNumber;
+  borderStyle?: 'solid' | 'dashed ';
+  borderColor?: ThemeColorsText;
+  borderTopWidth?: TypeSpaceNumber;
+  borderTopStyle?: 'solid' | 'dashed ';
+  borderTopColor?: ThemeColorsText;
+  borderLeftWidth?: TypeSpaceNumber;
+  borderLeftStyle?: 'solid' | 'dashed ';
+  borderLeftColor?: ThemeColorsText;
+  borderBottomWidth?: TypeSpaceNumber;
+  borderBottomStyle?: 'solid' | 'dashed ';
+  borderBottomColor?: ThemeColorsText;
+  borderRightWidth?: TypeSpaceNumber;
+  borderRightStyle?: 'solid' | 'dashed ';
+  borderRightColor?: ThemeColorsText;
+  borderImageSource?: 'initial';
+  borderImageSlice?: 'initial';
+  borderImageWidth?: 'initial';
+  borderImageOutset?: 'initial';
+  borderImageRepeat?: 'initial';
+
+  borderDefault?: (
+    borderWidth: TypeSpaceNumber,
+    borderStyle: 'solid' | 'dashed ',
+    borderColor: ThemeColorsText
+  ) => FlattenSimpleInterpolation;
+
+  borderDefaultTop?: (
+    borderTopWidth: TypeSpaceNumber,
+    borderTopStyle: 'solid' | 'dashed ',
+    borderTopColor: ThemeColorsText
+  ) => FlattenSimpleInterpolation;
+
+  borderDefaultRight?: (
+    borderRightWidth: TypeSpaceNumber,
+    borderRightStyle: 'solid' | 'dashed ',
+    borderRightColor: ThemeColorsText
+  ) => FlattenSimpleInterpolation;
+
+  borderDefaultBottom?: (
+    borderBottomWidth: TypeSpaceNumber,
+    borderBottomStyle: 'solid' | 'dashed ',
+    borderBottomColor: ThemeColorsText
+  ) => FlattenSimpleInterpolation;
+
+  borderDefaultLeft?: (
+    borderLeftWidth: TypeSpaceNumber,
+    borderLeftStyle: 'solid' | 'dashed ',
+    borderLeftColor: ThemeColorsText
+  ) => FlattenSimpleInterpolation;
+
+  /* Padding Static */
+  psx?: TypeSpaceNumber;
+  psy?: TypeSpaceNumber;
+  pst?: TypeSpaceNumber;
+  psb?: TypeSpaceNumber;
+  psl?: TypeSpaceNumber;
+  psr?: TypeSpaceNumber;
+
+  /* Margin Dynmaic */
+  mdx?: TypeSpaceNumber;
+  mdy?: TypeSpaceNumber;
+  mdt?: TypeSpaceNumber;
+  mdb?: TypeSpaceNumber;
+  mdl?: TypeSpaceNumber;
+  mdr?: TypeSpaceNumber;
+
+  /* Margin Static */
+  msx?: TypeSpaceNumber;
+  msy?: TypeSpaceNumber;
+  mst?: TypeSpaceNumber;
+  msb?: TypeSpaceNumber;
+  msl?: TypeSpaceNumber;
+  msr?: TypeSpaceNumber;
 
   /* Font Dynmaic */
-  fontSizeStatic?: ThemeSpaceTypeText;
-  fontSizeDynamic?: '1' | '1.5' | '2' | '2.5' | '3' | '3.5' | '4' | '4.5' | '5';
+  fsd?: TypeSpaceNumber;
+  fsdcalc?: TypeSpaceNumber;
+  /* Font Static */
+  fss?: TypeSpaceNumber;
+
+  /* Font Dynmaic */
+  // fontSizeDynamic?: TypeSpaceDinamicText;
+  /* Font Static */
+  isPar?: boolean;
+  isImpar?: boolean;
+  fontSizeStatic?: TypeSpaceNumber;
 };

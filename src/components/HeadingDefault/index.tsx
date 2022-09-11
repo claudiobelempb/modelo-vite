@@ -23,8 +23,6 @@ const HeadingDefault: React.FC<TypeDefault> = ({
   radiusTopRight,
   radiusBottomLeft,
   radiusBottomRight,
-  marginTop,
-  marginBottom,
   gap,
   flexWrap,
   direction,
@@ -49,8 +47,6 @@ const HeadingDefault: React.FC<TypeDefault> = ({
       paddingX={paddingX}
       paddingY={paddingY}
       margin={margin}
-      marginTop={marginTop}
-      marginBottom={marginBottom}
       marginX={marginX}
       marginY={marginY}
       radius={radius}
@@ -76,18 +72,46 @@ const HeadingDefault: React.FC<TypeDefault> = ({
       gridColumnStartSpan={props.gridColumnStartSpan}
       gridColumnEnd={props.gridColumnEnd}
       gridColumnEndSpan={props.gridColumnEndSpan}
-      isPaddingCustom={props.isPaddingCustom}
-      paddingStaticX={props.paddingStaticX}
-      paddingStaticY={props.paddingStaticY}
-      paddingDynamicX={props.paddingDynamicX}
-      paddingDynamicY={props.paddingDynamicY}
       isMarginCustom={props.isMarginCustom}
       marginStaticX={props.marginStaticX}
       marginStaticY={props.marginStaticY}
+      position={props.position}
+      fsd={props.fsd}
+      fsdcalc={props.fsdcalc}
+      fss={props.fss}
+      psx={props.psx}
+      psy={props.psy}
+      pst={props.pst}
+      psb={props.psb}
+      psl={props.psl}
+      psr={props.psr}
+      paddingDynamicX={props.paddingDynamicX}
+      paddingDynamicY={props.paddingDynamicY}
+      paddingDynamic={props.paddingDynamic}
+      paddingStatic={props.paddingStatic}
+      paddingStaticY={props.paddingStaticY}
+      paddingStaticX={props.paddingStaticX}
+      paddingTop={props.paddingTop}
+      paddingBottom={props.paddingBottom}
+      paddingLeft={props.paddingLeft}
+      paddingRight={props.paddingRight}
       marginDynamicX={props.marginDynamicX}
       marginDynamicY={props.marginDynamicY}
-      fontSizeStatic={props.fontSizeStatic}
+      marginDynamic={props.marginDynamic}
+      marginStatic={props.marginStatic}
+      marginTop={props.marginTop}
+      marginBottom={props.marginBottom}
+      marginLeft={props.marginLeft}
+      marginRight={props.marginRight}
       fontSizeDynamic={props.fontSizeDynamic}
+      fontSizeStatic={props.fontSizeStatic}
+      borderDefault={props.borderDefault}
+      borderDefaultTop={props.borderDefaultTop}
+      borderDefaultRight={props.borderDefaultRight}
+      borderDefaultBottom={props.borderDefaultBottom}
+      borderDefaultLeft={props.borderDefaultLeft}
+      afterDefault={props.afterDefault}
+      beforeDefault={props.beforeDefault}
     >
       {children}
     </Styled.HeadingDefaultContainer>

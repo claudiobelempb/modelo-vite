@@ -22,8 +22,6 @@ export const BoxDefaultStyle = styled.div<TypeDefault>`
     paddingX,
     paddingY,
     margin,
-    marginTop,
-    marginBottom,
     marginX,
     marginY,
     xsmall,
@@ -34,8 +32,6 @@ export const BoxDefaultStyle = styled.div<TypeDefault>`
     xxlarge,
     isVisibility,
     isDisplay,
-    height,
-    width = 'base100p',
     media,
     visibility,
     gap,
@@ -50,9 +46,9 @@ export const BoxDefaultStyle = styled.div<TypeDefault>`
   }) => css`
     display: ${props.display && props.display};
     grid-area: ${props.gridArea};
-    width: ${width && THEME_SPACE_DEFAULT[width]};
-    height: ${height && THEME_SPACE_DEFAULT[height]};
-    border-radius: ${props.radius && THEME_SPACE_DEFAULT[props.radius]};
+    width: ${props.width && css``};
+    height: ${props.height && css``};
+    border-radius: ${props.radius && css``};
     border-top-left-radius: ${radiusTopLeft &&
     THEME_SPACE_DEFAULT[radiusTopLeft]};
     border-top-right-radius: ${radiusTopRight &&
@@ -61,115 +57,266 @@ export const BoxDefaultStyle = styled.div<TypeDefault>`
     THEME_SPACE_DEFAULT[radiusBottomLeft]};
     border-bottom-right-radius: ${radiusBottomRight &&
     THEME_SPACE_DEFAULT[radiusBottomRight]};
-    /* align-items: center;
-    justify-content: inherit; */
 
     font-size: ${fontSize && THEME_SIZE_DEFAULT[fontSize]};
     padding: ${padding && THEME_SPACE_DEFAULT[padding]};
     margin: ${margin && THEME_SPACE_DEFAULT[margin]};
-    margin-top: ${marginTop && THEME_SPACE_DEFAULT[marginTop]};
-    margin-bottom: ${marginBottom && THEME_SPACE_DEFAULT[marginBottom]};
     gap: ${gap && THEME_SPACE_DEFAULT[gap]};
     flex-wrap: ${props.flexWrap && THEME_FLEX_DEFAULT[props.flexWrap]};
     flex-grow: ${props.flexGrow && props.flexGrow};
     align-self: ${props.alignSelf && THEME_FLEX_DEFAULT[props.alignSelf]};
     flex-basis: ${props.flexBasis && THEME_SPACE_DEFAULT[props.flexBasis]};
+
     ${isBorderDefault(isBorder ? isBorder : false)}
     ${isImgRadiusDefault(props.isImgRadius ? props.isImgRadius : false)}
     ${isBoxShadowDefault(props.isBoxShadow ? props.isBoxShadow : false)}
-    ${props.gridColumnsDefault};
+    ${props.gridColumnsDefault && props.gridColumnsDefault};
+    ${props.gridRows && props.gridRows};
     z-index: ${props.zIndex && props.zIndex};
 
-    /* props isWidth */
-    ${props.isWidth === 'isWidthR' &&
+    ${props.isPar &&
     css`
-      width: calc(${props.widthCalc} * ${props.widthR + 'rem'});
-    `}
-    ${props.isWidth === 'isWidthP' &&
-    css`
-      width: calc(${props.widthCalc} * ${props.widthP + '%'});
-    `}
-    ${props.isWidth === 'isWidthPX' &&
-    css`
-      width: calc(${props.widthCalc} * ${props.widthPX + 'px'});
-    `}
-    ${props.isWidth === 'isWidthVW' &&
-    css`
-      width: calc(${props.widthCalc} * ${props.widthVW + 'vw'});
-    `}
-    ${props.isWidth === 'isWidthVH' &&
-    css`
-      width: calc(${props.widthCalc} * ${props.widthVH + 'vh'});
-    `}
-
-     /* props isHeight */
-    ${props.isHeight === 'isHeightR' &&
-    css`
-      height: calc(${props.heightCalc} * ${props.heightR + 'rem'});
-    `}
-    ${props.isHeight === 'isHeightP' &&
-    css`
-      height: calc(${props.heightCalc} * ${props.heightP + '%'});
-    `}
-    ${props.isHeight === 'isHeightPX' &&
-    css`
-      height: calc(${props.heightCalc} * ${props.heightPX + 'px'});
-    `}
-    ${props.isHeight === 'isHeightVW' &&
-    css`
-      height: calc(${props.heightCalc} * ${props.heightVW + 'vw'});
-    `}
-    ${props.isHeight === 'isHeightVH' &&
-    css`
-      height: calc(${props.heightCalc} * ${props.heightVH + 'vh'});
-    `}
-
-    /* props isBorderDefault */
-    ${props.isBorderDefault &&
-    css`
-      border: ${props.borderWidth}px ${props.borderStyle}
-        ${props.borderColor && THEME_COLORS_DEFAULT[props.borderColor]};
-      border-top-color: ${props.borderTopColor &&
-      THEME_COLORS_DEFAULT[props.borderTopColor]};
-      border-top-style: ${props.borderTopStyle};
-      border-top-width: ${props.borderTopWidth};
-      border-right-color: ${props.borderRightColor &&
-      THEME_COLORS_DEFAULT[props.borderRightColor]};
-      border-right-style: ${props.borderRightStyle};
-      border-right-width: ${props.borderRightWidth};
-      border-bottom-color: ${props.borderBottomColor &&
-      THEME_COLORS_DEFAULT[props.borderBottomColor]};
-      border-bottom-style: ${props.borderBottomStyle};
-      border-bottom-width: ${props.borderBottomWidth};
-      border-left-color: ${props.borderLeftColor &&
-      THEME_COLORS_DEFAULT[props.borderLeftColor]};
-      border-left-style: ${props.borderLeftStyle};
-      border-left-width: ${props.borderLeftWidth};
-      border-image-source: initial;
-      border-image-slice: initial;
-      border-image-width: initial;
-      border-image-outset: initial;
-      border-image-repeat: initial;
-    `}
-
-    ${props.isAfter &&
-    css`
-      &::after {
-        content: '';
-        position: ${props.afterPosition ? props.afterPosition : ''};
-        z-index: ${props.afterZindex ? props.afterZindex : ''};
-        top: ${props.afterTop && props.afterTop};
-        bottom: ${props.afterBottom && props.afterBottom};
-        left: ${props.afterLeft && props.afterLeft};
-        right: ${props.afterRight && props.afterRight};
-        width: ${props.afterWidth && props.afterWidth};
-        height: ${props.afterHeight && props.afterHeight};
-        background-image: url(${props.afterBackgroundImg});
-        background-color: ${props.afterBackgroundColor &&
-        THEME_COLORS_DEFAULT[props.afterBackgroundColor]};
-        clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 100%, 0% 0%);
+      &:nth-child(2n + 1) {
+        border-top: 1px solid ${theme.colors.grayLightHsl};
       }
     `}
+
+    ${props.isImpar &&
+    css`
+      &:nth-child(2n) {
+        border-bottom: 1px solid ${theme.colors.grayLightHsl};
+      }
+    `}
+
+    ${props.paddingDynamicX &&
+    props.paddingDynamicX(props.valueStatic || 1, props.valueDynamic || 2)}
+    ${props.paddingDynamicY &&
+    props.paddingDynamicY(props.valueStatic || 1, props.valueDynamic || 2)}
+    ${props.paddingStaticY && props.paddingStaticY(props.valueStatic || 1)}
+    ${props.paddingStaticX && props.paddingStaticX(props.valueStatic || 1)}
+
+    ${props.paddingStatic &&
+    props.paddingStatic(props.valueStaticH || 1, props.valueStaticW || 1)}
+    ${props.paddingDynamic &&
+    props.paddingDynamic(
+      props.valueStaticH || 1,
+      props.valueDynamiH || 1,
+      props.valueStaticW || 1,
+      props.valueDynamicW || 2
+    )}
+
+    ${props.paddingTop &&
+    css`
+      padding-top: ${props.paddingTop}rem;
+    `}
+    ${props.paddingBottom &&
+    css`
+      padding-bottom: ${props.paddingBottom}rem;
+    `}
+    ${props.paddingLeft &&
+    css`
+      padding-left: ${props.paddingLeft}rem;
+    `}
+    ${props.paddingRight &&
+    css`
+      padding-right: ${props.paddingRight}rem;
+    `}
+
+    /*MARGIN  */
+
+    ${props.marginStatic &&
+    props.marginStatic(props.valueStaticH || 1, props.valueStaticW || 1)}
+    ${props.marginDynamic &&
+    props.marginDynamic(
+      props.valueStaticH || 1,
+      props.valueDynamiH || 1,
+      props.valueStaticW || 1,
+      props.valueDynamicW || 2
+    )}
+
+
+    ${props.marginTop &&
+    css`
+      margin-top: ${props.marginTop}rem;
+    `}
+    ${props.marginBottom &&
+    css`
+      margin-bottom: ${props.marginBottom}rem;
+    `}
+    ${props.marginLeft &&
+    css`
+      margin-left: ${props.marginLeft}rem;
+    `}
+    ${props.marginRight &&
+    css`
+      margin-right: ${props.marginRight}rem;
+    `}
+
+    ${props.positionDefault &&
+    props.positionDefault(
+      props.position || 'absolute',
+      props.zIndex || 1,
+      props.top || '',
+      props.bottom || '',
+      props.left || '',
+      props.right || '',
+      props.width || '',
+      props.height || '',
+      props.backgroundImg || '',
+      props.backgroundColor || 'transparent',
+      props.clipPath || false
+    )};
+
+    ${props.beforeDefault &&
+    props.beforeDefault(
+      props.position || 'absolute',
+      props.zIndex || 1,
+      props.top || '',
+      props.bottom || '',
+      props.left || '',
+      props.width || '',
+      props.height || '',
+      props.backgroundImg || '',
+      props.backgroundColor || 'transparent',
+      props.clipPath || false
+    )};
+
+    ${props.afterDefault &&
+    props.afterDefault(
+      props.position || 'absolute',
+      props.zIndex || 1,
+      props.top || '',
+      props.bottom || '',
+      props.left || '',
+      props.width || '',
+      props.height || '',
+      props.backgroundImg || '',
+      props.backgroundColor || 'transparent',
+      props.clipPath || false
+    )};
+
+    ${props.pdx &&
+    css`
+      padding-top: calc(${props.psx}rem + ${props.pdx}vw);
+    `}
+
+    ${props.psx &&
+    css`
+      padding-top: ${props.pdx}rem;
+    `}
+
+     /*BORDER DEFAULT  */
+     ${props.borderDefault &&
+    props.borderDefault(
+      props.borderWidth || 1,
+      props.borderStyle || 'solid',
+      props.borderColor || 'grayDarkHsl'
+    )}
+
+    ${props.borderDefaultTop &&
+    props.borderDefaultTop(
+      props.borderTopWidth || 1,
+      props.borderTopStyle || 'solid',
+      props.borderTopColor || 'grayDarkHsl'
+    )}
+
+    ${props.borderDefaultRight &&
+    props.borderDefaultRight(
+      props.borderRightWidth || 1,
+      props.borderRightStyle || 'solid',
+      props.borderRightColor || 'grayDarkHsl'
+    )}
+
+    ${props.borderDefaultBottom &&
+    props.borderDefaultBottom(
+      props.borderBottomWidth || 1,
+      props.borderBottomStyle || 'solid',
+      props.borderBottomColor || 'grayDarkHsl'
+    )}
+
+    ${props.borderDefaultLeft &&
+    props.borderDefaultLeft(
+      props.borderLeftWidth || 1,
+      props.borderLeftStyle || 'solid',
+      props.borderLeftColor || 'grayDarkHsl'
+    )}
+
+
+    /*FONT SIZE DYNAMIC */
+    ${props.fontSizeDynamic &&
+    props.fontSizeDynamic(props.valueStatic || 1, props.valueDynamic || 1)}
+    /*FONT SIZE STATIC */
+    ${props.fontSizeStatic &&
+    css`
+      font-size: ${props.fontSizeStatic * 1}rem;
+    `}
+
+
+    ${props.isGridRow &&
+    css`
+      grid-row: ${props.gridRowStartSpan} ${props.gridRowStart} /
+        ${props.gridRowEndSpan} ${props.gridRowEnd};
+    `}
+
+    ${props.isGridColumn &&
+    css`
+      grid-column: ${props.gridColumnStartSpan} ${props.gridColumnStart} /
+        ${props.gridColumnEndSpan} ${props.gridColumnEnd};
+    `}
+
+
+    ${props.textcolor &&
+    css`
+      color: ${props.textcolor && THEME_COLORS_DEFAULT[props.textcolor]};
+    `}
+
+    ${props.bgcolor &&
+    css`
+      background-color: ${props.bgcolor && THEME_COLORS_DEFAULT[props.bgcolor]};
+    `}
+
+    ${paddingX &&
+    css`
+      padding-left: ${THEME_SPACE_DEFAULT[paddingX]};
+      padding-right: ${THEME_SPACE_DEFAULT[paddingX]};
+    `}
+
+    ${paddingY &&
+    css`
+      padding-top: ${THEME_SPACE_DEFAULT[paddingY]};
+      padding-bottom: ${THEME_SPACE_DEFAULT[paddingY]};
+    `}
+
+    ${marginX &&
+    css`
+      margin-left: ${THEME_SPACE_DEFAULT[marginX]};
+      margin-right: ${THEME_SPACE_DEFAULT[marginX]};
+    `}
+
+    ${marginY &&
+    css`
+      margin-top: ${THEME_SPACE_DEFAULT[marginY]};
+      margin-bottom: ${THEME_SPACE_DEFAULT[marginY]};
+    `}
+
+    ${direction &&
+    css`
+      display: flex;
+      flex-direction: ${direction && THEME_FLEX_DEFAULT[direction]};
+    `}
+
+    ${aitems &&
+    css`
+      display: flex;
+      align-items: ${aitems && THEME_FLEX_DEFAULT[aitems]};
+    `}
+
+    ${jcontent &&
+    css`
+      display: flex;
+      justify-content: ${jcontent && THEME_FLEX_DEFAULT[jcontent]};
+    `}
+
 
     & svg {
       background-color: ${props.iconBgcolor &&
@@ -1141,51 +1288,40 @@ export const BoxDefaultStyle = styled.div<TypeDefault>`
         flex-wrap: wrap;
         place-items: center;
         grid-template-columns: repeat(${props.gridTemplateColumns}, 1fr);
-        grid-template-rows: repeat(${props.gridTemplateRows}, auto);
+        grid-template-rows: repeat(${props.gridTemplateRows}, min-content);
         background-color: green;
       }
 
       @media ${theme.media.small} {
         display: grid;
-        flex-wrap: wrap;
-        place-items: center;
+        grid-template-columns: repeat(${props.gridTemplateColumns}, 1fr);
+        grid-template-rows: repeat(${props.gridTemplateRows}, min-content);
         background-color: red;
       }
 
       @media ${theme.media.medium} {
         display: grid;
         flex-wrap: wrap;
-        /* place-items: center; */
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(${props.gridTemplateColumns}, 1fr);
+        grid-template-rows: repeat(${props.gridTemplateRows}, min-content);
         background-color: blue;
       }
       @media ${theme.media.large} {
         display: grid;
-        flex-wrap: wrap;
-        /* place-items: center; */
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(${props.gridTemplateColumns}, 1fr);
+        grid-template-rows: repeat(${props.gridTemplateRows}, min-content);
         background-color: yellow;
       }
       @media ${theme.media.xlarge} {
         display: grid;
-        grid-template-columns:
-          [container-start] repeat(
-            ${props.gridTemplateColumns},
-            minmax(min-content)
-          )
-          [container-end];
+        grid-template-columns: repeat(${props.gridTemplateColumns}, 1fr);
         grid-template-rows: repeat(${props.gridTemplateRows}, min-content);
         background-color: rosybrown;
         /* justify-content: center; */
       }
       @media ${theme.media.xxlarge} {
         display: grid;
-        grid-template-columns:
-          [container-start] repeat(
-            ${props.gridTemplateColumns},
-            minmax(min-content)
-          )
-          [container-end];
+        grid-template-columns: repeat(${props.gridTemplateColumns}, 1fr);
         grid-template-rows: repeat(${props.gridTemplateRows}, min-content);
         background-color: pink;
       }
@@ -1194,11 +1330,6 @@ export const BoxDefaultStyle = styled.div<TypeDefault>`
     ${props.isGridColumn &&
     css`
       @media ${theme.media.xsmall} {
-        display: grid;
-        grid-row: ${props.gridRowStartSpan} / ${props.gridRowStart} /
-          ${props.gridRowEndSpan} ${props.gridRowEnd};
-        grid-column: ${props.gridColumnStartSpan} / ${props.gridColumnStart} /
-          ${props.gridColumnEndSpan} ${props.gridColumnEnd};
       }
 
       @media ${theme.media.small} {

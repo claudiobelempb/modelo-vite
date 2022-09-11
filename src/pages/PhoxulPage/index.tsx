@@ -19,7 +19,21 @@ import {
   ImgNews,
   ImgPersonal
 } from '@assets/image';
-import { gridColumnsDefault } from '@assets/styles/themes/ThemeType';
+import { afterDefault } from '@assets/styles/themes/functions/afterDefault';
+import { backgroundImgDefault } from '@assets/styles/themes/functions/backgroundImgDefault';
+import { beforeDefault } from '@assets/styles/themes/functions/beforeDefault';
+import { borderDefaultLeft } from '@assets/styles/themes/functions/borderDefault';
+import { effectDefault } from '@assets/styles/themes/functions/effectDefaults';
+import { positionDefault } from '@assets/styles/themes/functions/positionDefault';
+import {
+  fontSizeDynamic,
+  gridColumnsDefault,
+  gridRows,
+  paddingDynamic,
+  paddingDynamicX,
+  paddingStatic,
+  paddingStaticY
+} from '@assets/styles/themes/ThemeType';
 import { BoxDefault } from '@componets/BoxDefault';
 import { BrandDefault } from '@componets/BrandDefault';
 import { ButtonDefault } from '@componets/ButtonDefault';
@@ -56,14 +70,10 @@ const PhoxulPage: React.FC = () => {
         as='header'
         isOverall
         display='flex'
-        bgcolor='grayDarkHsl'
-        isPaddingCustom
-        paddingStaticX='base20'
-        paddingDynamicX='base12VW'
-        paddingStaticY='base10'
-        paddingDynamicY='base2VH'
+        bgcolor='grayHsl'
+        paddingDynamic={() => paddingDynamic(1, 2, 2, 12)}
       >
-        <BrandDefault textcolor='grayLightHsl' text='Phoxul' />
+        <BrandDefault textcolor='whiteHsl' text='Phoxul' />
         <ListDefault gap='base32' aitems='center' jcontent='flexEnd'>
           <li>
             <LinkDefault isActive textcolor='grayLightHsl'>
@@ -71,19 +81,29 @@ const PhoxulPage: React.FC = () => {
             </LinkDefault>
           </li>
           <li>
-            <LinkDefault textcolor='grayLightHsl'>Services</LinkDefault>
+            <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+              Services
+            </LinkDefault>
           </li>
           <li>
-            <LinkDefault textcolor='grayLightHsl'>Works</LinkDefault>
+            <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+              Works
+            </LinkDefault>
           </li>
           <li>
-            <LinkDefault textcolor='grayLightHsl'>Gallery</LinkDefault>
+            <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+              Gallery
+            </LinkDefault>
           </li>
           <li>
-            <LinkDefault textcolor='grayLightHsl'>Blog</LinkDefault>
+            <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+              Blog
+            </LinkDefault>
           </li>
           <li>
-            <LinkDefault textcolor='grayLightHsl'>Contact</LinkDefault>
+            <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+              Contact
+            </LinkDefault>
           </li>
         </ListDefault>
       </ContentDefault>
@@ -97,20 +117,14 @@ const PhoxulPage: React.FC = () => {
         isHeight='isHeightVH'
         heightVH={10}
         heightCalc={8}
-        isPaddingCustom
-        paddingStaticX='base20'
-        paddingDynamicX='base12VW'
-        paddingStaticY='base20'
-        paddingDynamicY='base2VH'
-        isAfter
-        afterPosition='absolute'
-        afterBottom={0}
-        afterLeft={0}
-        afterWidth='base100p'
-        afterHeight='base100p'
-        afterZindex={0}
-        afterClipPath
-        afterBackgroundColor='grayDarkHsl'
+        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
+        afterDefault={() =>
+          afterDefault({
+            bottom: -0.5,
+            backgroundColor: 'grayDarkHsl',
+            clipPath: true
+          })
+        }
       >
         <BoxDefault
           display='flex'
@@ -119,13 +133,17 @@ const PhoxulPage: React.FC = () => {
           gap='base30'
           zIndex={6}
         >
-          <HeadingDefault as='h6' textcolor='title'>
+          <HeadingDefault as='h6' textcolor='title' fontSizeStatic={1.5}>
             Welcome to
           </HeadingDefault>
-          <HeadingDefault fontSizeDynamic='2' as='h1' textcolor='title'>
+          <HeadingDefault
+            fontSizeDynamic={() => fontSizeDynamic(2, 3)}
+            as='h1'
+            textcolor='title'
+          >
             Phoxul Studio
           </HeadingDefault>
-          <TextDefault fontSize='base20' textcolor='whiteHsl'>
+          <TextDefault fontSizeStatic={2} textcolor='whiteHsl'>
             I love to pause the wild, happy and real moments of life, just to
             hear their stories untold.
           </TextDefault>
@@ -135,11 +153,7 @@ const PhoxulPage: React.FC = () => {
               textcolor='grayDarkHsl'
               bgHover='transparent'
               textHover='whiteHsl'
-              isPaddingCustom
-              paddingStaticX='base10'
-              paddingDynamicX='base2VW'
-              paddingStaticY='base10'
-              paddingDynamicY='base1VH'
+              paddingStatic={() => paddingStatic(1, 2.5)}
               isBorderDefault
               borderWidth={1}
               borderStyle='solid'
@@ -153,11 +167,7 @@ const PhoxulPage: React.FC = () => {
               textcolor='whiteHsl'
               bgHover='whiteHsl'
               textHover='grayDarkHsl'
-              isPaddingCustom
-              paddingStaticX='base10'
-              paddingDynamicX='base2VW'
-              paddingStaticY='base10'
-              paddingDynamicY='base1VH'
+              paddingStatic={() => paddingStatic(1, 2.5)}
               isBorderDefault
               borderWidth={1}
               borderStyle='solid'
@@ -170,16 +180,19 @@ const PhoxulPage: React.FC = () => {
         </BoxDefault>
 
         <ImgDefault
-          isPosition
-          position='absolute'
-          top='base0'
-          bottom='base0'
-          left='base50p'
-          zIndex={2}
+          position='relative'
+          positionDefault={() =>
+            positionDefault({
+              position: 'absolute',
+              zIndex: 1,
+              left: 5,
+              width: 9,
+              height: 10,
+              transformX: true,
+              translate: -5
+            })
+          }
           src={ImgHero}
-          isWidth='isWidthP'
-          widthP={10}
-          widthCalc={9}
           alt='Phoxul Studio
 '
         />
@@ -190,9 +203,8 @@ const PhoxulPage: React.FC = () => {
         isOverall
         as='section'
         display='flex'
-        isPaddingCustom
-        paddingDynamicX='base12VW'
-        paddingDynamicY='base2VH'
+        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
+        columnGap='base100r'
       >
         <BoxDefault
           flexBasis='base50p'
@@ -205,13 +217,13 @@ const PhoxulPage: React.FC = () => {
             as='h2'
             textcolor='grayDarkHsl'
             fontWeight='bold'
-            fontSizeDynamic='1.5'
+            fontSizeDynamic={() => fontSizeDynamic(1, 1.5)}
             lineHeight='base160'
           >
             Hello, I'm Martin Dow, a professional photographer based in USA
           </HeadingDefault>
           <TextDefault
-            fontSizeStatic='base10'
+            fontSizeStatic={1.5}
             lineHeight='base160'
             textcolor='grayLightHsl'
           >
@@ -257,28 +269,38 @@ const PhoxulPage: React.FC = () => {
         </BoxDefault>
 
         <ImgDefault
+          beforeDefault={() =>
+            beforeDefault({
+              top: 0.4,
+              left: 1.5,
+              width: 5,
+              height: 5,
+              backgroundImg: ImgDot
+            })
+          }
+          afterDefault={() =>
+            afterDefault({
+              top: 1.5,
+              right: -0.5,
+              left: 2.5,
+              width: 8,
+              height: 8,
+              backgroundColor: 'grayDarkHsl'
+            })
+          }
           zIndex={1}
-          isBefore
-          beforePosition='absolute'
-          beforeTop={-5}
-          beforeLeft={15}
-          beforeWidth='base50p'
-          beforeHeight='base50p'
-          beforeBackgroundImg={ImgDot}
-          isAfter
-          afterPosition='absolute'
-          afterTop={5}
-          afterRight={-5}
-          afterWidth='base50p'
-          afterHeight='base100p'
-          afterBackgroundColor='grayDarkHsl'
-          isTransform
-          isWidth='isWidthP'
-          widthP={10}
-          widthCalc={8}
-          isHeight='isHeightP'
-          heightP={10}
-          heightCalc={10}
+          width={8}
+          height={8}
+          effectDefault={() =>
+            effectDefault({
+              value: [0.9],
+              transform: 'scale',
+              property: 'all',
+              duration: 0.6,
+              timingFunction: 'ease-in-out',
+              delay: 0
+            })
+          }
           display='flex'
           flexBasis='base50p'
           position='relative'
@@ -293,11 +315,9 @@ const PhoxulPage: React.FC = () => {
       <ContentDefault
         isOverall
         as='section'
-        bgcolor='grayDarkHsl'
+        bgcolor='grayHsl'
         display='flex'
-        isPaddingCustom
-        paddingDynamicX='base12VW'
-        paddingDynamicY='base2VH'
+        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
         direction='column'
         gap='base40'
       >
@@ -306,7 +326,12 @@ const PhoxulPage: React.FC = () => {
             textAling='center'
             as='h2'
             textcolor='title'
-            fontSizeDynamic='1.5'
+            // fpdx={() => fpdx(1, 1.5)}
+            paddingDynamicX={() => paddingDynamicX(1, 1.5)}
+            fontSizeDynamic={() => fontSizeDynamic(1, 1.5)}
+            // fsd={1.5}
+            // fsdcalc={2}
+            // fss={3.5}
           >
             My Services
           </HeadingDefault>
@@ -327,9 +352,10 @@ const PhoxulPage: React.FC = () => {
             direction='column'
             gap='base20'
             paddingY='base32'
+            isPar
           >
             <FaCamera />
-            <HeadingDefault fontSizeStatic='base20' as='h3'>
+            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
               Photography
             </HeadingDefault>
             <TextDefault textcolor='grayLightHsl'>
@@ -343,9 +369,10 @@ const PhoxulPage: React.FC = () => {
             direction='column'
             gap='base20'
             paddingY='base32'
+            isImpar
           >
             <FaVideo />
-            <HeadingDefault fontSizeStatic='base20' as='h3'>
+            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
               Videography
             </HeadingDefault>
             <TextDefault textcolor='grayLightHsl'>
@@ -359,9 +386,10 @@ const PhoxulPage: React.FC = () => {
             direction='column'
             gap='base20'
             paddingY='base32'
+            isPar
           >
             <FaBrush />
-            <HeadingDefault fontSizeStatic='base20' as='h3'>
+            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
               Photo Retouching
             </HeadingDefault>
             <TextDefault textcolor='grayLightHsl'>
@@ -375,9 +403,10 @@ const PhoxulPage: React.FC = () => {
             direction='column'
             gap='base20'
             paddingY='base32'
+            isImpar
           >
             <FaCamera />
-            <HeadingDefault fontSizeStatic='base20' as='h3'>
+            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
               Aerial Photography
             </HeadingDefault>
             <TextDefault textcolor='grayLightHsl'>
@@ -391,9 +420,10 @@ const PhoxulPage: React.FC = () => {
             direction='column'
             gap='base20'
             paddingY='base32'
+            isPar
           >
             <FaLightbulb />
-            <HeadingDefault fontSizeStatic='base20' as='h3'>
+            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
               Lighting Setup
             </HeadingDefault>
             <TextDefault textcolor='grayLightHsl'>
@@ -407,9 +437,10 @@ const PhoxulPage: React.FC = () => {
             direction='column'
             gap='base20'
             paddingY='base32'
+            isImpar
           >
             <FaRulerCombined />
-            <HeadingDefault fontSizeStatic='base20' as='h3'>
+            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
               Video Color Grading
             </HeadingDefault>
             <TextDefault textcolor='grayLightHsl'>
@@ -424,21 +455,25 @@ const PhoxulPage: React.FC = () => {
       <ContentDefault
         isOverall
         as='section'
-        isPaddingCustom
-        paddingDynamicX='base12VW'
-        paddingDynamicY='base2VH'
+        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
+        gap='base40'
       >
-        <BoxDefault
-          display='flex'
-          direction='column'
-          gap='base40'
-          paddingY='base20'
-        >
+        <BoxDefault display='flex' direction='column' paddingY='base20'>
           <HeadingDefault
-            fontSizeDynamic='1.5'
-            textAling='center'
             as='h2'
+            position='relative'
+            paddingBottom={2}
+            marginBottom={2}
+            fontSizeDynamic={() => fontSizeDynamic(1, 1.5)}
             textcolor='grayDarkHsl'
+            afterDefault={() =>
+              afterDefault({
+                top: 8,
+                backgroundColor: 'grayDarkHsl',
+                width: 5,
+                height: 0.1
+              })
+            }
           >
             Latest News
           </HeadingDefault>
@@ -449,94 +484,262 @@ const PhoxulPage: React.FC = () => {
         </BoxDefault>
         <BoxDefault as='article' gridTemplateColumns={6} gridTemplateRows={8}>
           <BoxDefault
+            display='flex'
+            direction='column'
             gridColumnsDefault={() => gridColumnsDefault(1, 'span', 3)}
-            gridColumnEndSpan='span'
-            isGridRow
-            gridRowStart={3}
-            gridRowEnd={4}
-            gridRowEndSpan='span'
+            gridRows={() => gridRows(3, 'span', 4)}
+            gap='base30'
+            bgcolor='whiteHsl'
+            padding='base30'
+            zIndex={1}
           >
-            <LinkDefault>Resources</LinkDefault>
-            <HeadingDefault as='h3' textcolor='grayDarkHsl'>
+            <LinkDefault
+              bgcolor='grayDarkHsl'
+              textcolor='white'
+              paddingX='base20'
+              paddingY='base10'
+              bgHover='grayDarkHsl'
+            >
+              Resources
+            </LinkDefault>
+            <HeadingDefault
+              as='h3'
+              textcolor='grayDarkHsl'
+              fontSizeStatic={-8}
+              lineHeight='base160'
+            >
               Cosina announces its fastest full-frame lens
             </HeadingDefault>
-            <TextDefault>
+            <TextDefault lineHeight='base160' fontSizeStatic={-8.5}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
               officiis quas doloribus.
             </TextDefault>
-            <BoxDefault>
-              <LinkDefault>Read More</LinkDefault>
-              <TextDefault>20 Oct, 2035</TextDefault>
+            <BoxDefault
+              display='flex'
+              jcontent='spaceBetween'
+              aitems='center'
+              paddingStaticY={() => paddingStaticY(10)}
+              marginTop={12.5}
+            >
+              <LinkDefault textAling='center' paddingY='base10'>
+                Read More
+              </LinkDefault>
+              <TextDefault textAling='right'>20 Oct, 2035</TextDefault>
             </BoxDefault>
           </BoxDefault>
-          <BoxDefault
-            as='figure'
-            isGridColumn
-            gridColumnStart={3}
-            gridColumnEnd={-1}
-            isGridRow
-            gridRowStart={1}
-            gridRowEnd={-1}
-          >
-            <ImgDefault src={ImgNews} />
-          </BoxDefault>
+
+          <ImgDefault
+            // isTransform
+            gridColumnsDefault={() => gridColumnsDefault(3, '', -1)}
+            gridRows={() => gridRows(1, '', -1)}
+            src={ImgNews}
+            effectDefault={() =>
+              effectDefault({
+                value: [0.9],
+                transform: 'scale',
+                property: 'all',
+                duration: 0.6,
+                timingFunction: 'ease-in-out',
+                delay: 0
+              })
+            }
+          />
         </BoxDefault>
       </ContentDefault>
 
       {/* ------------ Section Works ----------- */}
-      <ContentDefault isOverall as='section'>
-        <HeadingDefault as='h2' textcolor='title'>
+      <ContentDefault
+        isOverall
+        as='section'
+        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
+        bgcolor='grayHsl'
+      >
+        <HeadingDefault
+          as='h2'
+          paddingY='base20'
+          marginBottom={12.5}
+          position='relative'
+          fontSizeDynamic={() => fontSizeDynamic(1, 1.5)}
+          textcolor='whiteHsl'
+          afterDefault={() =>
+            afterDefault({
+              top: 8,
+              backgroundColor: 'grayLightHsl',
+              width: 5,
+              height: 0.1
+            })
+          }
+        >
           My Works
         </HeadingDefault>
-        <ListDefault>
-          <li>
-            <LinkDefault>All</LinkDefault>
-          </li>
-          <li>
-            <LinkDefault>Pessonal</LinkDefault>
-          </li>
-          <li>
-            <LinkDefault>Wedding</LinkDefault>
-          </li>
-          <li>
-            <LinkDefault>Event</LinkDefault>
-          </li>
-          <li>
-            <LinkDefault>Fashion</LinkDefault>
-          </li>
-          <li>
-            <LinkDefault>Product</LinkDefault>
-          </li>
+        <ListDefault textcolor='whiteHsl' gap='base20' paddingY='base20'>
+          <LinkDefault isActive textcolor='grayLightHsl' textHover='whiteHsl'>
+            All
+          </LinkDefault>
+          <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+            Pessonal
+          </LinkDefault>
+          <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+            Wedding
+          </LinkDefault>
+          <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+            Event
+          </LinkDefault>
+          <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+            Fashion
+          </LinkDefault>
+          <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+            Product
+          </LinkDefault>
         </ListDefault>
-        <BoxDefault>
-          <ImgDefault src={ImgMyWorks1} />
-          <ImgDefault src={ImgMyWorks2} />
-          <ImgDefault src={ImgMyWorks3} />
-          <ImgDefault src={ImgMyWorks4} />
-          <ImgDefault src={ImgMyWorks5} />
-          <ImgDefault src={ImgMyWorks6} />
-          <ImgDefault src={ImgMyWorks7} />
-          <ImgDefault src={ImgMyWorks8} />
-          <ImgDefault src={ImgMyWorks9} />
+        <BoxDefault gridTemplateColumns={3} gridTemplateRows={4} gap='base20'>
+          <ImgDefault
+            position='relative'
+            gridColumnsDefault={() => gridColumnsDefault(1, '', 2)}
+            gridRows={() => gridRows(1, '', 3)}
+            src={ImgMyWorks1}
+            // effectDefault={() =>
+            //   effectDefault({
+            //     element: 'background-color',
+            //     value: [0.9],
+            //     transform: 'scale',
+            //     property: 'all',
+            //     duration: 2.5,
+            //     timingFunction: 'ease-in-out',
+            //     delay: 0
+            //   })
+            // }
+            // beforeDefault={() =>
+            //   beforeDefault({
+            //     width: 10,
+            //     height: 10,
+            //     backgroundColor: 'grayLightHsl'
+            //   })
+            // }
+          />
+          <ImgDefault
+            gridColumnsDefault={() => gridColumnsDefault(2, '', 3)}
+            gridRows={() => gridRows(1, '', 2)}
+            src={ImgMyWorks2}
+          />
+          <ImgDefault
+            gridColumnsDefault={() => gridColumnsDefault(3, '', 4)}
+            gridRows={() => gridRows(1, '', 3)}
+            src={ImgMyWorks3}
+          />
+          <ImgDefault
+            gridColumnsDefault={() => gridColumnsDefault(1, '', 2)}
+            gridRows={() => gridRows(3, '', 4)}
+            src={ImgMyWorks4}
+          />
+          <ImgDefault
+            gridColumnsDefault={() => gridColumnsDefault(2, '', 3)}
+            gridRows={() => gridRows(2, '', 4)}
+            src={ImgMyWorks5}
+          />
+          <ImgDefault
+            gridColumnsDefault={() => gridColumnsDefault(3, '', 4)}
+            gridRows={() => gridRows(3, '', 4)}
+            src={ImgMyWorks6}
+          />
+          <ImgDefault
+            gridColumnsDefault={() => gridColumnsDefault(1, '', 2)}
+            gridRows={() => gridRows(4, '', 5)}
+            src={ImgMyWorks7}
+          />
+          <ImgDefault
+            gridColumnsDefault={() => gridColumnsDefault(2, '', 3)}
+            gridRows={() => gridRows(4, '', 5)}
+            src={ImgMyWorks8}
+          />
+          <ImgDefault
+            gridColumnsDefault={() => gridColumnsDefault(3, '', 4)}
+            gridRows={() => gridRows(4, '', 5)}
+            src={ImgMyWorks9}
+          />
         </BoxDefault>
       </ContentDefault>
 
       {/* ------------ Section Profissional ----------- */}
-      <ContentDefault isOverall as='section'>
-        <BoxDefault>
-          <HeadingDefault as='h2' textcolor='title'>
+      <ContentDefault
+        isOverall
+        as='section'
+        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
+        bgcolor='grayHsl'
+        display='flex'
+        jcontent='spaceBetween'
+        aitems='flexStart'
+        gap='base20'
+        position='relative'
+        backgroundImgDefault={() =>
+          backgroundImgDefault({
+            position: 'relative',
+            width: 10,
+            height: 10,
+            backgroundColor: 'transparent',
+            backgroundImg: ImgHero,
+            backgroundAttachment: 'fixed'
+          })
+        }
+      >
+        <BoxDefault
+          display='flex'
+          direction='column'
+          gap='base20'
+          flexBasis='base50p'
+        >
+          <HeadingDefault
+            as='h2'
+            textcolor='title'
+            fontSizeStatic={2.5}
+            lineHeight='base160'
+          >
             Need help with professional photography? Let's work together!
           </HeadingDefault>
-          <LinkDefault>Contact Me</LinkDefault>
+          <LinkDefault
+            bgcolor='transparent'
+            textcolor='whiteHsl'
+            bgHover='whiteHsl'
+            textHover='grayDarkHsl'
+            paddingStatic={() => paddingStatic(1, 2.5)}
+            isBorderDefault
+            borderWidth={1}
+            borderStyle='solid'
+            borderColor='whiteHsl'
+            radius='base30'
+          >
+            Contact Me
+          </LinkDefault>
         </BoxDefault>
-        <BoxDefault>
-          <TextDefault>
+        <BoxDefault
+          gap='base40'
+          bgcolor='whiteHsl'
+          flexBasis='base50p'
+          display='flex'
+          aitems='center'
+          direction='column'
+          paddingDynamic={() => paddingDynamic(1, 4, 1, 4)}
+        >
+          <TextDefault
+            paddingLeft={3}
+            borderDefaultLeft={() =>
+              borderDefaultLeft(1, 'solid', 'grayDarkHsl')
+            }
+          >
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci,
             dicta error. Eum illum amet ducimus eius ex odio animi consectetur
             ad maxime. Placeat, eum iure.
           </TextDefault>
-          <BoxDefault>
-            <ImgDefault src={ImgContact} />
+          <BoxDefault display='flex' aitems='center' gap='base20'>
+            <ImgDefault
+              src={ImgContact}
+              borderRadius={{
+                valueStatic: 5,
+                opeation: '*',
+                valueDinamic: 10,
+                unit: '%'
+              }}
+            />
             <BoxDefault>
               <TextDefault>James Brown</TextDefault>
               <TextDefault>CEO, ColorImage</TextDefault>
@@ -546,7 +749,13 @@ const PhoxulPage: React.FC = () => {
       </ContentDefault>
 
       {/* ------------ Section Clients ----------- */}
-      <ContentDefault isOverall as='section'>
+      <ContentDefault
+        isOverall
+        as='section'
+        paddingDynamicX={() => paddingDynamicX(2, 12)}
+        display='flex'
+        bgcolor='grayHsl'
+      >
         <ImgDefault src={ImgClient1} />
         <ImgDefault src={ImgClient2} />
         <ImgDefault src={ImgClient3} />
@@ -560,8 +769,9 @@ const PhoxulPage: React.FC = () => {
         isImgBackgroundGradient
         imgBgUrl={ImgFooter}
         imgBgSize='cover'
-        imgBgcolor='grayDarkHsl'
+        imgBgcolor='grayHsl'
         imgBgPosition='center'
+        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
       >
         <BoxDefault>
           <BoxDefault>

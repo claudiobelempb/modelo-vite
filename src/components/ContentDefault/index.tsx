@@ -16,8 +16,6 @@ const ContentDefault: React.FC<TypeDefault> = ({
   paddingX,
   paddingY,
   margin,
-  marginTop,
-  marginBottom,
   marginX,
   marginY,
   isGridRepeat,
@@ -49,15 +47,11 @@ const ContentDefault: React.FC<TypeDefault> = ({
       paddingX={paddingX}
       paddingY={paddingY}
       margin={margin}
-      marginTop={marginTop}
-      marginBottom={marginBottom}
       marginX={marginX}
       marginY={marginY}
       isVisibility={isVisibility}
       isDisplay={isDisplay}
       isGridRepeat={isGridRepeat}
-      height={props.height}
-      width={props.width}
       media={media}
       radius={radius}
       radiusTopLeft={radiusTopLeft}
@@ -120,19 +114,6 @@ const ContentDefault: React.FC<TypeDefault> = ({
       pdvw={props.pdvw}
       min={props.min}
       max={props.max}
-      isPaddingCustom={props.isPaddingCustom}
-      paddingStaticX={props.paddingStaticX}
-      paddingStaticY={props.paddingStaticY}
-      paddingDynamicX={props.paddingDynamicX}
-      paddingDynamicY={props.paddingDynamicY}
-      isMarginCustom={props.isMarginCustom}
-      marginStaticX={props.marginStaticX}
-      marginStaticY={props.marginStaticY}
-      marginDynamicX={props.marginDynamicX}
-      marginDynamicY={props.marginDynamicY}
-      isFontSizeCustom={props.isFontSizeCustom}
-      fontSizeStaticX={props.fontSizeStaticX}
-      fontSizeDynamicX={props.fontSizeDynamicX}
       isHeight={props.isHeight}
       heightR={props.heightR}
       heightP={props.heightP}
@@ -140,6 +121,30 @@ const ContentDefault: React.FC<TypeDefault> = ({
       heightVW={props.heightVW}
       heightVH={props.heightVH}
       heightCalc={props.heightCalc}
+      paddingDynamicX={props.paddingDynamicX}
+      paddingDynamicY={props.paddingDynamicY}
+      paddingDynamic={props.paddingDynamic}
+      paddingStatic={props.paddingStatic}
+      paddingTop={props.paddingTop}
+      paddingBottom={props.paddingBottom}
+      paddingLeft={props.paddingLeft}
+      paddingRight={props.paddingRight}
+      marginDynamicX={props.marginDynamicX}
+      marginDynamicY={props.marginDynamicY}
+      marginDynamic={props.marginDynamic}
+      marginStatic={props.marginStatic}
+      marginTop={props.marginTop}
+      marginBottom={props.marginBottom}
+      marginLeft={props.marginLeft}
+      marginRight={props.marginRight}
+      borderRadius={props.borderRadius}
+      width={props.width}
+      height={props.height}
+      effectDefault={props.effectDefault}
+      afterDefault={props.afterDefault}
+      beforeDefault={props.beforeDefault}
+      positionDefault={props.positionDefault}
+      backgroundImgDefault={props.backgroundImgDefault}
     >
       {children}
     </Styles.ContentDefaultStyle>

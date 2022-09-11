@@ -9,7 +9,6 @@ const ImgDefault: React.FC<TypeDefault> = ({ ...props }) => {
       radius={props.radius}
       isRadiusTop={props.isRadiusTop}
       isRadiusBottom={props.isRadiusBottom}
-      width={props.width}
       isAfter={props.isAfter}
       afterClipPath={props.afterClipPath}
       afterPosition={props.afterPosition}
@@ -46,6 +45,13 @@ const ImgDefault: React.FC<TypeDefault> = ({ ...props }) => {
       jcontent={props.jcontent}
       aitems={props.aitems}
       zIndex={props.zIndex}
+      gridColumnsDefault={props.gridColumnsDefault}
+      gridRows={props.gridRows}
+      positionDefault={props.positionDefault}
+      afterDefault={props.afterDefault}
+      beforeDefault={props.beforeDefault}
+      width={props.width}
+      height={props.height}
     >
       <Styles.ImgDefaultContainer
         loading='lazy'
@@ -98,6 +104,10 @@ const ImgDefault: React.FC<TypeDefault> = ({ ...props }) => {
         top={props.top}
         bottom={props.bottom}
         zIndex={props.zIndex}
+        borderRadius={props.borderRadius}
+        width={props.width}
+        height={props.height}
+        effectDefault={props.effectDefault}
       />
     </Styles.FigureDefaultContainer>
   );

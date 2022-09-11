@@ -23,8 +23,6 @@ export const ContentDefaultStyle = styled.div<TypeDefault>`
     paddingX,
     paddingY,
     margin,
-    marginTop,
-    marginBottom,
     marginX,
     marginY,
     isGridRepeat,
@@ -42,8 +40,16 @@ export const ContentDefaultStyle = styled.div<TypeDefault>`
     display: ${props.display ? props.display : ''};
     position: ${props.position && props.position};
     grid-area: ${props.gridArea};
-    height: ${props.height && THEME_SPACE_DEFAULT[props.height]};
-    width: ${props.width ? THEME_SPACE_DEFAULT[props.width] : '100%'};
+    width: 100%;
+    height: 100%;
+    ${props.width &&
+    css`
+      width: ${props.width && props.width};
+    `}
+    ${props.height &&
+    css`
+      height: ${props.height && props.height};
+    `}
     border-radius: ${radius && THEME_SPACE_DEFAULT[radius]};
     border-top-left-radius: ${radiusTopLeft &&
     THEME_SPACE_DEFAULT[radiusTopLeft]};
@@ -58,8 +64,6 @@ export const ContentDefaultStyle = styled.div<TypeDefault>`
     background-color: ${bgcolor && THEME_COLORS_DEFAULT[bgcolor]};
     font-size: ${fontSize && THEME_SIZE_DEFAULT[fontSize]};
     margin: ${margin && THEME_SPACE_DEFAULT[margin]};
-    margin-top: ${marginTop && THEME_SPACE_DEFAULT[marginTop]};
-    margin-bottom: ${marginBottom && THEME_SPACE_DEFAULT[marginBottom]};
     gap: ${gap && THEME_SPACE_DEFAULT[gap]};
     flex-wrap: ${flexWrap && THEME_FLEX_DEFAULT[flexWrap]};
     row-gap: ${props.rowGap && THEME_SPACE_DEFAULT[props.rowGap]};
@@ -70,7 +74,76 @@ export const ContentDefaultStyle = styled.div<TypeDefault>`
     grid-column-end: ${props.gridColumnEnd};
     grid-row-start: ${props.gridRowStart};
     grid-row-end: span ${props.gridRowEnd}; */
+    ${props.effectDefault && props.effectDefault()};
+    ${props.gridColumnsDefault && props.gridColumnsDefault};
+    ${props.gridRows && props.gridRows};
 
+    ${props.positionDefault && props.positionDefault()};
+    ${props.effectDefault && props.effectDefault()};
+    ${props.afterDefault && props.afterDefault()};
+    ${props.beforeDefault && props.beforeDefault()};
+    ${props.backgroundImgDefault && props.backgroundImgDefault()};
+
+    ${props.paddingDynamicX &&
+    props.paddingDynamicX(props.valueStatic || 1, props.valueDynamic || 2)}
+    ${props.paddingDynamicY &&
+    props.paddingDynamicY(props.valueStatic || 1, props.valueDynamic || 2)}
+    ${props.paddingStaticY && props.paddingStaticY(props.valueStatic || 1)}
+    ${props.paddingStaticX && props.paddingStaticX(props.valueStatic || 1)}
+     ${props.paddingStatic &&
+    props.paddingStatic(props.valueStaticH || 1, props.valueStaticW || 1)}
+    ${props.paddingDynamic &&
+    props.paddingDynamic(
+      props.valueStaticH || 1,
+      props.valueDynamiH || 1,
+      props.valueStaticW || 1,
+      props.valueDynamicW || 2
+    )}
+    ${props.paddingTop &&
+    css`
+      padding-top: ${props.paddingTop};
+    `}
+    ${props.paddingBottom &&
+    css`
+      padding-bottom: ${props.paddingBottom};
+    `}
+    ${props.paddingLeft &&
+    css`
+      padding-left: ${props.paddingLeft};
+    `}
+    ${props.paddingRight &&
+    css`
+      padding-right: ${props.paddingRight};
+    `}
+
+    /*MARGIN  */
+
+    ${props.marginStatic &&
+    props.marginStatic(props.valueStaticH || 1, props.valueStaticW || 1)}
+    ${props.marginDynamic &&
+    props.marginDynamic(
+      props.valueStaticH || 1,
+      props.valueDynamiH || 1,
+      props.valueStaticW || 1,
+      props.valueDynamicW || 2
+    )}
+
+    ${props.marginTop &&
+    css`
+      margin-top: ${props.marginTop};
+    `}
+    ${props.marginBottom &&
+    css`
+      margin-bottom: ${props.marginBottom};
+    `}
+    ${props.marginLeft &&
+    css`
+      margin-left: ${props.marginLeft};
+    `}
+    ${props.marginRight &&
+    css`
+      margin-right: ${props.marginRight};
+    `}
     /* props isWidth */
     ${props.isWidth === 'isWidthR' &&
     css`
@@ -115,34 +188,6 @@ export const ContentDefaultStyle = styled.div<TypeDefault>`
       height: calc(${props.heightCalc} * ${props.heightVH + 'vh'});
     `}
 
-    ${props.isPaddingCustom &&
-    css`
-      padding: calc(
-        ${props.paddingDynamicX && THEME_SPACE_DEFAULT[props.paddingDynamicX]} +
-          ${props.paddingDynamicY &&
-          THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicY]}
-      );
-      padding-left: calc(
-        ${props.paddingStaticX && THEME_SPACE_DEFAULT[props.paddingStaticX]} +
-          ${props.paddingDynamicX &&
-          THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicX]}
-      );
-      padding-right: calc(
-        ${props.paddingStaticX && THEME_SPACE_DEFAULT[props.paddingStaticX]} +
-          ${props.paddingDynamicX &&
-          THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicX]}
-      );
-      padding-top: calc(
-        ${props.paddingStaticY && THEME_SPACE_DEFAULT[props.paddingStaticY]} +
-          ${props.paddingDynamicY &&
-          THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicY]}
-      );
-      padding-bottom: calc(
-        ${props.paddingStaticY && THEME_SPACE_DEFAULT[props.paddingStaticY]} +
-          ${props.paddingDynamicY &&
-          THEME_SPACE_DINAMIC_DEFAULT[props.paddingDynamicY]}
-      );
-    `}
 
     ${props.isMarginCustom &&
     css`
@@ -168,16 +213,6 @@ export const ContentDefaultStyle = styled.div<TypeDefault>`
       );
     `}
 
-    ${props.isPosition &&
-    css`
-
-    width: ${props.width && THEME_SPACE_DEFAULT[props.width]};
-    height: ${props.height && THEME_SPACE_DEFAULT[props.height]};
-    top: ${props.top && THEME_SPACE_DEFAULT[props.top]};
-    bottom: ${props.bottom && THEME_SPACE_DEFAULT[props.bottom]};
-    left ${props.left ? THEME_SPACE_DEFAULT[props.left] : ''};
-    right: ${props.right && THEME_SPACE_DEFAULT[props.right]};
-      `}
 
     ${props.isImgBackgroundGradient &&
     css`
@@ -200,20 +235,6 @@ export const ContentDefaultStyle = styled.div<TypeDefault>`
       THEME_FLEX_DEFAULT[props.imgBgSize]};
       background-position: ${props.imgBgPosition &&
       THEME_FLEX_DEFAULT[props.imgBgPosition]};
-    `}
-
-    ${props.isPosition &&
-    css`
-     content: '';
-      width: ${props.width && THEME_SPACE_DEFAULT[props.width]};
-      height: ${props.height && THEME_SPACE_DEFAULT[props.height]};
-      position: ${props.position && props.position};
-      top: ${props.top && THEME_SPACE_DEFAULT[props.top]};
-      bottom: ${props.bottom && THEME_SPACE_DEFAULT[props.bottom]};
-      left ${props.left && THEME_SPACE_DEFAULT[props.left]};
-      right: ${props.right && THEME_SPACE_DEFAULT[props.right]};
-      z-index: ${props.zIndex && props.zIndex};
-      transform: translateX(-50%);
     `}
 
     ${props.isBefore &&
@@ -867,52 +888,7 @@ ${isGridRepeat === 7 &&
       }
     `}
 
-  ${props.gridTemplateColumns === 6 &&
-    css`
-      @media ${theme.media.xsmall} {
-        display: grid;
-        flex-wrap: wrap;
-        place-items: center;
-        grid-template-columns: 1fr;
-        background-color: green;
-      }
 
-      @media ${theme.media.small} {
-        display: grid;
-        flex-wrap: wrap;
-        place-items: center;
-        background-color: red;
-      }
-
-      @media ${theme.media.medium} {
-        display: grid;
-        flex-wrap: wrap;
-        /* place-items: center; */
-        grid-template-columns: repeat(6, 1fr);
-        background-color: blue;
-      }
-      @media ${theme.media.large} {
-        display: grid;
-        flex-wrap: wrap;
-        /* place-items: center; */
-        grid-template-columns: repeat(6, 1fr);
-        background-color: yellow;
-      }
-      @media ${theme.media.xlarge} {
-        display: grid;
-        flex-wrap: wrap;
-        /* place-items: center; */
-        grid-template-columns: repeat(6, 1fr);
-        background-color: rosybrown;
-      }
-      @media ${theme.media.xxlarge} {
-        display: grid;
-        flex-wrap: wrap;
-        grid-template-columns: repeat(6, 1fr);
-        background-color: pink;
-        justify-content: space-between;
-      }
-    `}
 
   ${props.gridTemplateColumns === 7 &&
     css`

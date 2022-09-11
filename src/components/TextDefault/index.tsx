@@ -14,8 +14,6 @@ const TextDefault: React.FC<TypeDefault> = ({ children, ...props }) => {
         paddingX={props.paddingX}
         paddingY={props.paddingY}
         margin={props.margin}
-        marginTop={props.marginTop}
-        marginBottom={props.marginBottom}
         marginX={props.marginX}
         marginY={props.marginY}
         fontWeight={props.fontWeight}
@@ -57,18 +55,30 @@ const TextDefault: React.FC<TypeDefault> = ({ children, ...props }) => {
         gridColumnStartSpan={props.gridColumnStartSpan}
         gridColumnEnd={props.gridColumnEnd}
         gridColumnEndSpan={props.gridColumnEndSpan}
-        isPaddingCustom={props.isPaddingCustom}
-        paddingStaticX={props.paddingStaticX}
-        paddingStaticY={props.paddingStaticY}
         paddingDynamicX={props.paddingDynamicX}
         paddingDynamicY={props.paddingDynamicY}
-        isMarginCustom={props.isMarginCustom}
-        marginStaticX={props.marginStaticX}
-        marginStaticY={props.marginStaticY}
+        paddingDynamic={props.paddingDynamic}
+        paddingStatic={props.paddingStatic}
+        paddingTop={props.paddingTop}
+        paddingBottom={props.paddingBottom}
+        paddingLeft={props.paddingLeft}
+        paddingRight={props.paddingRight}
         marginDynamicX={props.marginDynamicX}
         marginDynamicY={props.marginDynamicY}
-        fontSizeStatic={props.fontSizeStatic}
+        marginDynamic={props.marginDynamic}
+        marginStatic={props.marginStatic}
+        marginTop={props.marginTop}
+        marginBottom={props.marginBottom}
+        marginLeft={props.marginLeft}
+        marginRight={props.marginRight}
         fontSizeDynamic={props.fontSizeDynamic}
+        fontSizeStatic={props.fontSizeStatic}
+        borderDefault={props.borderDefault}
+        borderDefaultTop={props.borderDefaultTop}
+        borderDefaultRight={props.borderDefaultRight}
+        borderDefaultBottom={props.borderDefaultBottom}
+        borderDefaultLeft={props.borderDefaultLeft}
+        fontSizeDefault={props.fontSizeDefault}
       >
         {children}
       </Styles.ContainerTextDefault>

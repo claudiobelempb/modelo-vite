@@ -55,31 +55,6 @@ export const ContainerDefaultStyle = styled.div<TypeDefault>`
       THEME_FLEX_DEFAULT[props.imgBgPosition]};
     `}
 
-    ${props.isAfter &&
-    css`
-      content: '';
-      position: ${props.position ? props.position : ''};
-      z-index: ${props.zIndex ? props.zIndex : ''};
-      top: ${props.top ? THEME_SPACE_DEFAULT[props.top] : ''};
-      left: ${props.left ? THEME_SPACE_DEFAULT[props.left] : ''};
-      right: ${props.right ? THEME_SPACE_DEFAULT[props.right] : ''};
-      width: ${props.width ? THEME_SPACE_DEFAULT[props.width] : ''};
-      height: ${props.height ? THEME_SPACE_DEFAULT[props.height] : ''};
-      background-image: url(${props.url});
-    `}
-
-    ${props.isBefore &&
-    css`
-      content: '';
-      position: ${props.position ? props.position : ''};
-      z-index: ${props.zIndex ? props.zIndex : ''};
-      top: ${props.top ? THEME_SPACE_DEFAULT[props.top] : ''};
-      left: ${props.left ? THEME_SPACE_DEFAULT[props.left] : ''};
-      right: ${props.right ? THEME_SPACE_DEFAULT[props.right] : ''};
-      width: ${props.width ? THEME_SPACE_DEFAULT[props.width] : ''};
-      height: ${props.height ? THEME_SPACE_DEFAULT[props.height] : ''};
-      background-image: url(${props.url});
-    `}
 
     ${paddingX &&
     css`
