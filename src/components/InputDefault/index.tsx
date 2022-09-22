@@ -5,34 +5,7 @@ import * as Styles from './styles';
 const InputDefault: React.FC<TypeDefault> = ({
   type,
   placeholder,
-  fontSize,
-  bgtext,
-  bgcolor,
   as,
-  width,
-  height,
-  isUppercase,
-  fontFamily,
-  fontWeight,
-  lineHeight = 'base130',
-  padding,
-  paddingX,
-  paddingY,
-  margin,
-  marginX,
-  marginY,
-  marginTop,
-  marginBottom,
-  radius,
-  radiusTopLeft,
-  radiusTopRight,
-  radiusBottomLeft,
-  radiusBottomRight,
-  flexWrap,
-  gap,
-  direction,
-  aitems,
-  jcontent,
   onChange,
   ...props
 }) => {
@@ -40,45 +13,61 @@ const InputDefault: React.FC<TypeDefault> = ({
     <>
       <Styles.LabelDefaultContainer>{props.label}</Styles.LabelDefaultContainer>
       <Styles.InputDefaultContainer
-        width={width}
-        height={height}
-        type={type}
-        placeholder={placeholder}
         as={as}
-        fontSize={fontSize}
-        bgcolor={bgcolor}
-        bgtext={bgtext}
-        bgInput={props.bgInput}
-        textInput={props.textInput}
-        isUppercase={isUppercase}
-        fontFamily={fontFamily}
-        fontWeight={fontWeight}
-        lineHeight={lineHeight}
-        padding={padding}
-        paddingX={paddingX}
-        paddingY={paddingY}
-        margin={margin}
-        marginTop={marginTop}
-        marginBottom={marginBottom}
-        marginX={marginX}
-        marginY={marginY}
-        radius={radius}
-        radiusTopLeft={radiusTopLeft}
-        radiusTopRight={radiusTopRight}
-        radiusBottomLeft={radiusBottomLeft}
-        radiusBottomRight={radiusBottomRight}
-        gap={gap}
-        flexWrap={flexWrap}
-        direction={direction}
-        aitems={aitems}
-        jcontent={jcontent}
-        onChange={onChange}
-        colorFocus={props.colorFocus}
-        flexGrow={props.flexGrow}
-        isBorder={props.isBorder}
-        iconBgcolor={props.iconBgcolor}
-        iconColor={props.iconColor}
-        iconSize={props.iconSize}
+        placeholder={placeholder}
+        beforeDefault={props.beforeDefault}
+        afterDefault={props.afterDefault}
+        effectDefault={props.effectDefault}
+        heightStaticDefault={props.heightStaticDefault}
+        heightDynamicDefault={props.heightDynamicDefault}
+        widthStaticDefault={props.widthStaticDefault}
+        widthDynamicDefault={props.widthDynamicDefault}
+        fontSizeDefault={props.fontSizeDefault}
+        fontSizeDefaultDynamic={props.fontSizeDefaultDynamic}
+        textTransformDefault={props.textTransformDefault}
+        textAlignDefault={props.textAlignDefault}
+        textDecoretionlineThrough={props.textDecoretionlineThrough}
+        flexDirectionDefault={props.flexDirectionDefault}
+        flexGapDefault={props.flexGapDefault}
+        justifyContentDefault={props.justifyContentDefault}
+        alignItemsDefault={props.alignItemsDefault}
+        alignSelfDefault={props.alignSelfDefault}
+        flexBasisDefault={props.flexBasisDefault}
+        textColorDefault={props.textColorDefault}
+        backgroundColorDefault={props.backgroundColorDefault}
+        borderDefault={props.borderDefault}
+        borderTopDefault={props.borderTopDefault}
+        borderRightDefault={props.borderTopDefault}
+        borderBottomDefault={props.borderBottomDefault}
+        borderLeftDefault={props.borderLeftDefault}
+        borderRadiusDefault={props.borderRadiusDefault}
+        borderRadiusTopRightDefault={props.borderRadiusTopRightDefault}
+        borderRadiusTopLeftDefault={props.borderRadiusTopLeftDefault}
+        borderRadiusBottomRightDefault={props.borderRadiusBottomRightDefault}
+        borderRadiusBottomLeftDefault={props.borderRadiusBottomLeftDefault}
+        textHoverDefault={props.textHoverDefault}
+        paddingDefault={props.paddingDefault}
+        paddingStaticDefault={props.paddingStaticDefault}
+        paddingStaticXDefault={props.paddingStaticXDefault}
+        paddingStaticYDefault={props.paddingStaticYDefault}
+        paddingDynamicDefault={props.paddingDynamicDefault}
+        paddingDynamicXDefault={props.paddingDynamicXDefault}
+        paddingDynamicYDefault={props.paddingDynamicYDefault}
+        paddingTopDefault={props.paddingTopDefault}
+        paddingRightDefault={props.paddingRightDefault}
+        paddingBottomDefault={props.paddingBottomDefault}
+        paddingLeftDefault={props.paddingLeftDefault}
+        marginDefault={props.marginDefault}
+        marginStaticDefault={props.marginStaticDefault}
+        marginStaticXDefault={props.marginStaticXDefault}
+        marginStaticYDefault={props.marginStaticYDefault}
+        marginDynamicDefault={props.marginDynamicDefault}
+        marginDynamicXDefault={props.marginDynamicXDefault}
+        marginDynamicYDefault={props.marginDynamicYDefault}
+        marginTopDefault={props.marginTopDefault}
+        marginRightDefault={props.marginRightDefault}
+        marginBottomDefault={props.marginBottomDefault}
+        marginLeftDefault={props.marginLeftDefault}
       />
     </>
   );

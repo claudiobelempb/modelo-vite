@@ -1,9 +1,57 @@
-import { css } from 'styled-components';
+import { css, FlattenSimpleInterpolation } from 'styled-components';
 import {
   ThemeColorsText,
   THEME_COLORS_DEFAULT,
   TypeThemeNumberDefault
 } from '../ThemeType';
+
+type TypeTansFormDefault = {
+  /* Function values */
+  matrix?: (...value: TypeThemeNumberDefault[]) => FlattenSimpleInterpolation;
+  matrix3d?: (...value: TypeThemeNumberDefault[]) => FlattenSimpleInterpolation;
+  perspective?: (
+    valueNumber: TypeThemeNumberDefault,
+    valueString: string
+  ) => FlattenSimpleInterpolation;
+  rotate?: (
+    value: TypeThemeNumberDefault | string
+  ) => FlattenSimpleInterpolation;
+  rotate3d?: (...value: TypeThemeNumberDefault[]) => FlattenSimpleInterpolation;
+  rotateX?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+  rotateY?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+  rotateZ?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+  translate?: (
+    ...value: TypeThemeNumberDefault[]
+  ) => FlattenSimpleInterpolation;
+  translate3d?: (
+    ...value: TypeThemeNumberDefault[]
+  ) => FlattenSimpleInterpolation;
+  translateX?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+  translateY?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+  translateZ?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+  scale?: 'scale';
+  scale3d?: (...value: TypeThemeNumberDefault[]) => FlattenSimpleInterpolation;
+  scaleX?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+  scaleY?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+  scaleZ?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+  skew?: (...value: TypeThemeNumberDefault[]) => FlattenSimpleInterpolation;
+  skewX?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+  skewY?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
+
+  /* Multiple function values */
+  transformMult?: TypeTansFormDefault[];
+  // transform: translateX(10px) rotate(10deg) translateY(5px);
+  // transform: perspective(500px) translate(10px, 0, 20px) rotateY(3deg);
+
+  /* Global values */
+  globalValues?:
+    | 'none'
+    | 'inherit'
+    | 'initial'
+    | 'revert'
+    | 'revert-layer'
+    | 'unset';
+};
 
 export type typePositionDefault = {
   position?: 'static' | 'relative' | 'fixed' | 'absolute' | 'sticky';
@@ -20,7 +68,97 @@ export type typePositionDefault = {
   transformX?: boolean;
   transformY?: boolean;
   translate?: TypeThemeNumberDefault;
+  isEffect?: boolean;
+  value?: TypeThemeNumberDefault[];
+  transitionValue?: TypeThemeNumberDefault[];
+  unit?: 'px' | 'rem' | '%' | 'vw' | 'vh';
+  transform?:
+    | 'transform'
+    | 'none'
+    | 'matrix'
+    | 'matrix3d'
+    | 'perspective'
+    | 'scale'
+    | 'rotate'
+    | 'rotate3d'
+    | 'rotateX'
+    | 'rotateY'
+    | 'rotateZ'
+    | 'translateX'
+    | 'translate'
+    | 'translate3d'
+    | 'translateX'
+    | 'translateY'
+    | 'translateZ'
+    | 'scale'
+    | 'scale3d'
+    | 'scaleX'
+    | 'scaleY'
+    | 'scaleZ'
+    | 'skew'
+    | 'skewX'
+    | 'skewY';
+  transitionProperty?:
+    | 'none'
+    | 'all'
+    | 'height'
+    | 'color'
+    | 'background'
+    | 'transform'
+    | 'inherit'
+    | 'initial'
+    | 'revert'
+    | 'revert-layer'
+    | 'unset';
+  element?:
+    | 'none'
+    | 'all'
+    | 'height'
+    | 'color'
+    | 'background-color'
+    | 'background'
+    | 'img'
+    | 'inherit'
+    | 'initial'
+    | 'revert'
+    | 'revert-layer'
+    | 'unset';
+  transitionDuration?: TypeThemeNumberDefault;
+  transitionTimingFunction?:
+    | 'ease'
+    | 'ease-in'
+    | 'ease-out'
+    | 'ease-in-out'
+    | 'linear'
+    | 'step-start'
+    | 'step-end'
+    | 'inherit'
+    | 'initial'
+    | 'revert'
+    | 'revert-layer'
+    | 'unset';
+  transformOrigin?:
+    | 'top'
+    | 'bottom'
+    | 'left'
+    | 'right'
+    | 'inherit'
+    | 'initial'
+    | 'revert'
+    | 'unset';
+  transitionDelay?: TypeThemeNumberDefault;
+  secondsDuration?: 's' | 'sm';
+  secondsDelay?: 's' | 'sm';
 };
+
+/*
+  beforeDefault?: () => FlattenSimpleInterpolation;
+
+  beforeDefault={props.beforeDefault}
+
+  ${props.beforeDefault && props.beforeDefault()}
+
+*/
 
 export const beforeDefault = ({
   position = 'absolute',
@@ -31,25 +169,36 @@ export const beforeDefault = ({
   right = 0,
   width = 0,
   height = 0,
-  backgroundColor = 'background',
+  backgroundColor,
   backgroundImg = '',
   clipPath = false,
   transformX = false,
   transformY = false,
-  translate = 0
+  translate = 0,
+  unit,
+  transitionValue = [0],
+  transform,
+  transitionTimingFunction = 'ease-in-out',
+  transitionProperty,
+  secondsDuration = 's',
+  transitionDuration = 0.6,
+  secondsDelay = 's',
+  transitionDelay = 0,
+  transformOrigin
 }: typePositionDefault) => css`
   &::before {
     content: '';
     position: ${position};
     z-index: ${zIndex};
-    top: calc(10 * ${top}%);
-    bottom: calc(10 * ${bottom}%);
-    left: calc(10 * ${left}%);
-    right: calc(10 * ${right}%);
-    width: calc(10 * ${width}%);
-    height: calc(10 * ${height}%);
-    background-image: url(${backgroundImg});
-    background-color: ${THEME_COLORS_DEFAULT[backgroundColor]};
+    top: calc(16 * ${top}%);
+    bottom: calc(16 * ${bottom}%);
+    left: calc(16 * ${left}%);
+    right: calc(16 * ${right}%);
+    width: calc(16 * ${width}%);
+    height: calc(16 * ${height}%);
+    background-image: url(${backgroundImg && backgroundImg});
+    background-color: ${backgroundColor &&
+    THEME_COLORS_DEFAULT[backgroundColor]};
     ${clipPath &&
     css`
       clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 100%, 0% 0%);
@@ -58,9 +207,14 @@ export const beforeDefault = ({
     css`
       transform: translateX(${translate}0%);
     `}
-    ${transformY &&
+      ${transformY &&
     css`
       transform: translateX(${translate}0%);
     `}
+    transform: ${transform}(${transitionValue}${unit && unit});
+    transition: ${transitionProperty} ${transitionDuration}${secondsDuration ||
+      secondsDuration} ${transitionTimingFunction} ${transitionDelay}${secondsDelay ||
+      secondsDelay};
+    transform-origin: ${transformOrigin && transformOrigin};
   }
 `;

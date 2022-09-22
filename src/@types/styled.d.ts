@@ -11,6 +11,13 @@ type TypeThemeDefault = typeof themeDefault;
 
 declare module 'styled-components' {
   export interface DefaultTheme extends TypeThemeDefault {
+    flexDirectionDefault?: () => FlattenSimpleInterpolation;
+    alignSelfDefault?: () => FlattenSimpleInterpolation;
+    flexGapDefault?: () => FlattenSimpleInterpolation;
+    justifyContentDefault?: () => FlattenSimpleInterpolation;
+    alignItemsDefault?: () => FlattenSimpleInterpolation;
+    flexBasisDefault?: () => FlattenSimpleInterpolation;
+    flexGrowDefault?: () => FlattenSimpleInterpolation;
     title: string;
     colors: {
       grayHsla: 'hsla(0, 0%, 11%, 0.4)';

@@ -2,18 +2,34 @@ import { css } from 'styled-components';
 import {
   ThemeColorsText,
   THEME_COLORS_DEFAULT,
-  TypeSpaceNumber
+  TypeThemeNumberDefault
 } from '../ThemeType';
 
-export const borderDefault = (
-  borderWidth: TypeSpaceNumber,
-  borderStyle: 'solid' | 'dashed ',
-  borderColor: ThemeColorsText
-) =>
+type TypeBorderPropsDefault = {
+  unit?: 'px' | '%' | 'rem' | 'w' | 'h';
+  type?:
+    | 'border'
+    | 'radius'
+    | 'radius-top'
+    | 'radius-bottom'
+    | 'top'
+    | 'right'
+    | 'left'
+    | 'bottom';
+  width?: TypeThemeNumberDefault;
+  style?: 'solid' | 'dashed ';
+  color?: ThemeColorsText;
+};
+
+export const borderDefault = ({
+  unit = 'px',
+  width = 1,
+  style = 'solid',
+  color = 'blackHsl'
+}: TypeBorderPropsDefault) =>
   css`
-    border: ${borderWidth && borderWidth}px;
-    border-style: ${borderStyle && borderStyle};
-    border-color: ${borderColor && THEME_COLORS_DEFAULT[borderColor]};
+    border: ${width}${unit} ${style} ${color && THEME_COLORS_DEFAULT[color]};
+
     border-image-source: initial;
     border-image-slice: initial;
     border-image-width: initial;
@@ -21,15 +37,29 @@ export const borderDefault = (
     border-image-repeat: initial;
   `;
 
-export const borderDefaultTop = (
-  borderTopWidth: TypeSpaceNumber,
-  borderTopStyle: 'solid' | 'dashed ',
-  borderTopColor: ThemeColorsText
-) =>
+export const borderTopDefault = ({
+  unit = 'px',
+  width = 1,
+  style = 'solid',
+  color = 'blackHsl'
+}: TypeBorderPropsDefault) =>
   css`
-    border-top-width: ${borderTopWidth && borderTopWidth}px;
-    border-top-style: ${borderTopStyle && borderTopStyle};
-    border-top-color: ${borderTopColor && borderTopColor};
+    border-top-width: ${width && width}${unit};
+    border-top-style: ${style && style};
+    border-top-color: ${color && THEME_COLORS_DEFAULT[color]};
+  `;
+
+export const borderRightDefault = ({
+  unit = 'px',
+  width = 1,
+  style = 'solid',
+  color = 'blackHsl'
+}: TypeBorderPropsDefault) =>
+  css`
+    border-right-width: ${width && width}${unit};
+    border-right-style: ${style && style};
+    border-right-color: ${color && THEME_COLORS_DEFAULT[color]};
+
     border-image-source: initial;
     border-image-slice: initial;
     border-image-width: initial;
@@ -37,16 +67,17 @@ export const borderDefaultTop = (
     border-image-repeat: initial;
   `;
 
-export const borderDefaultLeft = (
-  borderLeftWidth: TypeSpaceNumber,
-  borderLeftStyle: 'solid' | 'dashed ',
-  borderLeftColor: ThemeColorsText
-) =>
+export const borderBottomDefault = ({
+  unit = 'px',
+  width = 1,
+  style = 'solid',
+  color = 'blackHsl'
+}: TypeBorderPropsDefault) =>
   css`
-    border-left-width: ${borderLeftWidth && borderLeftWidth}px;
-    border-left-style: ${borderLeftStyle && borderLeftStyle};
-    border-left-color: ${borderLeftColor &&
-    THEME_COLORS_DEFAULT[borderLeftColor]};
+    border-bottom-width: ${width && width}${unit};
+    border-bottom-style: ${style && style};
+    border-bottom-color: ${color && THEME_COLORS_DEFAULT[color]};
+
     border-image-source: initial;
     border-image-slice: initial;
     border-image-width: initial;
@@ -54,16 +85,17 @@ export const borderDefaultLeft = (
     border-image-repeat: initial;
   `;
 
-export const borderDefaultBottom = (
-  borderBottomWidth: TypeSpaceNumber,
-  borderBottomStyle: 'solid' | 'dashed ',
-  borderBottomColor: ThemeColorsText
-) =>
+export const borderLeftDefault = ({
+  unit = 'px',
+  width = 1,
+  style = 'solid',
+  color = 'blackHsl'
+}: TypeBorderPropsDefault) =>
   css`
-    border-bottom-width: ${borderBottomWidth && borderBottomWidth}px;
-    border-bottom-style: ${borderBottomStyle && borderBottomStyle};
-    border-bottom-color: ${borderBottomColor &&
-    THEME_COLORS_DEFAULT[borderBottomColor]};
+    border-left-width: ${width && width}${unit};
+    border-left-style: ${style && style};
+    border-left-color: ${color && THEME_COLORS_DEFAULT[color]};
+
     border-image-source: initial;
     border-image-slice: initial;
     border-image-width: initial;
@@ -71,16 +103,63 @@ export const borderDefaultBottom = (
     border-image-repeat: initial;
   `;
 
-export const borderDefaultRight = (
-  borderRightWidth: TypeSpaceNumber,
-  borderRightStyle: 'solid' | 'dashed ',
-  borderRightColor: ThemeColorsText
-) =>
+export const borderRadiusDefault = ({
+  unit = 'rem',
+  width = 1
+}: TypeBorderPropsDefault) =>
   css`
-    border-right-width: ${borderRightWidth && borderRightWidth}px;
-    border-right-style: ${borderRightStyle && borderRightStyle};
-    border-right-color: ${borderRightColor &&
-    THEME_COLORS_DEFAULT[borderRightColor]};
+    border-radius: calc(10 * ${width && width}${unit});
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+  `;
+
+export const borderRadiusTopRightDefault = ({
+  unit = 'rem',
+  width = 1
+}: TypeBorderPropsDefault) =>
+  css`
+    border-top-right-radius: calc(10 * ${width && width}${unit});
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+  `;
+export const borderRadiusTopLeftDefault = ({
+  unit = 'rem',
+  width = 1
+}: TypeBorderPropsDefault) =>
+  css`
+    border-top-left-radius: calc(10 * ${width && width}${unit});
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+  `;
+
+export const borderRadiusBottomRightDefault = ({
+  unit = 'rem',
+  width = 1
+}: TypeBorderPropsDefault) =>
+  css`
+    border-bottom-right-radius: calc(10 * ${width && width}${unit});
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+  `;
+
+export const borderRadiusBottomLeftDefault = ({
+  unit = 'rem',
+  width = 1
+}: TypeBorderPropsDefault) =>
+  css`
+    border-bottom-left-radius: calc(10 * ${width && width}${unit});
     border-image-source: initial;
     border-image-slice: initial;
     border-image-width: initial;

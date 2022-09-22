@@ -5,27 +5,7 @@ const ListDefault: React.FC<TypeDefault> = ({ ...props }) => {
   switch (props.model) {
     case 1: {
       return (
-        <Styles.ListDefaultContainer
-          as={props.as}
-          iconBgcolor={props.iconBgcolor}
-          iconColor={props.iconColor}
-          iconSize={props.iconSize}
-          display={props.display}
-          jcontent={props.jcontent}
-          aitems={props.aitems}
-          direction={props.direction}
-          padding={props.padding}
-          paddingX={props.paddingX}
-          paddingY={props.paddingY}
-          margin={props.margin}
-          marginTop={props.marginTop}
-          marginBottom={props.marginBottom}
-          marginX={props.marginX}
-          marginY={props.marginY}
-          isVisibility={props.isVisibility}
-          isDisplay={props.isDisplay}
-          gap={props.gap}
-        >
+        <Styles.ListDefaultContainer as={props.as}>
           {props.children}
         </Styles.ListDefaultContainer>
       );
@@ -34,24 +14,27 @@ const ListDefault: React.FC<TypeDefault> = ({ ...props }) => {
       return (
         <Styles.ListDefaultContainer
           as={props.as}
-          iconBgcolor={props.iconBgcolor}
-          iconColor={props.iconColor}
-          iconSize={props.iconSize}
-          display={props.display}
-          jcontent={props.jcontent}
-          aitems={props.aitems}
-          direction={props.direction}
-          padding={props.padding}
-          paddingX={props.paddingX}
-          paddingY={props.paddingY}
-          margin={props.margin}
-          marginTop={props.marginTop}
-          marginBottom={props.marginBottom}
-          marginX={props.marginX}
-          marginY={props.marginY}
-          isVisibility={props.isVisibility}
-          isDisplay={props.isDisplay}
-          gap={props.gap}
+          paddingDefault={props.paddingDefault}
+          paddingStaticDefault={props.paddingStaticDefault}
+          paddingStaticXDefault={props.paddingStaticXDefault}
+          paddingStaticYDefault={props.paddingStaticYDefault}
+          paddingDynamicDefault={props.paddingDynamicDefault}
+          paddingDynamicXDefault={props.paddingDynamicXDefault}
+          paddingDynamicYDefault={props.paddingDynamicYDefault}
+          paddingTopDefault={props.paddingTopDefault}
+          paddingRightDefault={props.paddingRightDefault}
+          paddingBottomDefault={props.paddingBottomDefault}
+          paddingLeftDefault={props.paddingLeftDefault}
+          marginStaticDefault={props.marginStaticDefault}
+          marginStaticXDefault={props.marginStaticXDefault}
+          marginStaticYDefault={props.marginStaticYDefault}
+          marginDynamicDefault={props.marginDynamicDefault}
+          marginDynamicXDefault={props.marginDynamicXDefault}
+          marginDynamicYDefault={props.marginDynamicYDefault}
+          marginTopDefault={props.marginTopDefault}
+          marginRightDefault={props.marginRightDefault}
+          marginBottomDefault={props.marginBottomDefault}
+          marginLeftDefault={props.marginLeftDefault}
         >
           {props.children}
         </Styles.ListDefaultContainer>

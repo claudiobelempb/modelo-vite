@@ -1,6 +1,3 @@
-import { css } from 'styled-components';
-import { TypeDefault } from './TypeDefault';
-
 export const THEME_LINE_HEIGHT_DEFAULT = {
   base65: '65%',
   base130: '130%',
@@ -10,7 +7,9 @@ export const THEME_LINE_HEIGHT_DEFAULT = {
 export const THEME_FONT_FAMILY_DEFAULT = {
   roboto: '"Roboto"',
   baloo: '"Baloo 2"',
-  secondary: '"secondary"'
+  secondary: '"secondary"',
+  plusJakarta: '"Plus Jakarta Sans"',
+  oswald: '"Oswald"'
 };
 
 export const THEME_FLEX_DEFAULT = {
@@ -51,6 +50,7 @@ export const THEME_FLEX_DEFAULT = {
 };
 
 export const THEME_COLORS_DEFAULT = {
+  none: 'none',
   grayHsla: 'hsla(0, 0%, 11%, 0.4)',
   grayHsl: 'hsl(0, 0%, 11%)',
   grayDarkHsl: 'hsl(0, 0%, 17%)',
@@ -285,7 +285,12 @@ export const THEME_MEDIA_DEFAULT = {
   media: 'media'
 };
 
-export type ThemeFontFamilyDefaultText = 'roboto' | 'baloo' | 'secondary';
+export type ThemeFontFamilyDefaultText =
+  | 'roboto'
+  | 'baloo'
+  | 'secondary'
+  | 'plusJakarta'
+  | 'oswald';
 export type ThemeLineHeightDefaultText = 'base65' | 'base130' | 'base160';
 
 export type PlansTypeOptionDefault = {
@@ -458,6 +463,7 @@ export type ThemeSpaceTypeText =
   | 'base310';
 
 export type ThemeColorsText =
+  | 'none'
   | 'grayHsla'
   | 'grayHsl'
   | 'grayDarkHsl'
@@ -1008,6 +1014,8 @@ export type ThemeMediaType = {
 };
 
 export type ThemeFontFamilyDefaultType = {
+  oswald: string;
+  plusJakarta: string;
   roboto: string;
   baloo: string;
   secondary: string;
@@ -1026,9 +1034,23 @@ export type CategoryDefault = {
 
 export type TypeThemeNumberDefault =
   | ''
+  | 'max-content'
+  | 'min-content'
+  | 'fit-content'
+  | 'auto-fit'
   | 0
   | 0.1
+  | 0.11
+  | 0.12
+  | 0.13
+  | 0.14
+  | 0.15
   | 0.2
+  | 0.21
+  | 0.22
+  | 0.23
+  | 0.24
+  | 0.25
   | 0.3
   | 0.4
   | 0.5
@@ -1036,17 +1058,32 @@ export type TypeThemeNumberDefault =
   | 0.7
   | 0.8
   | 0.9
+  | 0.95
   | 1
+  | 1.2
+  | 1.3
+  | 1.4
   | 1.5
+  | 1.6
   | 2
+  | 2.1
+  | 2.2
+  | 2.3
+  | 2.4
   | 2.5
   | 3
+  | 3.1
+  | 3.125
+  | 3.2
+  | 3.3
+  | 3.4
   | 3.5
   | 4
   | 4.5
   | 5
   | 5.5
   | 6
+  | 6.25
   | 6.5
   | 7
   | 7.5
@@ -1184,229 +1221,3 @@ export type ThemeType = {
   fontFamily?: ThemeFontFamilyDefaultType;
   lineHeight?: ThemeLineHeightDefaultType;
 };
-
-export const gridColumnsDefault = (
-  start?: TypeThemeNumberDefault,
-  span?: 'span' | '',
-  end?: TypeThemeNumberDefault
-) => css`
-  ${span &&
-  css`
-    grid-column: ${start} / ${span} ${end};
-  `}
-
-  ${!span &&
-  css`
-    grid-column: ${start} / ${end};
-  `}
-`;
-
-export const gridRows = (
-  start?: TypeThemeNumberDefault,
-  span?: 'span' | '',
-  end?: TypeThemeNumberDefault
-) => css`
-  ${span &&
-  css`
-    grid-row: ${start} / ${span} ${end};
-  `}
-
-  ${!span &&
-  css`
-    grid-row: ${start} / ${end};
-  `}
-`;
-
-export type TypeNthChildformDefault = {
-  valueStatic?: TypeThemeNumberDefault;
-  valueDynamic?: TypeThemeNumberDefault;
-  borderWidth?: TypeThemeNumberDefault;
-  borderColor?: ThemeColorsText;
-  option?: 'par' | 'impa';
-};
-
-export const parOuImpar = ({
-  valueStatic = 1,
-  valueDynamic = 1,
-  borderColor = 'grayLightHsl',
-  borderWidth = 1,
-  option = 'par'
-}: TypeNthChildformDefault) => css`
-  ${option &&
-  css`
-    &:nth-child(${valueStatic}n) {
-      border-top: ${borderWidth}px solid ${THEME_COLORS_DEFAULT[borderColor]};
-    }
-  `}
-  ${option &&
-  css`
-    &:nth-child(${valueStatic}n + ${valueDynamic}) {
-      border-top: ${borderWidth}px solid ${THEME_COLORS_DEFAULT[borderColor]};
-    }
-  `}
-`;
-
-export const fcTransformDefault = (
-  scale: TypeThemeNumberDefault,
-  origin: 'top' | 'bottom' | 'left' | 'right'
-) => css`
-  transition: transform 0.5s ease-in-out;
-  &:hover {
-    cursor: pointer;
-    transform: scale(${scale});
-    transform-origin: ${origin};
-  }
-`;
-
-export const paddingDynamicY = (
-  valueStatic: TypeSpaceNumber,
-  valueDinanmic: TypeSpaceNumber
-) => css`
-  padding-top: calc(${valueStatic}rem + ${valueDinanmic}vh);
-  padding-bottom: calc(${valueStatic}rem + ${valueDinanmic}vh);
-`;
-
-export const paddingDynamicX = (
-  valueStatic: TypeSpaceNumber,
-  valueDinanmic: TypeSpaceNumber
-) => css`
-  padding-left: calc(${valueStatic}rem + ${valueDinanmic}vw);
-  padding-right: calc(${valueStatic}rem + ${valueDinanmic}vw);
-`;
-
-export const paddingStaticY = (valueStatic: TypeSpaceNumber) => css`
-  padding-top: ${valueStatic}rem;
-  padding-bottom: ${valueStatic}rem;
-`;
-
-export const paddingStaticX = (valueStatic: TypeSpaceNumber) => css`
-  padding-left: ${valueStatic}rem;
-  padding-right: ${valueStatic}rem;
-`;
-
-export const paddingDynamic = (
-  valueStaticH: TypeSpaceNumber,
-  valueDynamicH: TypeSpaceNumber,
-  valueStaticW: TypeSpaceNumber,
-  valueDynamicW: TypeSpaceNumber
-) => css`
-  padding: calc(${valueStaticH}rem + ${valueDynamicH}vh)
-    calc(${valueStaticW}rem + ${valueDynamicW}vw);
-`;
-
-export const paddingStatic = (
-  valueStaticH: TypeSpaceNumber,
-  valueStaticW: TypeSpaceNumber
-) => css`
-  padding: ${valueStaticH}rem ${valueStaticW}rem;
-`;
-
-export const marginDynamic = (
-  valueStaticH: TypeSpaceNumber,
-  valueDynamicH: TypeSpaceNumber,
-  valueStaticW: TypeSpaceNumber,
-  valueDynamicW: TypeSpaceNumber
-) => css`
-  margin: calc(${valueStaticH}rem + ${valueDynamicH}vh)
-    calc(${valueStaticW}rem + ${valueDynamicW}vw);
-`;
-
-export const marginStatic = (
-  valueStaticH: TypeSpaceNumber,
-  valueStaticW: TypeSpaceNumber
-) => css`
-  margin: ${valueStaticH}rem ${valueStaticW}rem;
-`;
-
-export const fontSizeDynamic = (
-  valueStatic: TypeSpaceNumber,
-  valueDinanmic: TypeSpaceNumber
-) => css`
-  font-size: calc(${valueStatic}rem + ${valueDinanmic}vw);
-`;
-
-export const textDecoration = (isUppercase: boolean) => css`
-  ${isUppercase &&
-  css`
-    text-transform: uppercase;
-  `}
-`;
-
-export const isBorderDefault = (isBorder: boolean) => css`
-  ${isBorder &&
-  css`
-    border: 3px solid #e6e5e5;
-  `}
-`;
-
-export const isImgRadiusDefault = (isImgRadius: boolean) => css`
-  ${isImgRadius &&
-  css`
-    & img {
-      border-radius: 50%;
-    }
-  `}
-`;
-
-export const isBoxShadowDefault = (isBoxShadow: boolean) => css`
-  ${isBoxShadow &&
-  css`
-    box-shadow: 2px 2px 30px 2px lightgrey;
-  `}
-`;
-
-export const isTextDecoretionLineThroughDefault = (
-  isTextDecoretion: boolean
-) => css`
-  ${isTextDecoretion &&
-  css`
-    color: rgba(222, 222, 222, 0.5);
-    /* color: rgba(0, 0, 0, 0.5); */
-    /* text-decoration: line-through 2px solid rgba(0, 0, 0, 0.5); */
-    text-decoration: line-through;
-  `}
-`;
-
-// export const isBackgrondImgDefault = ({
-//   isBackgrondImgDefault,
-//   url,
-//   size = 'cover',
-//   position = 'center',
-//   repeat = 'noRepeat'
-// }: TypeDefault) => css`
-//   ${isBackgrondImgDefault &&
-//   css`
-//     width: 100%;
-//     height: 100%;
-//     background-image: url(${url});
-//     background-size: ${size};
-//     background-repeat: ${repeat};
-//     background-position: ${position};
-//   `}
-// `;
-
-export const isBackgrondImgDefault = ({
-  url,
-  size,
-  position,
-  repeat
-}: TypeDefault) =>
-  css`
-    width: 100%;
-    height: 100%;
-    background-image: url(${url});
-    background-size: ${size};
-    background-repeat: ${repeat};
-    background-position: ${position};
-  `;
-
-export const paddingCustom = (
-  paddingX: ThemeSpaceTypeText,
-  paddingY: ThemeSpaceTypeText
-) =>
-  css`
-    padding: calc(
-      ${paddingX && THEME_SPACE_DEFAULT[paddingX]} +
-        ${paddingY && THEME_SPACE_DEFAULT[paddingY]}
-    );
-  `;

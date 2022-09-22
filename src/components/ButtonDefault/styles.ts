@@ -1,8 +1,6 @@
 import {
-  textDecoration,
   THEME_COLORS_DEFAULT,
   THEME_FLEX_DEFAULT,
-  THEME_SIZE_DEFAULT,
   THEME_SPACE_DEFAULT
 } from '@assets/styles/themes/ThemeType';
 import { TypeDefault } from '@assets/styles/themes/TypeDefault';
@@ -29,109 +27,96 @@ export const ButtonDefaultContainer = styled.button<TypeDefault>`
     margin,
     marginX,
     marginY,
-    width = 'base100p',
-    height,
     gap,
     isUppercase,
     ...props
   }) => css`
-    width: ${width && THEME_SPACE_DEFAULT[width]};
-    height: ${height && THEME_SPACE_DEFAULT[height]};
-    position: ${props.position ? props.position : 'relative'};
-    left: ${left && THEME_SPACE_DEFAULT[left]};
-    right: ${right && THEME_SPACE_DEFAULT[right]};
-    top: ${top && THEME_SPACE_DEFAULT[top]};
-    bottom: ${bottom && THEME_SPACE_DEFAULT[bottom]};
-    margin: ${margin && THEME_SPACE_DEFAULT[margin]};
-    padding: ${padding && THEME_SPACE_DEFAULT[padding]};
-    gap: ${gap && THEME_SPACE_DEFAULT[gap]};
-    ${textDecoration(isUppercase ? isUppercase : false)}
-    border-radius: 0.6rem;
+    position: relative;
     display: flex;
     border: 0;
     cursor: pointer;
     justify-content: center;
-    /* flex-flow: row wrap; */
-    font-size: ${fontSize && THEME_SIZE_DEFAULT[fontSize]};
-    /* padding: ${theme.size.base16}; */
-    font-weight: ${props.fontWeight
-      ? props.fontWeight
-      : theme.fonts.fontWeight.regular};
+    align-items: center;
+    /* Padding Static */
+    ${props.paddingDefault && props.paddingDefault()};
+    ${props.paddingStaticDefault && props.paddingStaticDefault()}
+    ${props.paddingStaticXDefault && props.paddingStaticXDefault()}
+    ${props.paddingStaticYDefault && props.paddingStaticYDefault()}
+    ${props.paddingDinamicDefault && props.paddingDinamicDefault()}
+    ${props.paddingDinamicXDefault && props.paddingDinamicXDefault()}
+    ${props.paddingDinamicYDefault && props.paddingDinamicYDefault()}
+    ${props.paddingTopDefault && props.paddingTopDefault()}
+    ${props.paddingRightDefault && props.paddingRightDefault()}
+    ${props.paddingBottomDefault && props.paddingBottomDefault()}
+    ${props.paddingLeftDefault && props.paddingLeftDefault()}
+    /* Padding Static */
+    ${props.marginDefault && props.marginDefault()};
+    ${props.marginStaticDefault && props.marginStaticDefault()}
+    ${props.marginStaticXDefault && props.marginStaticXDefault()}
+    ${props.marginStaticYDefault && props.marginStaticYDefault()}
+    ${props.marginDinamicDefault && props.marginDinamicDefault()}
+    ${props.marginDinamicXDefault && props.marginDinamicXDefault()}
+    ${props.marginDinamicYDefault && props.marginDinamicYDefault()}
+    ${props.marginTopDefault && props.marginTopDefault()}
+    ${props.marginRightDefault && props.marginRightDefault()}
+    ${props.marginBottomDefault && props.marginBottomDefault()}
+    ${props.marginLeftDefault && props.marginLeftDefault()}
+    /*FONT DEFAULT  */
+     ${props.textTransformDefault && props.textTransformDefault()};
+    ${props.textDecoretionlineThrough && props.textDecoretionlineThrough()};
+    ${props.fontSizeDefault && props.fontSizeDefault()};
+    ${props.textAlignDefault && props.textAlignDefault()};
 
-    /* color: inherit;
-    background-color: inherit; */
+    ${props.textColorDefault && props.textColorDefault()};
+    ${props.backgroundColorDefault && props.backgroundColorDefault()};
 
-    /* props isWidth */
-    ${props.isWidth === 'isWidthR' &&
-    css`
-      width: calc(${props.widthCalc} * ${props.widthR + 'rem'});
-    `}
-    ${props.isWidth === 'isWidthP' &&
-    css`
-      width: calc(${props.widthCalc} * ${props.widthP + '%'});
-    `}
-    ${props.isWidth === 'isWidthPX' &&
-    css`
-      width: calc(${props.widthCalc} * ${props.widthPX + 'px'});
-    `}
-    ${props.isWidth === 'isWidthVW' &&
-    css`
-      width: calc(${props.widthCalc} * ${props.widthVW + 'vw'});
-    `}
-    ${props.isWidth === 'isWidthVH' &&
-    css`
-      width: calc(${props.widthCalc} * ${props.widthVH + 'vh'});
-    `}
+    /*BORDER RADIUS DEFAULT */
+    ${props.borderRadiusDefault && props.borderRadiusDefault()};
+    ${props.borderRadiusTopRightDefault && props.borderRadiusTopRightDefault()};
+    ${props.borderRadiusTopLeftDefault && props.borderRadiusTopLeftDefault()};
+    ${props.borderRadiusBottomRightDefault &&
+    props.borderRadiusBottomRightDefault()};
+    ${props.borderRadiusBottomLeftDefault &&
+    props.borderRadiusBottomLeftDefault()};
+    /*BORDER DEFAULT */
+    ${props.borderDefault && props.borderDefault()};
+    ${props.borderTopDefault && props.borderTopDefault()};
+    ${props.borderRightDefault && props.borderRightDefault()};
+    ${props.borderBottomDefault && props.borderBottomDefault()};
+    ${props.borderLeftDefault && props.borderLeftDefault()};
+    /*HEIGHT DEFAULT  */
+    ${props.heightStaticDefault && props.heightStaticDefault()}
+    ${props.heightDynamicDefault && props.heightDynamicDefault()}
+    /*WIDTH DEFAULT  */
+    ${props.widthStaticDefault && props.widthStaticDefault()}
+    ${props.widthDynamicDefault && props.widthDynamicDefault()}
+    /*AFTER DEFAULT  */
+    ${props.afterDefault && props.afterDefault()};
+    /*BEFORE DEFAULT  */
+    ${props.beforeDefault && props.beforeDefault()};
+    /*FONT DEFAULT  */
+    ${props.textTransformDefault && props.textTransformDefault()};
+    ${props.textDecoretionlineThrough && props.textDecoretionlineThrough()};
+    ${props.fontSizeDefault && props.fontSizeDefault()};
+    ${props.textAlignDefault && props.textAlignDefault()};
+    ${props.flexDefault && props.flexDefault()}
+    /* GRID DEFAULT */
+    ${props.gridTemplateColumnsDefault && props.gridTemplateColumnsDefault()}
+    ${props.gridTemplateRowsDefault && props.gridTemplateRowsDefault()}
+    ${props.gridColumnDefault && props.gridColumnDefault()}
+    ${props.gridRowDefault && props.gridRowDefault()}
+    ${props.overallDefault && props.overallDefault()}
+    /* FLEX DEFAULT */
+    ${props.flexDirectionDefault && props.flexDirectionDefault()}
+    ${props.alignSelfDefault && props.alignSelfDefault()}
+    ${props.justifyContentDefault && props.justifyContentDefault()}
+    ${props.flexGapDefault && props.flexGapDefault()}
+    ${props.alignItemsDefault && props.alignItemsDefault()}
+    ${props.flexBasisDefault && props.flexBasisDefault()}
+    ${props.flexGrowDefault && props.flexGrowDefault()}
 
-     /* props isHeight */
-    ${props.isHeight === 'isHeightR' &&
-    css`
-      height: calc(${props.heightCalc} * ${props.heightR + 'rem'});
-    `}
-    ${props.isHeight === 'isHeightP' &&
-    css`
-      height: calc(${props.heightCalc} * ${props.heightP + '%'});
-    `}
-    ${props.isHeight === 'isHeightPX' &&
-    css`
-      height: calc(${props.heightCalc} * ${props.heightPX + 'px'});
-    `}
-    ${props.isHeight === 'isHeightVW' &&
-    css`
-      height: calc(${props.heightCalc} * ${props.heightVW + 'vw'});
-    `}
-    ${props.isHeight === 'isHeightVH' &&
-    css`
-      height: calc(${props.heightCalc} * ${props.heightVH + 'vh'});
-    `}
-
-    /* props isBorderDefault */
-    ${props.isBorderDefault &&
-    css`
-      border: ${props.borderWidth}px ${props.borderStyle}
-        ${props.borderColor && THEME_COLORS_DEFAULT[props.borderColor]};
-      border-top-color: ${props.borderTopColor &&
-      THEME_COLORS_DEFAULT[props.borderTopColor]};
-      border-top-style: ${props.borderTopStyle};
-      border-top-width: ${props.borderTopWidth};
-      border-right-color: ${props.borderRightColor &&
-      THEME_COLORS_DEFAULT[props.borderRightColor]};
-      border-right-style: ${props.borderRightStyle};
-      border-right-width: ${props.borderRightWidth};
-      border-bottom-color: ${props.borderBottomColor &&
-      THEME_COLORS_DEFAULT[props.borderBottomColor]};
-      border-bottom-style: ${props.borderBottomStyle};
-      border-bottom-width: ${props.borderBottomWidth};
-      border-left-color: ${props.borderLeftColor &&
-      THEME_COLORS_DEFAULT[props.borderLeftColor]};
-      border-left-style: ${props.borderLeftStyle};
-      border-left-width: ${props.borderLeftWidth};
-      border-image-source: initial;
-      border-image-slice: initial;
-      border-image-width: initial;
-      border-image-outset: initial;
-      border-image-repeat: initial;
-    `}
+    ${props.iconDefault && props.iconDefault()}
+    ${props.backgroundColorDefault && props.backgroundColorDefault()}
 
     & svg {
       background-color: ${props.iconBgcolor &&

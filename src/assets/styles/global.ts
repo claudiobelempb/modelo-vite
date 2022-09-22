@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
 
   html, body {
     ${({ theme }) => css`
-      font-family: ${theme.fonts.fontFamile};
+      font-family: 'Oswald', sans-serif;
       font-size: ${theme.size.base16};
       font-weight: ${theme.fonts.fontWeight.regular};
       -webkit-font-smoothing: antialiased;
@@ -29,18 +29,37 @@ export const GlobalStyles = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     ${({ theme }) => css`
-      font-family: ${theme.fonts.fontFamile};
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: ${theme.size.base16};
       color: ${theme.colors.title};
+      font-weight: 900;
     `}
   }
 
+  img, figure {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   a {
+    font-family: 'Plus Jakarta Sans', sans-serif;
     text-decoration: none;
     color: inherit;
+    align-self: flex-start;
+
     /* background-color: inherit; */
-    width: max-content;
+    /* width: max-content; */
     /* text-align: center; */
+  }
+
+  p {
+    line-height: 160%;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  a:hover {
+    filter: brightness(0.9);
   }
 
   /* main {
@@ -76,5 +95,8 @@ export const GlobalStyles = createGlobalStyle`
     overflow-y: auto;
     border-collapse: collapse;
     border-spacing: 0;
+  }
+  span{
+    display: block;
   }
 `;

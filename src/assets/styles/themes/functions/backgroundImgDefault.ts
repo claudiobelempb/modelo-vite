@@ -60,6 +60,7 @@ export const backgroundImgDefault = ({
     background-image: url(${backgroundImg});
     background-color: ${THEME_COLORS_DEFAULT[backgroundColor]};
     background-attachment: ${backgroundAttachment};
+    background-size: cover;
     ${clipPath &&
     css`
       clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 100%, 0% 0%);

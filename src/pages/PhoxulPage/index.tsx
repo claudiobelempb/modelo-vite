@@ -5,7 +5,6 @@ import {
   ImgClient4,
   ImgContact,
   ImgDot,
-  ImgFooter,
   ImgHero,
   ImgMyWorks1,
   ImgMyWorks2,
@@ -22,104 +21,103 @@ import {
 import { afterDefault } from '@assets/styles/themes/functions/afterDefault';
 import { backgroundImgDefault } from '@assets/styles/themes/functions/backgroundImgDefault';
 import { beforeDefault } from '@assets/styles/themes/functions/beforeDefault';
-import { borderDefaultLeft } from '@assets/styles/themes/functions/borderDefault';
-import { effectDefault } from '@assets/styles/themes/functions/effectDefaults';
+import {
+  borderDefault,
+  borderLeftDefault,
+  borderRadiusDefault,
+  borderTopDefault
+} from '@assets/styles/themes/functions/borderDefault';
+import {
+  backgroundColorDefault,
+  iconDefault,
+  textColorDefault,
+  textHoverDefault
+} from '@assets/styles/themes/functions/colorDefault';
+import {
+  effectHoverBeforeDefault,
+  effectHoverDefault
+} from '@assets/styles/themes/functions/effectDefaults';
+import {
+  alignItemsDefault,
+  alignSelfDefault,
+  flexBasisDefault,
+  flexDirectionDefault,
+  flexGapDefault,
+  justifyContentDefault
+} from '@assets/styles/themes/functions/flexDefault';
+import {
+  fontLineHeightDefault,
+  fontSizeDynamicDefault,
+  fontSizeStaticDefault,
+  textAlignDefault,
+  textTransformDefault
+} from '@assets/styles/themes/functions/fontDefault';
+import {
+  gridColumnDefault,
+  gridRowDefault,
+  gridTemplateColumnsDefault,
+  gridTemplateRowsDefault,
+  overallDefault
+} from '@assets/styles/themes/functions/gridDefault';
+import { heightDynamicDefault } from '@assets/styles/themes/functions/heightDefault';
+import {
+  marginBottomDefault,
+  marginTopDefault
+} from '@assets/styles/themes/functions/marginDefault';
+import {
+  paddingBottomDefault,
+  paddingDefault,
+  paddingDynamicDefault,
+  paddingDynamicXDefault,
+  paddingDynamicYDefault,
+  paddingStaticDefault,
+  paddingStaticXDefault,
+  paddingStaticYDefault,
+  paddingTopDefault
+} from '@assets/styles/themes/functions/paddingDefault';
 import { positionDefault } from '@assets/styles/themes/functions/positionDefault';
 import {
-  fontSizeDynamic,
-  gridColumnsDefault,
-  gridRows,
-  paddingDynamic,
-  paddingDynamicX,
-  paddingStatic,
-  paddingStaticY
-} from '@assets/styles/themes/ThemeType';
-import { BoxDefault } from '@componets/BoxDefault';
-import { BrandDefault } from '@componets/BrandDefault';
-import { ButtonDefault } from '@componets/ButtonDefault';
-import { ContainerDefault } from '@componets/ContainerDefault';
-import { ContentDefault } from '@componets/ContentDefault';
-import { HeadingDefault } from '@componets/HeadingDefault';
-import { ImgDefault } from '@componets/ImgDefault';
-import { InputDefault } from '@componets/InputDefault';
-import { LinkDefault } from '@componets/LinkDefault';
-import { ListDefault } from '@componets/ListDefault';
-import { TextDefault } from '@componets/TextDefault';
+  displayDefault,
+  overflowDefault,
+  parDefault,
+  zIndexDefault
+} from '@assets/styles/themes/functions/utilsDefault';
 import {
-  FaAddressCard,
+  widthDynamicDefault,
+  widthStaticDefault
+} from '@assets/styles/themes/functions/widthDefault';
+import { BoxDefault } from '@componets/common/BoxDefault';
+import { ContentDefault } from '@componets/common/ContentDefault';
+import { HeadingDefault } from '@componets/common/HeadingDefault';
+import { ImgDefault } from '@componets/common/ImgDefault';
+import { LinkDefault } from '@componets/common/LinkDefault';
+import { TextDefault } from '@componets/common/TextDefault';
+import { LayoutPhoxul } from '@componets/layout/LayoutPhoxul';
+import { ListDefault } from '@componets/ListDefault';
+import {
   FaBrush,
   FaCamera,
   FaCheckCircle,
-  FaDribbble,
-  FaEnvelope,
-  FaFacebook,
   FaLightbulb,
-  FaLinkedin,
-  FaPhone,
   FaRulerCombined,
-  FaTwitter,
   FaVideo
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const PhoxulPage: React.FC = () => {
   return (
-    <ContainerDefault isGridTemplateColumns>
-      {/* ------------ Header ----------- */}
-      <ContentDefault
-        position='relative'
-        as='header'
-        isOverall
-        display='flex'
-        bgcolor='grayHsl'
-        paddingDynamic={() => paddingDynamic(1, 2, 2, 12)}
-      >
-        <BrandDefault textcolor='whiteHsl' text='Phoxul' />
-        <ListDefault gap='base32' aitems='center' jcontent='flexEnd'>
-          <li>
-            <LinkDefault isActive textcolor='grayLightHsl'>
-              Home
-            </LinkDefault>
-          </li>
-          <li>
-            <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
-              Services
-            </LinkDefault>
-          </li>
-          <li>
-            <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
-              Works
-            </LinkDefault>
-          </li>
-          <li>
-            <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
-              Gallery
-            </LinkDefault>
-          </li>
-          <li>
-            <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
-              Blog
-            </LinkDefault>
-          </li>
-          <li>
-            <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
-              Contact
-            </LinkDefault>
-          </li>
-        </ListDefault>
-      </ContentDefault>
+    <LayoutPhoxul>
       {/* ------------ Section Hero ----------- */}
-
       <ContentDefault
-        isOverall
+        overallDefault={() => overallDefault()}
         as='section'
-        display='flex'
-        position='relative'
-        isHeight='isHeightVH'
-        heightVH={10}
-        heightCalc={8}
-        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
+        paddingDynamicDefault={() =>
+          paddingDynamicDefault({ value: 2, valueX: 12, valueY: 12 })
+        }
         afterDefault={() =>
           afterDefault({
+            width: 6.25,
+            height: 5,
             bottom: -0.5,
             backgroundColor: 'grayDarkHsl',
             clipPath: true
@@ -127,60 +125,92 @@ const PhoxulPage: React.FC = () => {
         }
       >
         <BoxDefault
-          display='flex'
-          direction='column'
-          flexBasis='base50p'
-          gap='base30'
-          zIndex={6}
+          displayDefault={() => displayDefault('flex')}
+          flexDirectionDefault={() => flexDirectionDefault('column')}
+          flexBasisDefault={() => flexBasisDefault(5)}
+          flexGapDefault={() => flexGapDefault({ row: 3 })}
+          zIndexDefault={() => zIndexDefault(3)}
         >
-          <HeadingDefault as='h6' textcolor='title' fontSizeStatic={1.5}>
+          <HeadingDefault
+            as='h6'
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+            fontSizeStaticDefault={() =>
+              fontSizeStaticDefault({ vstatic: 1.5 })
+            }
+          >
             Welcome to
           </HeadingDefault>
           <HeadingDefault
-            fontSizeDynamic={() => fontSizeDynamic(2, 3)}
+            fontSizeDynamicDefault={() =>
+              fontSizeDynamicDefault({ vstatic: 2, vdynamic: 3 })
+            }
             as='h1'
-            textcolor='title'
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+            textTransformDefault={() => textTransformDefault('uppercase')}
           >
             Phoxul Studio
           </HeadingDefault>
-          <TextDefault fontSizeStatic={2} textcolor='whiteHsl'>
+          <TextDefault
+            fontSizeStaticDefault={() => fontSizeStaticDefault({ vstatic: 2 })}
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+          >
             I love to pause the wild, happy and real moments of life, just to
             hear their stories untold.
           </TextDefault>
-          <BoxDefault display='flex' gap='base20'>
-            <LinkDefault
-              bgcolor='whiteHsl'
-              textcolor='grayDarkHsl'
-              bgHover='transparent'
-              textHover='whiteHsl'
-              paddingStatic={() => paddingStatic(1, 2.5)}
-              isBorderDefault
-              borderWidth={1}
-              borderStyle='solid'
-              borderColor='whiteHsl'
-              radius='base30'
-            >
-              My works
-            </LinkDefault>
-            <LinkDefault
-              bgcolor='transparent'
-              textcolor='whiteHsl'
-              bgHover='whiteHsl'
-              textHover='grayDarkHsl'
-              paddingStatic={() => paddingStatic(1, 2.5)}
-              isBorderDefault
-              borderWidth={1}
-              borderStyle='solid'
-              borderColor='whiteHsl'
-              radius='base30'
-            >
-              Contact
-            </LinkDefault>
+          <BoxDefault
+            displayDefault={() => displayDefault('flex')}
+            flexGapDefault={() => flexGapDefault({ column: 2 })}
+          >
+            <Link to={'/'}>
+              <TextDefault
+                effectHoverDefault={() =>
+                  effectHoverDefault({
+                    color: 'whiteHsl',
+                    backgroundColor: 'transparent'
+                  })
+                }
+                borderDefault={() => borderDefault({ color: 'whiteHsl' })}
+                paddingDynamicXDefault={() =>
+                  paddingDynamicXDefault({ vstatic: 1, vdynamic: 2 })
+                }
+                paddingDynamicYDefault={() =>
+                  paddingDynamicYDefault({ vstatic: 1, vdynamic: 0.5 })
+                }
+                borderRadiusDefault={() =>
+                  borderRadiusDefault({ width: 1, unit: 'rem' })
+                }
+                textColorDefault={() =>
+                  textColorDefault({ color: 'grayDarkHsl' })
+                }
+                backgroundColorDefault={() =>
+                  backgroundColorDefault('whiteHsl')
+                }
+              >
+                My works
+              </TextDefault>
+            </Link>
+            <Link to={'/'}>
+              <TextDefault
+                effectHoverDefault={() => effectHoverDefault({})}
+                borderDefault={() => borderDefault({ color: 'whiteHsl' })}
+                paddingDynamicXDefault={() =>
+                  paddingDynamicXDefault({ vstatic: 1, vdynamic: 2 })
+                }
+                paddingDynamicYDefault={() =>
+                  paddingDynamicYDefault({ vstatic: 1, vdynamic: 0.5 })
+                }
+                borderRadiusDefault={() =>
+                  borderRadiusDefault({ width: 1, unit: 'rem' })
+                }
+                textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+              >
+                Contact
+              </TextDefault>
+            </Link>
           </BoxDefault>
         </BoxDefault>
 
         <ImgDefault
-          position='relative'
           positionDefault={() =>
             positionDefault({
               position: 'absolute',
@@ -193,39 +223,43 @@ const PhoxulPage: React.FC = () => {
             })
           }
           src={ImgHero}
-          alt='Phoxul Studio
-'
+          alt='Phoxul Studio'
         />
       </ContentDefault>
 
       {/* ------------ Section Personal ----------- */}
       <ContentDefault
-        isOverall
+        overallDefault={() => overallDefault()}
         as='section'
-        display='flex'
-        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
-        columnGap='base100r'
+        paddingDynamicDefault={() =>
+          paddingDynamicDefault({ value: 2, valueX: 12, valueY: 12 })
+        }
+        flexGapDefault={() => flexGapDefault({ row: 10 })}
       >
         <BoxDefault
-          flexBasis='base50p'
-          aitems='center'
-          jcontent='center'
-          direction='column'
-          gap='base20'
+          displayDefault={() => displayDefault('flex')}
+          flexBasisDefault={() => flexBasisDefault(5)}
+          alignItemsDefault={() => alignItemsDefault('center')}
+          justifyContentDefault={() => justifyContentDefault('center')}
+          flexDirectionDefault={() => flexDirectionDefault('column')}
+          flexGapDefault={() => flexGapDefault({ row: 2 })}
         >
           <HeadingDefault
             as='h2'
-            textcolor='grayDarkHsl'
-            fontWeight='bold'
-            fontSizeDynamic={() => fontSizeDynamic(1, 1.5)}
-            lineHeight='base160'
+            textColorDefault={() => textColorDefault({ color: 'blackHsl' })}
+            fontSizeDynamicDefault={() =>
+              fontSizeDynamicDefault({ vstatic: 1, vdynamic: 1.5 })
+            }
+            fontLineHeightDefault={() => fontLineHeightDefault('160%')}
           >
             Hello, I'm Martin Dow, a professional photographer based in USA
           </HeadingDefault>
           <TextDefault
-            fontSizeStatic={1.5}
-            lineHeight='base160'
-            textcolor='grayLightHsl'
+            fontSizeStaticDefault={() =>
+              fontSizeStaticDefault({ vstatic: 1.5 })
+            }
+            fontLineHeightDefault={() => fontLineHeightDefault('160%')}
+            textColorDefault={() => textColorDefault({ color: 'grayDarkHsl' })}
           >
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Exercitationem reiciendis officiis quis quasi corporis possimus
@@ -233,217 +267,379 @@ const PhoxulPage: React.FC = () => {
             assumenda! Ex, ab.
           </TextDefault>
 
-          <ListDefault display='flex' direction='column' gap='base20'>
+          <BoxDefault
+            as='ul'
+            displayDefault={() => displayDefault('flex')}
+            flexDirectionDefault={() => flexDirectionDefault('column')}
+            flexGapDefault={() => flexGapDefault({ row: 2 })}
+          >
             <BoxDefault
-              display='flex'
-              gap='base20'
-              aitems='center'
-              textcolor='grayLightHsl'
-              iconColor='grayDarkHsl'
-              iconSize='base32'
+              displayDefault={() => displayDefault('flex')}
+              flexGapDefault={() => flexGapDefault({ column: 2 })}
+              alignItemsDefault={() => alignItemsDefault('center')}
+              textColorDefault={() =>
+                textColorDefault({ color: 'grayDarkHsl' })
+              }
+              iconDefault={() => iconDefault({ color: 'blackHsl', size: 3.2 })}
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 1.5 })
+              }
             >
               <FaCheckCircle />
               Over 7 Years of Experience
             </BoxDefault>
             <BoxDefault
-              display='flex'
-              gap='base20'
-              aitems='center'
-              textcolor='grayLightHsl'
-              iconColor='grayDarkHsl'
-              iconSize='base32'
+              displayDefault={() => displayDefault('flex')}
+              flexGapDefault={() => flexGapDefault({ column: 2 })}
+              alignItemsDefault={() => alignItemsDefault('center')}
+              textColorDefault={() =>
+                textColorDefault({ color: 'grayDarkHsl' })
+              }
+              iconDefault={() => iconDefault({ color: 'blackHsl', size: 3.2 })}
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 1.5 })
+              }
             >
               <FaCheckCircle /> 200+ Successfully Executed Projets
             </BoxDefault>
             <BoxDefault
-              display='flex'
-              gap='base20'
-              aitems='center'
-              textcolor='grayLightHsl'
-              iconColor='grayDarkHsl'
-              iconSize='base32'
+              displayDefault={() => displayDefault('flex')}
+              flexGapDefault={() => flexGapDefault({ column: 2 })}
+              alignItemsDefault={() => alignItemsDefault('center')}
+              textColorDefault={() =>
+                textColorDefault({ color: 'grayDarkHsl' })
+              }
+              iconDefault={() => iconDefault({ color: 'blackHsl', size: 3.2 })}
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 1.5 })
+              }
             >
               <FaCheckCircle /> Exceptional Work Quality
             </BoxDefault>
-          </ListDefault>
+          </BoxDefault>
         </BoxDefault>
 
-        <ImgDefault
-          beforeDefault={() =>
-            beforeDefault({
-              top: 0.4,
-              left: 1.5,
-              width: 5,
-              height: 5,
-              backgroundImg: ImgDot
-            })
-          }
-          afterDefault={() =>
-            afterDefault({
-              top: 1.5,
-              right: -0.5,
-              left: 2.5,
-              width: 8,
-              height: 8,
-              backgroundColor: 'grayDarkHsl'
-            })
-          }
-          zIndex={1}
-          width={8}
-          height={8}
-          effectDefault={() =>
-            effectDefault({
-              value: [0.9],
-              transform: 'scale',
-              property: 'all',
-              duration: 0.6,
-              timingFunction: 'ease-in-out',
-              delay: 0
-            })
-          }
-          display='flex'
-          flexBasis='base50p'
-          position='relative'
-          jcontent='flexEnd'
-          aitems='center'
-          src={ImgPersonal}
-          alt="Hello, I'm Martin Dow, a professional photographer based in USA"
-        />
+        <BoxDefault
+          displayDefault={() => displayDefault('flex')}
+          flexBasisDefault={() => flexBasisDefault(5)}
+          alignItemsDefault={() => alignItemsDefault('flex-end')}
+          justifyContentDefault={() => justifyContentDefault('center')}
+          flexDirectionDefault={() => flexDirectionDefault('column')}
+          flexGapDefault={() => flexGapDefault({ row: 2 })}
+        >
+          <ImgDefault
+            displayDefault={() => displayDefault('flex')}
+            alignItemsDefault={() => alignItemsDefault('flex-end')}
+            justifyContentDefault={() => justifyContentDefault('center')}
+            flexGapDefault={() => flexGapDefault({ row: 2 })}
+            zIndexDefault={() => zIndexDefault(1)}
+            heightDynamicDefault={() =>
+              heightDynamicDefault({ value: 5, unit: '%' })
+            }
+            widthDynamicDefault={() =>
+              widthDynamicDefault({ vw: 5, unit: '%' })
+            }
+            beforeDefault={() =>
+              beforeDefault({
+                top: -0.4,
+                left: -0.4,
+                width: 5,
+                height: 5,
+                backgroundImg: ImgDot,
+                transform: 'none',
+                transitionProperty: 'none'
+              })
+            }
+            afterDefault={() =>
+              afterDefault({
+                top: 1.6,
+                right: 0,
+                left: 1.6,
+                width: 5,
+                height: 5,
+                backgroundColor: 'grayDarkHsl',
+                transform: 'none',
+                transitionProperty: 'none'
+              })
+            }
+            effectHoverDefault={() =>
+              effectHoverDefault({
+                element: 'img',
+                transformValue: [0.95],
+                transform: 'scale',
+                transitionProperty: 'all',
+                transitionDuration: 0.6,
+                transitionTimingFunction: 'ease-in-out'
+              })
+            }
+            src={ImgPersonal}
+            alt="Hello, I'm Martin Dow, a professional photographer based in USA"
+          />
+        </BoxDefault>
       </ContentDefault>
 
       {/* ------------ Section Service ----------- */}
       <ContentDefault
-        isOverall
+        overallDefault={() => overallDefault()}
         as='section'
-        bgcolor='grayHsl'
-        display='flex'
-        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
-        direction='column'
-        gap='base40'
+        backgroundColorDefault={() => backgroundColorDefault('grayHsl')}
+        paddingDynamicDefault={() =>
+          paddingDynamicDefault({ value: 2, valueX: 12, valueY: 12 })
+        }
+        flexDirectionDefault={() => flexDirectionDefault('column')}
+        flexGapDefault={() => flexGapDefault({ row: 4 })}
       >
-        <BoxDefault display='flex' direction='column' gap='base40'>
+        <BoxDefault
+          displayDefault={() => displayDefault('flex')}
+          flexDirectionDefault={() => flexDirectionDefault('column')}
+          flexGapDefault={() => flexGapDefault({ row: 4 })}
+        >
           <HeadingDefault
-            textAling='center'
+            textAlignDefault={() => textAlignDefault('center')}
             as='h2'
-            textcolor='title'
-            // fpdx={() => fpdx(1, 1.5)}
-            paddingDynamicX={() => paddingDynamicX(1, 1.5)}
-            fontSizeDynamic={() => fontSizeDynamic(1, 1.5)}
-            // fsd={1.5}
-            // fsdcalc={2}
-            // fss={3.5}
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+            paddingDefault={() =>
+              paddingDefault({ type: 'padding', vs: 0.5, vd: 2, hs: 2, hd: 3 })
+            }
+            fontSizeDynamicDefault={() =>
+              fontSizeDynamicDefault({ vstatic: 1, vdynamic: 1.5 })
+            }
           >
             My Services
           </HeadingDefault>
           <TextDefault
-            textAling='center'
-            lineHeight='base160'
-            textcolor='grayLightHsl'
+            textAlignDefault={() => textAlignDefault('center')}
+            fontLineHeightDefault={() => fontLineHeightDefault('160%')}
+            textColorDefault={() => textColorDefault({ color: 'grayLightHsl' })}
+            fontSizeStaticDefault={() =>
+              fontSizeStaticDefault({ vstatic: 1.5 })
+            }
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-            tempore quidem reprehenderit. Provident excepturi odio aspernatur
-            cupiditate cum tempora facere!
+            tempore{' '}
+            <span>
+              quidem reprehenderit. Provident excepturi odio aspernatur
+            </span>
           </TextDefault>
         </BoxDefault>
-        <BoxDefault isGridRepeat={2} textcolor='title' gap='base50'>
+        <BoxDefault
+          displayDefault={() => displayDefault('grid')}
+          textColorDefault={() => textColorDefault({ color: 'grayLightHsl' })}
+          flexGapDefault={() => flexGapDefault({ row: 6, column: 6 })}
+          gridTemplateColumnsDefault={() => gridTemplateColumnsDefault(2)}
+        >
           <BoxDefault
-            iconSize='base32'
-            display='flex'
-            direction='column'
-            gap='base20'
-            paddingY='base32'
-            isPar
+            displayDefault={() => displayDefault('flex')}
+            iconDefault={() => iconDefault({ color: 'whiteHsl', size: 3.2 })}
+            flexDirectionDefault={() => flexDirectionDefault('column')}
+            flexGapDefault={() => flexGapDefault({ row: 2 })}
+            paddingStaticYDefault={() => paddingStaticYDefault({ vstatic: 3 })}
+            parDefault={() =>
+              parDefault({
+                element: 'border-top',
+                vstatic: 1,
+                color: 'whiteHsl'
+              })
+            }
           >
             <FaCamera />
-            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
+            <HeadingDefault
+              textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 2 })
+              }
+              as='h3'
+            >
               Photography
             </HeadingDefault>
-            <TextDefault textcolor='grayLightHsl'>
+            <TextDefault
+              textColorDefault={() =>
+                textColorDefault({ color: 'grayLightHsl' })
+              }
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 1.5 })
+              }
+            >
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Assumenda, debitis!
             </TextDefault>
           </BoxDefault>
           <BoxDefault
-            iconSize='base32'
-            display='flex'
-            direction='column'
-            gap='base20'
-            paddingY='base32'
-            isImpar
+            displayDefault={() => displayDefault('flex')}
+            iconDefault={() => iconDefault({ color: 'whiteHsl', size: 3.2 })}
+            flexDirectionDefault={() => flexDirectionDefault('column')}
+            flexGapDefault={() => flexGapDefault({ row: 2 })}
+            paddingStaticYDefault={() => paddingStaticYDefault({ vstatic: 3 })}
+            parDefault={() =>
+              parDefault({
+                element: 'border-bottom',
+                vstatic: 1,
+                color: 'whiteHsl'
+              })
+            }
           >
             <FaVideo />
-            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
+            <HeadingDefault
+              textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 2 })
+              }
+              as='h3'
+            >
               Videography
             </HeadingDefault>
-            <TextDefault textcolor='grayLightHsl'>
+            <TextDefault
+              textColorDefault={() =>
+                textColorDefault({ color: 'grayLightHsl' })
+              }
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 1.5 })
+              }
+            >
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Assumenda, debitis!
             </TextDefault>
           </BoxDefault>
           <BoxDefault
-            iconSize='base32'
-            display='flex'
-            direction='column'
-            gap='base20'
-            paddingY='base32'
-            isPar
+            displayDefault={() => displayDefault('flex')}
+            iconDefault={() => iconDefault({ color: 'whiteHsl', size: 3.2 })}
+            flexDirectionDefault={() => flexDirectionDefault('column')}
+            flexGapDefault={() => flexGapDefault({ row: 2 })}
+            paddingStaticYDefault={() => paddingStaticYDefault({ vstatic: 3 })}
+            parDefault={() =>
+              parDefault({
+                element: 'border-top',
+                vstatic: 1,
+                color: 'whiteHsl'
+              })
+            }
           >
             <FaBrush />
-            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
+            <HeadingDefault
+              textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 2 })
+              }
+              as='h3'
+            >
               Photo Retouching
             </HeadingDefault>
-            <TextDefault textcolor='grayLightHsl'>
+            <TextDefault
+              textColorDefault={() =>
+                textColorDefault({ color: 'grayLightHsl' })
+              }
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 1.5 })
+              }
+            >
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Assumenda, debitis!
             </TextDefault>
           </BoxDefault>
           <BoxDefault
-            iconSize='base32'
-            display='flex'
-            direction='column'
-            gap='base20'
-            paddingY='base32'
-            isImpar
+            displayDefault={() => displayDefault('flex')}
+            iconDefault={() => iconDefault({ color: 'whiteHsl', size: 3.2 })}
+            flexDirectionDefault={() => flexDirectionDefault('column')}
+            flexGapDefault={() => flexGapDefault({ row: 2 })}
+            paddingStaticYDefault={() => paddingStaticYDefault({ vstatic: 3 })}
+            parDefault={() =>
+              parDefault({
+                element: 'border-bottom',
+                vstatic: 1,
+                color: 'whiteHsl'
+              })
+            }
           >
             <FaCamera />
-            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
+            <HeadingDefault
+              textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 2 })
+              }
+              as='h3'
+            >
               Aerial Photography
             </HeadingDefault>
-            <TextDefault textcolor='grayLightHsl'>
+            <TextDefault
+              textColorDefault={() =>
+                textColorDefault({ color: 'grayLightHsl' })
+              }
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 1.5 })
+              }
+            >
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Assumenda, debitis!
             </TextDefault>
           </BoxDefault>
           <BoxDefault
-            iconSize='base32'
-            display='flex'
-            direction='column'
-            gap='base20'
-            paddingY='base32'
-            isPar
+            displayDefault={() => displayDefault('flex')}
+            iconDefault={() => iconDefault({ color: 'whiteHsl', size: 3.2 })}
+            flexDirectionDefault={() => flexDirectionDefault('column')}
+            flexGapDefault={() => flexGapDefault({ row: 2 })}
+            paddingStaticYDefault={() => paddingStaticYDefault({ vstatic: 3 })}
+            parDefault={() =>
+              parDefault({
+                element: 'border-top',
+                vstatic: 1,
+                color: 'whiteHsl'
+              })
+            }
           >
             <FaLightbulb />
-            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
+            <HeadingDefault
+              textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 2 })
+              }
+              as='h3'
+            >
               Lighting Setup
             </HeadingDefault>
-            <TextDefault textcolor='grayLightHsl'>
+            <TextDefault
+              textColorDefault={() =>
+                textColorDefault({ color: 'grayLightHsl' })
+              }
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 1.5 })
+              }
+            >
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Assumenda, debitis!
             </TextDefault>
           </BoxDefault>
           <BoxDefault
-            iconSize='base32'
-            display='flex'
-            direction='column'
-            gap='base20'
-            paddingY='base32'
-            isImpar
+            displayDefault={() => displayDefault('flex')}
+            iconDefault={() => iconDefault({ color: 'whiteHsl', size: 3.2 })}
+            flexDirectionDefault={() => flexDirectionDefault('column')}
+            flexGapDefault={() => flexGapDefault({ row: 2 })}
+            paddingStaticYDefault={() => paddingStaticYDefault({ vstatic: 3 })}
+            parDefault={() =>
+              parDefault({
+                element: 'border-bottom',
+                vstatic: 1,
+                color: 'whiteHsl'
+              })
+            }
           >
             <FaRulerCombined />
-            <HeadingDefault textcolor='whiteHsl' fontSizeStatic={2} as='h3'>
+            <HeadingDefault
+              textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 2 })
+              }
+              as='h3'
+            >
               Video Color Grading
             </HeadingDefault>
-            <TextDefault textcolor='grayLightHsl'>
+            <TextDefault
+              textColorDefault={() =>
+                textColorDefault({ color: 'grayLightHsl' })
+              }
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 1.5 })
+              }
+            >
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Assumenda, debitis!
             </TextDefault>
@@ -453,19 +649,24 @@ const PhoxulPage: React.FC = () => {
 
       {/* ------------ Section Latest News ----------- */}
       <ContentDefault
-        isOverall
+        overallDefault={() => overallDefault()}
         as='section'
-        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
-        gap='base40'
+        paddingDynamicDefault={() =>
+          paddingDynamicDefault({ value: 2, valueX: 12, valueY: 12 })
+        }
+        flexDirectionDefault={() => flexDirectionDefault('column')}
+        flexGapDefault={() => flexGapDefault({ row: 4 })}
       >
-        <BoxDefault display='flex' direction='column' paddingY='base20'>
+        <BoxDefault
+          flexDirectionDefault={() => flexDirectionDefault('column')}
+          flexGapDefault={() => flexGapDefault({ row: 4 })}
+        >
           <HeadingDefault
             as='h2'
-            position='relative'
-            paddingBottom={2}
-            marginBottom={2}
-            fontSizeDynamic={() => fontSizeDynamic(1, 1.5)}
-            textcolor='grayDarkHsl'
+            paddingBottomDefault={() => paddingBottomDefault({ vstatic: 2 })}
+            marginBottomDefault={() => marginBottomDefault({ vstatic: 2 })}
+            fontSizeStaticDefault={() => fontSizeStaticDefault({ vstatic: 2 })}
+            textColorDefault={() => textColorDefault({ color: 'grayDarkHsl' })}
             afterDefault={() =>
               afterDefault({
                 top: 8,
@@ -477,70 +678,165 @@ const PhoxulPage: React.FC = () => {
           >
             Latest News
           </HeadingDefault>
-          <TextDefault>
+          <TextDefault
+            fontSizeStaticDefault={() =>
+              fontSizeStaticDefault({ vstatic: 1.5 })
+            }
+            textColorDefault={() => textColorDefault({ color: 'grayRgba' })}
+          >
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Voluptates, velit!
           </TextDefault>
         </BoxDefault>
-        <BoxDefault as='article' gridTemplateColumns={6} gridTemplateRows={8}>
+
+        <BoxDefault
+          as='article'
+          gridTemplateColumnsDefault={() => gridTemplateColumnsDefault(6, 0)}
+          gridTemplateRowsDefault={() => gridTemplateRowsDefault(8)}
+        >
           <BoxDefault
-            display='flex'
-            direction='column'
-            gridColumnsDefault={() => gridColumnsDefault(1, 'span', 3)}
-            gridRows={() => gridRows(3, 'span', 4)}
-            gap='base30'
-            bgcolor='whiteHsl'
-            padding='base30'
-            zIndex={1}
+            displayDefault={() => displayDefault('flex')}
+            zIndexDefault={() => zIndexDefault(1)}
+            flexDirectionDefault={() => flexDirectionDefault('column')}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 1, span: 'span', end: 3 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 3, span: 'span', end: 4 })
+            }
+            flexGapDefault={() => flexGapDefault({ row: 3 })}
+            backgroundColorDefault={() => backgroundColorDefault('whiteHsl')}
+            paddingStaticDefault={() =>
+              paddingStaticDefault({ valueX: 3, valueY: 3 })
+            }
           >
-            <LinkDefault
-              bgcolor='grayDarkHsl'
-              textcolor='white'
-              paddingX='base20'
-              paddingY='base10'
-              bgHover='grayDarkHsl'
-            >
-              Resources
-            </LinkDefault>
+            <Link to={'/'}>
+              <TextDefault
+                alignSelfDefault={() => alignSelfDefault('flex-start')}
+                backgroundColorDefault={() =>
+                  backgroundColorDefault('grayDarkHsl')
+                }
+                textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+                paddingStaticXDefault={() =>
+                  paddingStaticXDefault({
+                    vstatic: 1,
+                    vdynamic: 2
+                  })
+                }
+                paddingStaticYDefault={() =>
+                  paddingStaticYDefault({
+                    vstatic: 1,
+                    vdynamic: 2
+                  })
+                }
+              >
+                Resources
+              </TextDefault>
+            </Link>
             <HeadingDefault
               as='h3'
-              textcolor='grayDarkHsl'
-              fontSizeStatic={-8}
-              lineHeight='base160'
+              textColorDefault={() =>
+                textColorDefault({ color: 'grayDarkHsl' })
+              }
+              paddingTopDefault={() => paddingTopDefault({ vstatic: 2 })}
+              marginTopDefault={() => marginTopDefault({ vstatic: 2 })}
+              fontLineHeightDefault={() => fontLineHeightDefault('160%')}
             >
               Cosina announces its fastest full-frame lens
             </HeadingDefault>
-            <TextDefault lineHeight='base160' fontSizeStatic={-8.5}>
+            <TextDefault
+              fontLineHeightDefault={() => fontLineHeightDefault('160%')}
+              fontSizeStaticDefault={() =>
+                fontSizeStaticDefault({ vstatic: 2 })
+              }
+              textColorDefault={() => textColorDefault({ color: 'grayRgba' })}
+            >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
               officiis quas doloribus.
             </TextDefault>
             <BoxDefault
-              display='flex'
-              jcontent='spaceBetween'
-              aitems='center'
-              paddingStaticY={() => paddingStaticY(10)}
-              marginTop={12.5}
+              justifyContentDefault={() =>
+                justifyContentDefault('space-between')
+              }
+              alignItemsDefault={() => alignItemsDefault('center')}
+              paddingTopDefault={() => paddingTopDefault({ vstatic: 2 })}
+              marginTopDefault={() => marginTopDefault({ vstatic: 2 })}
+              displayDefault={() => displayDefault('flex')}
+              borderTopDefault={() =>
+                borderTopDefault({
+                  color: 'grayHsla'
+                })
+              }
             >
-              <LinkDefault textAling='center' paddingY='base10'>
-                Read More
-              </LinkDefault>
-              <TextDefault textAling='right'>20 Oct, 2035</TextDefault>
+              <Link to={'/'}>
+                <TextDefault
+                  textAlignDefault={() => textAlignDefault('center')}
+                  paddingStaticXDefault={() =>
+                    paddingStaticXDefault({
+                      vstatic: 1,
+                      vdynamic: 2
+                    })
+                  }
+                  paddingStaticYDefault={() =>
+                    paddingStaticYDefault({
+                      vstatic: 1,
+                      vdynamic: 2
+                    })
+                  }
+                  beforeDefault={() =>
+                    beforeDefault({
+                      top: 6,
+                      left: 0.6,
+                      width: 5,
+                      height: 0.1,
+                      backgroundColor: 'grayDarkHsl',
+                      transitionProperty: 'transform',
+                      transform: 'scale',
+                      transitionValue: [0],
+                      transformOrigin: 'right'
+                    })
+                  }
+                  effectHoverBeforeDefault={() =>
+                    effectHoverBeforeDefault({
+                      transitionProperty: 'transform',
+                      transitionTimingFunction: 'ease-in-out',
+                      transform: 'scale',
+                      transformValue: [1],
+                      transformOrigin: 'left'
+                    })
+                  }
+                >
+                  Read More
+                </TextDefault>
+              </Link>
+              <TextDefault
+                textColorDefault={() => textColorDefault({ color: 'grayRgba' })}
+                textAlignDefault={() => textAlignDefault('right')}
+                fontSizeStaticDefault={() =>
+                  fontSizeStaticDefault({ vstatic: 1.5 })
+                }
+              >
+                20 Oct, 2035
+              </TextDefault>
             </BoxDefault>
           </BoxDefault>
 
           <ImgDefault
-            // isTransform
-            gridColumnsDefault={() => gridColumnsDefault(3, '', -1)}
-            gridRows={() => gridRows(1, '', -1)}
+            overflowDefault={() => overflowDefault('hidden')}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 3, span: '', end: -1 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 1, span: '', end: -1 })
+            }
             src={ImgNews}
-            effectDefault={() =>
-              effectDefault({
-                value: [0.9],
+            effectHoverDefault={() =>
+              effectHoverDefault({
+                transformValue: [0.95],
                 transform: 'scale',
-                property: 'all',
-                duration: 0.6,
-                timingFunction: 'ease-in-out',
-                delay: 0
+                transitionProperty: 'all',
+                transitionDuration: 0.6,
+                transitionTimingFunction: 'ease-in-out'
               })
             }
           />
@@ -549,128 +845,338 @@ const PhoxulPage: React.FC = () => {
 
       {/* ------------ Section Works ----------- */}
       <ContentDefault
-        isOverall
+        overallDefault={() => overallDefault()}
+        flexDirectionDefault={() => flexDirectionDefault('column')}
         as='section'
-        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
-        bgcolor='grayHsl'
+        paddingDefault={() =>
+          paddingDefault({ type: 'padding', vs: 2, vd: 12, hs: 2, hd: 12 })
+        }
+        textColorDefault={() => textColorDefault({ color: 'grayHsl' })}
+        backgroundColorDefault={() => backgroundColorDefault('blackHsl')}
       >
         <HeadingDefault
           as='h2'
-          paddingY='base20'
-          marginBottom={12.5}
-          position='relative'
-          fontSizeDynamic={() => fontSizeDynamic(1, 1.5)}
-          textcolor='whiteHsl'
+          paddingBottomDefault={() => paddingBottomDefault({ vstatic: 3 })}
+          fontSizeDynamicDefault={() =>
+            fontSizeDynamicDefault({ vstatic: 1, vdynamic: 1.5 })
+          }
+          textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
           afterDefault={() =>
             afterDefault({
               top: 8,
-              backgroundColor: 'grayLightHsl',
-              width: 5,
+              backgroundColor: 'whiteHsl',
+              width: 3.125,
               height: 0.1
             })
           }
         >
           My Works
         </HeadingDefault>
-        <ListDefault textcolor='whiteHsl' gap='base20' paddingY='base20'>
-          <LinkDefault isActive textcolor='grayLightHsl' textHover='whiteHsl'>
+        <ListDefault
+          textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+          flexGapDefault={() => flexGapDefault({ row: 2 })}
+          paddingStaticYDefault={() => paddingStaticYDefault({ vstatic: 2 })}
+        >
+          <LinkDefault
+            isActive
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+            textHoverDefault={() => textHoverDefault({ color: 'whiteHsl' })}
+          >
             All
           </LinkDefault>
-          <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+          <LinkDefault
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+            textHoverDefault={() => textHoverDefault({ color: 'whiteHsl' })}
+          >
             Pessonal
           </LinkDefault>
-          <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+          <LinkDefault
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+            textHoverDefault={() => textHoverDefault({ color: 'whiteHsl' })}
+          >
             Wedding
           </LinkDefault>
-          <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+          <LinkDefault
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+            textHoverDefault={() => textHoverDefault({ color: 'whiteHsl' })}
+          >
             Event
           </LinkDefault>
-          <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+          <LinkDefault
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+            textHoverDefault={() => textHoverDefault({ color: 'whiteHsl' })}
+          >
             Fashion
           </LinkDefault>
-          <LinkDefault textcolor='grayLightHsl' textHover='whiteHsl'>
+          <LinkDefault
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+            textHoverDefault={() => textHoverDefault({ color: 'whiteHsl' })}
+          >
             Product
           </LinkDefault>
         </ListDefault>
-        <BoxDefault gridTemplateColumns={3} gridTemplateRows={4} gap='base20'>
+        <BoxDefault
+          gridTemplateColumnsDefault={() => gridTemplateColumnsDefault(3)}
+          gridTemplateRowsDefault={() => gridTemplateRowsDefault(4)}
+          flexGapDefault={() => flexGapDefault({ row: 2, column: 2 })}
+        >
           <ImgDefault
-            position='relative'
-            gridColumnsDefault={() => gridColumnsDefault(1, '', 2)}
-            gridRows={() => gridRows(1, '', 3)}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 1, span: '', end: 2 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 1, span: '', end: 3 })
+            }
             src={ImgMyWorks1}
-            // effectDefault={() =>
-            //   effectDefault({
-            //     element: 'background-color',
-            //     value: [0.9],
-            //     transform: 'scale',
-            //     property: 'all',
-            //     duration: 2.5,
-            //     timingFunction: 'ease-in-out',
-            //     delay: 0
-            //   })
-            // }
-            // beforeDefault={() =>
-            //   beforeDefault({
-            //     width: 10,
-            //     height: 10,
-            //     backgroundColor: 'grayLightHsl'
-            //   })
-            // }
+            beforeDefault={() =>
+              beforeDefault({
+                zIndex: 1,
+                width: 6.25,
+                height: 6.25,
+                backgroundColor: 'grayRgba',
+                transformOrigin: 'unset'
+              })
+            }
+            effectHoverBeforeDefault={() =>
+              effectHoverBeforeDefault({
+                transitionDuration: 0.25,
+                transitionTimingFunction: 'ease-in-out',
+                transitionProperty: 'all',
+                transformOrigin: 'unset',
+                backgroundColor: 'transparent'
+              })
+            }
           />
           <ImgDefault
-            gridColumnsDefault={() => gridColumnsDefault(2, '', 3)}
-            gridRows={() => gridRows(1, '', 2)}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 2, span: '', end: 3 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 1, span: '', end: 2 })
+            }
             src={ImgMyWorks2}
+            beforeDefault={() =>
+              beforeDefault({
+                zIndex: 1,
+                width: 6.25,
+                height: 6.25,
+                backgroundColor: 'grayRgba',
+                transformOrigin: 'unset'
+              })
+            }
+            effectHoverBeforeDefault={() =>
+              effectHoverBeforeDefault({
+                transitionDuration: 0.25,
+                transitionTimingFunction: 'ease-in-out',
+                transitionProperty: 'all',
+                transformOrigin: 'unset',
+                backgroundColor: 'transparent'
+              })
+            }
           />
           <ImgDefault
-            gridColumnsDefault={() => gridColumnsDefault(3, '', 4)}
-            gridRows={() => gridRows(1, '', 3)}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 3, span: '', end: 4 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 1, span: '', end: 3 })
+            }
             src={ImgMyWorks3}
+            beforeDefault={() =>
+              beforeDefault({
+                zIndex: 1,
+                width: 6.25,
+                height: 6.25,
+                backgroundColor: 'grayRgba',
+                transformOrigin: 'unset'
+              })
+            }
+            effectHoverBeforeDefault={() =>
+              effectHoverBeforeDefault({
+                transitionDuration: 0.25,
+                transitionTimingFunction: 'ease-in-out',
+                transitionProperty: 'all',
+                transformOrigin: 'unset',
+                backgroundColor: 'transparent'
+              })
+            }
           />
           <ImgDefault
-            gridColumnsDefault={() => gridColumnsDefault(1, '', 2)}
-            gridRows={() => gridRows(3, '', 4)}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 1, span: '', end: 2 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 3, span: '', end: 4 })
+            }
             src={ImgMyWorks4}
+            beforeDefault={() =>
+              beforeDefault({
+                zIndex: 1,
+                width: 6.25,
+                height: 6.25,
+                backgroundColor: 'grayRgba',
+                transformOrigin: 'unset'
+              })
+            }
+            effectHoverBeforeDefault={() =>
+              effectHoverBeforeDefault({
+                transitionDuration: 0.25,
+                transitionTimingFunction: 'ease-in-out',
+                transitionProperty: 'all',
+                transformOrigin: 'unset',
+                backgroundColor: 'transparent'
+              })
+            }
           />
           <ImgDefault
-            gridColumnsDefault={() => gridColumnsDefault(2, '', 3)}
-            gridRows={() => gridRows(2, '', 4)}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 2, span: '', end: 3 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 2, span: '', end: 4 })
+            }
             src={ImgMyWorks5}
+            beforeDefault={() =>
+              beforeDefault({
+                zIndex: 1,
+                width: 6.25,
+                height: 6.25,
+                backgroundColor: 'grayRgba',
+                transformOrigin: 'unset'
+              })
+            }
+            effectHoverBeforeDefault={() =>
+              effectHoverBeforeDefault({
+                transitionDuration: 0.25,
+                transitionTimingFunction: 'ease-in-out',
+                transitionProperty: 'all',
+                transformOrigin: 'unset',
+                backgroundColor: 'transparent'
+              })
+            }
           />
           <ImgDefault
-            gridColumnsDefault={() => gridColumnsDefault(3, '', 4)}
-            gridRows={() => gridRows(3, '', 4)}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 3, span: '', end: 4 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 3, span: '', end: 4 })
+            }
             src={ImgMyWorks6}
+            beforeDefault={() =>
+              beforeDefault({
+                zIndex: 1,
+                width: 6.25,
+                height: 6.25,
+                backgroundColor: 'grayRgba',
+                transformOrigin: 'unset'
+              })
+            }
+            effectHoverBeforeDefault={() =>
+              effectHoverBeforeDefault({
+                transitionDuration: 0.25,
+                transitionTimingFunction: 'ease-in-out',
+                transitionProperty: 'all',
+                transformOrigin: 'unset',
+                backgroundColor: 'transparent'
+              })
+            }
           />
           <ImgDefault
-            gridColumnsDefault={() => gridColumnsDefault(1, '', 2)}
-            gridRows={() => gridRows(4, '', 5)}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 1, span: '', end: 2 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 4, span: '', end: 5 })
+            }
             src={ImgMyWorks7}
+            beforeDefault={() =>
+              beforeDefault({
+                zIndex: 1,
+                width: 6.25,
+                height: 6.25,
+                backgroundColor: 'grayRgba',
+                transformOrigin: 'unset'
+              })
+            }
+            effectHoverBeforeDefault={() =>
+              effectHoverBeforeDefault({
+                transitionDuration: 0.25,
+                transitionTimingFunction: 'ease-in-out',
+                transitionProperty: 'all',
+                transformOrigin: 'unset',
+                backgroundColor: 'transparent'
+              })
+            }
           />
           <ImgDefault
-            gridColumnsDefault={() => gridColumnsDefault(2, '', 3)}
-            gridRows={() => gridRows(4, '', 5)}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 2, span: '', end: 3 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 4, span: '', end: 5 })
+            }
             src={ImgMyWorks8}
+            beforeDefault={() =>
+              beforeDefault({
+                zIndex: 1,
+                width: 6.25,
+                height: 6.25,
+                backgroundColor: 'grayRgba',
+                transformOrigin: 'unset'
+              })
+            }
+            effectHoverBeforeDefault={() =>
+              effectHoverBeforeDefault({
+                transitionDuration: 0.25,
+                transitionTimingFunction: 'ease-in-out',
+                transitionProperty: 'all',
+                transformOrigin: 'unset',
+                backgroundColor: 'transparent'
+              })
+            }
           />
           <ImgDefault
-            gridColumnsDefault={() => gridColumnsDefault(3, '', 4)}
-            gridRows={() => gridRows(4, '', 5)}
+            gridColumnDefault={() =>
+              gridColumnDefault({ start: 3, span: '', end: 4 })
+            }
+            gridRowDefault={() =>
+              gridRowDefault({ start: 4, span: '', end: 5 })
+            }
             src={ImgMyWorks9}
+            beforeDefault={() =>
+              beforeDefault({
+                zIndex: 1,
+                width: 6.25,
+                height: 6.25,
+                backgroundColor: 'grayRgba',
+                transformOrigin: 'unset'
+              })
+            }
+            effectHoverBeforeDefault={() =>
+              effectHoverBeforeDefault({
+                transitionDuration: 0.25,
+                transitionTimingFunction: 'ease-in-out',
+                transitionProperty: 'all',
+                transformOrigin: 'unset',
+                backgroundColor: 'transparent'
+              })
+            }
           />
         </BoxDefault>
       </ContentDefault>
 
       {/* ------------ Section Profissional ----------- */}
       <ContentDefault
-        isOverall
+        overallDefault={() => overallDefault()}
         as='section'
-        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
-        bgcolor='grayHsl'
-        display='flex'
-        jcontent='spaceBetween'
-        aitems='flexStart'
-        gap='base20'
-        position='relative'
+        paddingDefault={() =>
+          paddingDefault({ type: 'padding', vs: 2, vd: 12, hs: 2, hd: 12 })
+        }
+        textColorDefault={() => textColorDefault({ color: 'grayHsl' })}
+        justifyContentDefault={() => justifyContentDefault('space-between')}
+        alignItemsDefault={() => alignItemsDefault('flex-start')}
+        flexGapDefault={() => flexGapDefault({ row: 2 })}
         backgroundImgDefault={() =>
           backgroundImgDefault({
             position: 'relative',
@@ -683,66 +1189,118 @@ const PhoxulPage: React.FC = () => {
         }
       >
         <BoxDefault
-          display='flex'
-          direction='column'
-          gap='base20'
-          flexBasis='base50p'
+          displayDefault={() => displayDefault('flex')}
+          flexDirectionDefault={() => flexDirectionDefault('column')}
+          flexGapDefault={() => flexGapDefault({ row: 2 })}
+          flexBasisDefault={() => flexBasisDefault(5)}
         >
           <HeadingDefault
             as='h2'
-            textcolor='title'
-            fontSizeStatic={2.5}
-            lineHeight='base160'
+            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+            fontSizeStaticDefault={() =>
+              fontSizeStaticDefault({ vstatic: 2.5 })
+            }
+            fontLineHeightDefault={() => fontLineHeightDefault('160%')}
           >
             Need help with professional photography? Let's work together!
           </HeadingDefault>
-          <LinkDefault
-            bgcolor='transparent'
-            textcolor='whiteHsl'
-            bgHover='whiteHsl'
-            textHover='grayDarkHsl'
-            paddingStatic={() => paddingStatic(1, 2.5)}
-            isBorderDefault
-            borderWidth={1}
-            borderStyle='solid'
-            borderColor='whiteHsl'
-            radius='base30'
-          >
-            Contact Me
-          </LinkDefault>
+          <Link to={'/'}>
+            <TextDefault
+              textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
+              textHoverDefault={() => textHoverDefault({ color: 'whiteHsl' })}
+              widthStaticDefault={() =>
+                widthStaticDefault({ vw: 'max-content' })
+              }
+              paddingStaticXDefault={() =>
+                paddingStaticXDefault({ vstatic: 3 })
+              }
+              paddingStaticYDefault={() =>
+                paddingStaticYDefault({ vstatic: 1.5 })
+              }
+              borderDefault={() =>
+                borderDefault({
+                  type: 'border',
+                  width: 1,
+                  unit: 'px',
+                  style: 'solid',
+                  color: 'whiteHsl'
+                })
+              }
+              borderRadiusDefault={() =>
+                borderRadiusDefault({ type: 'radius', width: 1, unit: 'rem' })
+              }
+              effectHoverDefault={() => effectHoverDefault({})}
+            >
+              Contact Me
+            </TextDefault>
+          </Link>
         </BoxDefault>
         <BoxDefault
-          gap='base40'
-          bgcolor='whiteHsl'
-          flexBasis='base50p'
-          display='flex'
-          aitems='center'
-          direction='column'
-          paddingDynamic={() => paddingDynamic(1, 4, 1, 4)}
+          displayDefault={() => displayDefault('flex')}
+          flexGapDefault={() => flexGapDefault({ row: 4 })}
+          backgroundColorDefault={() =>
+            backgroundImgDefault({
+              position: 'relative',
+              width: 10,
+              height: 10,
+              backgroundColor: 'whiteHsl'
+            })
+          }
+          flexDirectionDefault={() => flexDirectionDefault('column')}
+          flexBasisDefault={() => flexBasisDefault(4)}
+          paddingStaticDefault={() =>
+            paddingStaticDefault({ valueX: 4, valueY: 4 })
+          }
         >
           <TextDefault
-            paddingLeft={3}
-            borderDefaultLeft={() =>
-              borderDefaultLeft(1, 'solid', 'grayDarkHsl')
+            fontLineHeightDefault={() => fontLineHeightDefault('160%')}
+            textColorDefault={() => textColorDefault({ color: 'grayRgba' })}
+            paddingDefault={() =>
+              paddingDefault({ type: 'left', hs: 3, hd: 3 })
+            }
+            fontSizeStaticDefault={() =>
+              fontSizeStaticDefault({ vstatic: 1.5 })
+            }
+            borderLeftDefault={() =>
+              borderLeftDefault({
+                color: 'grayRgba'
+              })
             }
           >
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci,
             dicta error. Eum illum amet ducimus eius ex odio animi consectetur
-            ad maxime. Placeat, eum iure.
+            ad maxime. Placeat, eum iure.a
           </TextDefault>
-          <BoxDefault display='flex' aitems='center' gap='base20'>
+          <BoxDefault
+            displayDefault={() => displayDefault('flex')}
+            alignItemsDefault={() => alignItemsDefault('center')}
+            flexGapDefault={() => flexGapDefault({ column: 2 })}
+          >
             <ImgDefault
+              widthStaticDefault={() => widthStaticDefault({ rem: 10 })}
               src={ImgContact}
-              borderRadius={{
-                valueStatic: 5,
-                opeation: '*',
-                valueDinamic: 10,
-                unit: '%'
-              }}
+              borderRadiusDefault={() =>
+                borderRadiusDefault({ type: 'radius', width: 5, unit: '%' })
+              }
             />
-            <BoxDefault>
-              <TextDefault>James Brown</TextDefault>
-              <TextDefault>CEO, ColorImage</TextDefault>
+            <BoxDefault
+              displayDefault={() => displayDefault('flex')}
+              flexDirectionDefault={() => flexDirectionDefault('column')}
+            >
+              <TextDefault
+                fontLineHeightDefault={() => fontLineHeightDefault('160%')}
+              >
+                James Brown
+              </TextDefault>
+              <TextDefault
+                fontSizeStaticDefault={() =>
+                  fontSizeStaticDefault({ vstatic: 1 })
+                }
+                fontLineHeightDefault={() => fontLineHeightDefault('160%')}
+                textColorDefault={() => textColorDefault({ color: 'grayRgba' })}
+              >
+                CEO, ColorImage
+              </TextDefault>
             </BoxDefault>
           </BoxDefault>
         </BoxDefault>
@@ -750,99 +1308,23 @@ const PhoxulPage: React.FC = () => {
 
       {/* ------------ Section Clients ----------- */}
       <ContentDefault
-        isOverall
         as='section'
-        paddingDynamicX={() => paddingDynamicX(2, 12)}
-        display='flex'
-        bgcolor='grayHsl'
+        overallDefault={() => overallDefault()}
+        backgroundColorDefault={() => backgroundColorDefault('blackHsl')}
+        paddingDynamicXDefault={() =>
+          paddingDynamicXDefault({ vstatic: 2, vdynamic: 12, unit: 'vw' })
+        }
+        textColorDefault={() => textColorDefault({ color: 'grayHsl' })}
+        heightDynamicDefault={() =>
+          heightDynamicDefault({ value: 0.5, unit: 'vw' })
+        }
       >
         <ImgDefault src={ImgClient1} />
         <ImgDefault src={ImgClient2} />
         <ImgDefault src={ImgClient3} />
         <ImgDefault src={ImgClient4} />
       </ContentDefault>
-
-      {/* ------------ Section Footer ----------- */}
-      <ContentDefault
-        isOverall
-        as='footer'
-        isImgBackgroundGradient
-        imgBgUrl={ImgFooter}
-        imgBgSize='cover'
-        imgBgcolor='grayHsl'
-        imgBgPosition='center'
-        paddingDynamic={() => paddingDynamic(2, 12, 2, 12)}
-      >
-        <BoxDefault>
-          <BoxDefault>
-            <HeadingDefault as='h2' textcolor='title'>
-              Sign up to get latest update
-            </HeadingDefault>
-            <TextDefault>
-              Sign up for our monthly newsletter for the latest news & articles
-            </TextDefault>
-          </BoxDefault>
-          <BoxDefault as='form'>
-            <InputDefault placeholder='Enter Your Email' />
-            <ButtonDefault>Subscribe Now</ButtonDefault>
-          </BoxDefault>
-        </BoxDefault>
-        <BoxDefault>
-          <BoxDefault>
-            <BrandDefault text='Phoxul' />
-            <TextDefault>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptate velit magnam doloribus reiciendis
-            </TextDefault>
-          </BoxDefault>
-          <BoxDefault>
-            <HeadingDefault as='h3' textcolor='title'>
-              Quick Links
-            </HeadingDefault>
-            <ListDefault>
-              <li>About</li>
-              <li>Services</li>
-              <li>Works</li>
-              <li>Blog</li>
-            </ListDefault>
-          </BoxDefault>
-          <BoxDefault>
-            <HeadingDefault as='h3' textcolor='title'>
-              Contact
-            </HeadingDefault>
-            <ListDefault>
-              <li>
-                <FaPhone /> +93 123 456 7890
-              </li>
-              <li>
-                <FaEnvelope /> el@el.cool
-              </li>
-              <li>
-                <FaAddressCard /> 177A Bleecker Street, NYC, USA
-              </li>
-            </ListDefault>
-          </BoxDefault>
-          <BoxDefault>
-            <TextDefault>Muslim Helalee. All Rights Reserved</TextDefault>
-            <ListDefault>
-              <li>
-                <FaFacebook />
-              </li>
-              <li>
-                <FaTwitter />
-              </li>
-              <li>
-                <FaLinkedin />
-              </li>
-              <li>
-                <FaDribbble />
-              </li>
-            </ListDefault>
-          </BoxDefault>
-        </BoxDefault>
-      </ContentDefault>
-    </ContainerDefault>
+    </LayoutPhoxul>
   );
 };
-
 export { PhoxulPage };

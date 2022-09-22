@@ -1,5 +1,9 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 import { TypeThemeNumberDefault } from '../ThemeType';
+import {
+  TypeColorValueDefault,
+  TypeValueIndexPropsDefault
+} from './colorDefault';
 
 export type TypeTansFormDefault = {
   /* Function values */
@@ -50,7 +54,23 @@ export type TypeTansFormDefault = {
 };
 
 type TypeEffectDefault = {
-  value?: TypeThemeNumberDefault[];
+  transformValue?: TypeThemeNumberDefault[];
+  tranHover?: TypeThemeNumberDefault[];
+  tranValue?: TypeThemeNumberDefault[];
+  transformOrigin?:
+    | 'top'
+    | 'right'
+    | 'bottom'
+    | 'left'
+    | 'center'
+    | 'initial'
+    | 'unset'
+    | 'unset'
+    | 'revert'
+    | 'inherit';
+
+  color?: TypeValueIndexPropsDefault;
+  backgroundColor?: TypeValueIndexPropsDefault;
   unit?: 'px' | 'rem' | '%' | 'vw' | 'vh';
   transform?:
     | 'scale'
@@ -78,13 +98,13 @@ type TypeEffectDefault = {
     | 'skew'
     | 'skewX'
     | 'skewY';
-  property?:
+  transitionProperty?:
     | 'none'
     | 'all'
     | 'height'
     | 'color'
     | 'background'
-    | 'img'
+    | 'transform'
     | 'inherit'
     | 'initial'
     | 'revert'
@@ -92,20 +112,21 @@ type TypeEffectDefault = {
     | 'unset';
   element?:
     | 'none'
-    | 'all'
-    | 'height'
+    | 'a'
+    | 'img'
+    | 'p'
     | 'color'
     | 'background-color'
     | 'background'
-    | 'img'
     | 'inherit'
     | 'initial'
     | 'revert'
     | 'revert-layer'
     | 'unset';
-  duration?: TypeThemeNumberDefault;
+  isElement?: boolean;
+  transitionDuration?: TypeThemeNumberDefault;
   secondsDuration?: 's' | 'sm';
-  timingFunction?:
+  transitionTimingFunction?:
     | 'ease'
     | 'ease-in'
     | 'ease-out'
@@ -118,59 +139,178 @@ type TypeEffectDefault = {
     | 'revert'
     | 'revert-layer'
     | 'unset';
-  delay?: TypeThemeNumberDefault;
+  transitionDelay?: TypeThemeNumberDefault;
   secondsDelay?: 's' | 'sm';
 };
 
+/*
+  effectDefault?: () => FlattenSimpleInterpolation;
+  effectHoverDefault?: () => FlattenSimpleInterpolation;
+  effectHoverbeforeDefault?: () => FlattenSimpleInterpolation;
+  effectHoverAfterDefault?: () => FlattenSimpleInterpolation;
+
+  effectDefault={props.effectDefault}
+  effectHoverDefault={props.effectHoverDefault}
+  effectHoverbeforeDefault={props.effectHoverbeforeDefault}
+  effectHoverAfterDefault={props.effectHoverAfterDefault}
+
+  ${props.effectDefault && props.effectDefault()}
+  ${props.effectHoverDefault && props.effectHoverDefault()}
+  ${props.effectHoverbeforeDefault && props.effectHoverbeforeDefault()}
+  ${props.effectHoverAfterDefault && props.effectHoverAfterDefault()}
+*/
+
 export const effectDefault = ({
   unit,
-  value,
-  transform,
+  transformValue = [0],
+  transform = 'scale',
   element,
-  timingFunction,
-  property,
+  transitionTimingFunction = 'ease-in-out',
+  transitionProperty,
   secondsDuration = 's',
-  duration,
+  transitionDuration = 0.5,
   secondsDelay = 's',
-  delay
+  transitionDelay
 }: TypeEffectDefault) => css`
   /* transition: all 0.6s ease-in-out; */
   /* transition: all 0.25s ease-in-out; */
   /* transition: <property> <duration> <timing-function> <delay>; */
-
-  transition: ${property} ${duration}${secondsDuration || secondsDuration} ${timingFunction}
-    ${delay}${secondsDelay || secondsDelay};
+  transform: ${transform}(${transformValue}${unit && unit});
+  transition: ${transitionProperty} ${transitionDuration}${secondsDuration ||
+    secondsDuration} ${transitionTimingFunction} ${transitionDuration}${secondsDelay ||
+    secondsDelay};
   &:hover {
-    transform: ${transform}(${value}${unit && unit});
+    transform: ${transform}(${transformValue}${unit && unit});
     cursor: pointer;
+    /* background-color: red; */
     /* transform: scale(0.95); */
     /* transform: translateX(-50%); */
   }
+`;
 
-  &::before {
-    transform: ${transform}(${value}${unit && unit});
-    cursor: pointer;
+export const effectHoverDefault = ({
+  unit,
+  transformValue,
+  color = 'blackHsl',
+  backgroundColor = 'whiteHsl',
+  transform,
+  element,
+  isElement,
+  transitionTimingFunction = 'ease-in-out',
+  transitionProperty = 'all',
+  secondsDuration = 's',
+  transitionDuration = 0.6,
+  transformOrigin,
+  secondsDelay,
+  transitionDelay
+}: TypeEffectDefault) => css`
+  /* transition: all 0.6s ease-in-out; */
+  /* transition: all 0.25s ease-in-out; */
+  /* transition: <property> <duration> <timing-function> <delay>; */
+  transform: ${transform && transform}
+    (${transformValue && transformValue}${unit && unit});
+  transition: ${transitionProperty && transitionProperty}
+    ${transitionDuration && transitionDuration}${secondsDuration ||
+    secondsDuration} ${transitionTimingFunction} ${transitionDelay}${secondsDelay ||
+    secondsDelay};
+  transform-origin: ${transformOrigin && transformOrigin};
+  & ${element}:hover {
+    transform: ${transform}(${transformValue}${unit && unit});
+    transition: ${transitionProperty} ${transitionDuration}${secondsDuration ||
+      secondsDuration} ${transitionTimingFunction} ${transitionDelay}${secondsDelay ||
+      secondsDelay};
+    transform-origin: ${transformOrigin && transformOrigin};
+    background-color: ${backgroundColor &&
+    TypeColorValueDefault[backgroundColor]};
+    color: ${color && TypeColorValueDefault[color]};
+    /* cursor: pointer; */
     /* transform: scale(0.95); */
     /* transform: translateX(-50%); */
   }
+  ${!element &&
+  css`
+    &:hover {
+      transform: ${transform}(${transformValue}${unit && unit});
+      transition: ${transitionProperty} ${transitionDuration}${secondsDuration ||
+        secondsDuration} ${transitionTimingFunction} ${transitionDelay}${secondsDelay ||
+        secondsDelay};
+      transform-origin: ${transformOrigin && transformOrigin};
+      background-color: ${backgroundColor &&
+      TypeColorValueDefault[backgroundColor]};
+      color: ${color && TypeColorValueDefault[color]};
+      /* cursor: pointer; */
+      /* transform: scale(0.95); */
+      /* transform: translateX(-50%); */
+    }
+  `}
+`;
 
+export const effectHoverBeforeDefault = ({
+  unit,
+  transformValue,
+  transformOrigin,
+  color = 'blackHsl',
+  backgroundColor,
+  transform,
+  transitionTimingFunction = 'ease-in-out',
+  transitionProperty,
+  secondsDuration = 's',
+  transitionDuration,
+  secondsDelay,
+  transitionDelay
+}: TypeEffectDefault) => css`
   &:hover::before {
-    transform: ${transform}(${value}${unit && unit});
+    transform: ${transform}(${transformValue}${unit && unit});
+    transition: ${transitionProperty} ${transitionDuration}${secondsDuration ||
+      secondsDuration} ${transitionTimingFunction} ${transitionDelay}${secondsDelay ||
+      secondsDelay};
+    transform-origin: ${transformOrigin && transformOrigin};
+    background-color: ${backgroundColor &&
+    TypeColorValueDefault[backgroundColor]};
+    color: ${color && TypeColorValueDefault[color]};
     cursor: pointer;
-    /* transform: scale(0.95); */
-    /*
-     transform: translateX(-50%); */
-  }
-  &::after {
-    transform: ${transform}(${value}${unit && unit});
-    cursor: pointer;
+
+    /* transform: ${transform && transform}
+      (${transformValue && transformValue}${unit && unit}); */
+    /* transform: scale(1);
+    transform-origin: left; */
+    /* transition: transform 0.5s ease-in-out; */
     /* transform: scale(0.95); */
     /* transform: translateX(-50%); */
   }
+`;
 
+export const effectHoverAfterDefault = ({
+  unit,
+  transformValue,
+  transformOrigin,
+  color = 'blackHsl',
+  backgroundColor = 'grayDarkHsl',
+  transform,
+  transitionTimingFunction = 'ease-in-out',
+  transitionProperty,
+  secondsDuration = 's',
+  transitionDuration,
+  secondsDelay,
+  transitionDelay
+}: TypeEffectDefault) => css`
   &:hover::after {
-    transform: ${transform}(${value}${unit && unit});
+    background-color: red;
+    transform: ${transform}(${transformValue}${unit && unit});
+    transition: ${transitionProperty} ${transitionDuration}${secondsDuration ||
+      secondsDuration} ${transitionTimingFunction} ${transitionDelay}${secondsDelay ||
+      secondsDelay};
+    transform-origin: ${transformOrigin && transformOrigin};
+    background-color: ${backgroundColor &&
+    TypeColorValueDefault[backgroundColor]};
+    color: ${color && TypeColorValueDefault[color]};
     cursor: pointer;
+
+    /* transform: ${transform && transform}
+      (${transformValue && transformValue}${unit && unit}); */
+    /* transform: scale(1);
+    transform-origin: left; */
+    /* transition: transform 0.5s ease-in-out; */
     /* transform: scale(0.95); */
     /* transform: translateX(-50%); */
   }
