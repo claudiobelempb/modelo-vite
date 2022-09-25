@@ -8,7 +8,7 @@ type TypeWidthDefault = {
 };
 
 export const widthStaticDefault = ({ rem }: TypeWidthDefault) => css`
-  width: ${rem}rem;
+  width: calc(16 * ${rem}rem);
 `;
 
 export const widthDynamicDefault = ({ vw, unit }: TypeWidthDefault) => css`

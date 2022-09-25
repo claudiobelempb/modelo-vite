@@ -3,7 +3,7 @@ import { TypeThemeNumberDefault } from '../ThemeType';
 
 export const TypeColorValueDefault = {
   none: 'none',
-  grayHsla: 'hsla(0, 0%, 11%, 0.4)',
+  grayHsla: 'hsla(0, 0%, 11%, 0.9)',
   grayHsl: 'hsl(0, 0%, 11%)',
   grayDarkHsl: 'hsl(0, 0%, 17%)',
   grayLightHsl: 'hsl(0, 1%, 50%)',

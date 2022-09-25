@@ -2,11 +2,7 @@ import {
   backgroundColorDefault,
   textColorDefault
 } from '@assets/styles/themes/functions/colorDefault';
-import { effectHoverDefault } from '@assets/styles/themes/functions/effectDefaults';
-import {
-  flexGapDefault,
-  justifyContentDefault
-} from '@assets/styles/themes/functions/flexDefault';
+import { alignSelfDefault } from '@assets/styles/themes/functions/flexDefault';
 import { fontSizeStaticDefault } from '@assets/styles/themes/functions/fontDefault';
 import { overallDefault } from '@assets/styles/themes/functions/gridDefault';
 import {
@@ -17,10 +13,23 @@ import { displayDefault } from '@assets/styles/themes/functions/utilsDefault';
 import { BoxDefault } from '@componets/common/BoxDefault';
 import { ContentDefault } from '@componets/common/ContentDefault';
 import { HeadingDefault } from '@componets/common/HeadingDefault';
-import { TextDefault } from '@componets/common/TextDefault';
-import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
+
+import { Link } from 'react-router-dom';
+import { ButtonHumburger } from '../ButtonHumburger';
+import { NavigationDesktopDefault } from '../NavigationDesktopDefault/';
+import { NavigationMobileDefault } from '../NavigationMobileDefault';
 
 const ProxulHeader: React.FC = () => {
+  const [isOpenHumburger, setIsOpenHumburger] = useState<boolean>(false);
+  const [isOpenNavigation, setIsOpenNavigation] = useState<boolean>(false);
+
+  const handleOpenHumburger = () => {
+    console.log('CLick');
+    setIsOpenHumburger(!isOpenHumburger);
+    setIsOpenNavigation(!isOpenNavigation);
+  };
+
   return (
     <ContentDefault
       as='header'
@@ -34,7 +43,10 @@ const ProxulHeader: React.FC = () => {
       }
       fontSizeStaticDefault={() => fontSizeStaticDefault({ vstatic: 2 })}
     >
-      <BoxDefault>
+      <BoxDefault
+        alignSelfDefault={() => alignSelfDefault('flex-start')}
+        displayDefault={() => displayDefault('flex')}
+      >
         <Link to={'/'}>
           <HeadingDefault
             fontSizeStaticDefault={() => fontSizeStaticDefault({ vstatic: 2 })}
@@ -45,86 +57,12 @@ const ProxulHeader: React.FC = () => {
           </HeadingDefault>
         </Link>
       </BoxDefault>
-      <BoxDefault
-        as='ul'
-        displayDefault={() => displayDefault('flex')}
-        justifyContentDefault={() => justifyContentDefault('flex-end')}
-        flexGapDefault={() => flexGapDefault({ column: 3 })}
-      >
-        <NavLink to={'/'}>
-          <TextDefault
-            textColorDefault={() => textColorDefault({ color: 'whiteHsl' })}
-          >
-            Home
-          </TextDefault>
-        </NavLink>
-
-        <NavLink to={'/'}>
-          <TextDefault
-            effectHoverDefault={() =>
-              effectHoverDefault({
-                color: 'whiteHsl',
-                backgroundColor: 'transparent'
-              })
-            }
-            textColorDefault={() => textColorDefault({ color: 'grayLightHsl' })}
-          >
-            Services
-          </TextDefault>
-        </NavLink>
-        <NavLink to={'/'}>
-          <TextDefault
-            effectHoverDefault={() =>
-              effectHoverDefault({
-                color: 'whiteHsl',
-                backgroundColor: 'transparent'
-              })
-            }
-            textColorDefault={() => textColorDefault({ color: 'grayLightHsl' })}
-          >
-            Works
-          </TextDefault>
-        </NavLink>
-        <NavLink to={'/'}>
-          <TextDefault
-            effectHoverDefault={() =>
-              effectHoverDefault({
-                color: 'whiteHsl',
-                backgroundColor: 'transparent'
-              })
-            }
-            textColorDefault={() => textColorDefault({ color: 'grayLightHsl' })}
-          >
-            Gallery
-          </TextDefault>
-        </NavLink>
-        <NavLink to={'/'}>
-          <TextDefault
-            effectHoverDefault={() =>
-              effectHoverDefault({
-                color: 'whiteHsl',
-                backgroundColor: 'transparent'
-              })
-            }
-            textColorDefault={() => textColorDefault({ color: 'grayLightHsl' })}
-          >
-            Blog
-          </TextDefault>
-        </NavLink>
-        <NavLink to={'/'}>
-          <TextDefault
-            effectHoverDefault={() =>
-              effectHoverDefault({
-                color: 'whiteHsl',
-                backgroundColor: 'transparent'
-              })
-            }
-            textColorDefault={() => textColorDefault({ color: 'grayLightHsl' })}
-          >
-            Contact
-          </TextDefault>
-        </NavLink>
-      </BoxDefault>
+      <NavigationDesktopDefault />
+      <NavigationMobileDefault isDisplay={isOpenHumburger} />
+      <ButtonHumburger
+        isOpenHumburger={isOpenHumburger}
+        handleOpenHumburger={handleOpenHumburger}
+      />
     </ContentDefault>
   );
 };

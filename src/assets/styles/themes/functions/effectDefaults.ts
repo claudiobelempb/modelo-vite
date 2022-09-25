@@ -14,7 +14,7 @@ export type TypeTansFormDefault = {
     valueString: string
   ) => FlattenSimpleInterpolation;
   rotate?: (
-    value: TypeThemeNumberDefault | string
+    value?: TypeThemeNumberDefault | string
   ) => FlattenSimpleInterpolation;
   rotate3d?: (...value: TypeThemeNumberDefault[]) => FlattenSimpleInterpolation;
   rotateX?: (value: TypeThemeNumberDefault) => FlattenSimpleInterpolation;
@@ -55,8 +55,11 @@ export type TypeTansFormDefault = {
 
 type TypeEffectDefault = {
   transformValue?: TypeThemeNumberDefault[];
+  translateValueX?: TypeThemeNumberDefault[];
+  translateValueY?: TypeThemeNumberDefault[];
   tranHover?: TypeThemeNumberDefault[];
   tranValue?: TypeThemeNumberDefault[];
+  transformArray?: TypeTansFormDefault;
   transformOrigin?:
     | 'top'
     | 'right'
@@ -71,8 +74,60 @@ type TypeEffectDefault = {
 
   color?: TypeValueIndexPropsDefault;
   backgroundColor?: TypeValueIndexPropsDefault;
-  unit?: 'px' | 'rem' | '%' | 'vw' | 'vh';
+  unit?: 'px' | 'rem' | '%' | 'vw' | 'vh' | 'deg';
   transform?:
+    | 'scale'
+    | 'translateX'
+    | 'none'
+    | 'matrix'
+    | 'matrix3d'
+    | 'perspective'
+    | 'scale'
+    | 'rotate'
+    | 'rotate3d'
+    | 'rotateX'
+    | 'rotateY'
+    | 'rotateZ'
+    | 'translate'
+    | 'translate3d'
+    | 'translateX'
+    | 'translateY'
+    | 'translateZ'
+    | 'scale'
+    | 'scale3d'
+    | 'scaleX'
+    | 'scaleY'
+    | 'scaleZ'
+    | 'skew'
+    | 'skewX'
+    | 'skewY';
+  translateX?:
+    | 'scale'
+    | 'translateX'
+    | 'none'
+    | 'matrix'
+    | 'matrix3d'
+    | 'perspective'
+    | 'scale'
+    | 'rotate'
+    | 'rotate3d'
+    | 'rotateX'
+    | 'rotateY'
+    | 'rotateZ'
+    | 'translate'
+    | 'translate3d'
+    | 'translateX'
+    | 'translateY'
+    | 'translateZ'
+    | 'scale'
+    | 'scale3d'
+    | 'scaleX'
+    | 'scaleY'
+    | 'scaleZ'
+    | 'skew'
+    | 'skewX'
+    | 'skewY';
+  translateY?:
     | 'scale'
     | 'translateX'
     | 'none'
@@ -163,25 +218,32 @@ type TypeEffectDefault = {
 export const effectDefault = ({
   unit,
   transformValue = [0],
-  transform = 'scale',
+  transformArray,
+  transform,
   element,
   transitionTimingFunction = 'ease-in-out',
   transitionProperty,
   secondsDuration = 's',
   transitionDuration = 0.5,
   secondsDelay = 's',
-  transitionDelay
+  transitionDelay,
+  translateValueX,
+  translateX = 'translateX',
+  translateValueY,
+  translateY = 'translateY'
 }: TypeEffectDefault) => css`
   /* transition: all 0.6s ease-in-out; */
   /* transition: all 0.25s ease-in-out; */
   /* transition: <property> <duration> <timing-function> <delay>; */
-  transform: ${transform}(${transformValue}${unit && unit});
+  transform: ${transform && transform}(${transformValue}${unit && unit})
+    ${translateX && translateX}(${translateValueX + 'rem'})
+    ${translateY && translateY}(${translateValueY + 'rem'});
   transition: ${transitionProperty} ${transitionDuration}${secondsDuration ||
     secondsDuration} ${transitionTimingFunction} ${transitionDuration}${secondsDelay ||
     secondsDelay};
   &:hover {
-    transform: ${transform}(${transformValue}${unit && unit});
-    cursor: pointer;
+    /* transform: ${transform}(${transformValue}${unit && unit}); */
+    /* cursor: pointer; */
     /* background-color: red; */
     /* transform: scale(0.95); */
     /* transform: translateX(-50%); */
@@ -314,6 +376,22 @@ export const effectHoverAfterDefault = ({
     /* transform: scale(0.95); */
     /* transform: translateX(-50%); */
   }
+`;
+
+export const effectRotateDefault = (
+  rotate?: TypeThemeNumberDefault | string
+) => css`
+  transform: rotate(${rotate}deg);
+`;
+export const effectTranslateXDefault = (
+  translateX?: TypeThemeNumberDefault | string
+) => css`
+  transform: translateX(${translateX}rem);
+`;
+export const effectTranslateYDefault = (
+  translateY?: TypeThemeNumberDefault | string
+) => css`
+  transform: translateY(${translateY}rem);
 `;
 
 /* Keyword values

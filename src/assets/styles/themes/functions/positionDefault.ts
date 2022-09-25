@@ -25,12 +25,12 @@ export type typePositionDefault = {
 export const positionDefault = ({
   position = 'absolute',
   zIndex = 0,
-  top = 0,
-  bottom = 0,
-  left = 0,
-  right = 0,
-  width = 0,
-  height = 0,
+  top,
+  bottom,
+  left,
+  right,
+  width,
+  height,
   backgroundColor = 'background',
   backgroundImg = '',
   clipPath = false,
@@ -39,15 +39,15 @@ export const positionDefault = ({
   translate = 0
 }: typePositionDefault) => css`
   & {
-    position: ${position};
-    z-index: ${zIndex};
-    top: calc(10 * ${top}%);
-    bottom: calc(10 * ${bottom}%);
-    left: calc(10 * ${left}%);
-    right: calc(10 * ${right}%);
-    width: calc(10 * ${width}%);
-    height: calc(10 * ${height}%);
-    background-image: url(${backgroundImg});
+    position: ${position && position};
+    z-index: ${zIndex && zIndex};
+    top: calc(10 * ${top && top}%);
+    bottom: calc(10 * ${bottom && bottom}%);
+    left: calc(10 * ${left && left}%);
+    right: calc(10 * ${right && right}%);
+    width: calc(10 * ${width && width}%);
+    height: calc(10 * ${height && height}%);
+    background-image: url(${backgroundImg && backgroundImg});
     background-color: ${THEME_COLORS_DEFAULT[backgroundColor]};
     ${clipPath &&
     css`

@@ -188,6 +188,8 @@ export type TypeDefault = {
   alignItemsDefault?: () => FlattenSimpleInterpolation;
   flexBasisDefault?: () => FlattenSimpleInterpolation;
   flexGrowDefault?: () => FlattenSimpleInterpolation;
+  flexWrapDefault?: () => FlattenSimpleInterpolation;
+
   backgroundColorDefault?: () => FlattenSimpleInterpolation;
   textColorDefault?: () => FlattenSimpleInterpolation;
   textHoverDefault?: () => FlattenSimpleInterpolation;
@@ -200,4 +202,5 @@ export type TypeDefault = {
   boxShadowDefault?: () => FlattenSimpleInterpolation;
   displayDefault?: () => FlattenSimpleInterpolation;
   overflowDefault?: () => FlattenSimpleInterpolation;
+  visibilityDefault?: () => FlattenSimpleInterpolation;
 };

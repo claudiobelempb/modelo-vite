@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 export const BoxDefaultStyle = styled.div<TypeDefault>`
   ${({ theme, ...props }) => css`
     width: 100%;
+    /* z-index: -30; */
     /* height: 100%; */
     position: relative;
     /* background-color: red; */
@@ -54,7 +55,11 @@ export const BoxDefaultStyle = styled.div<TypeDefault>`
     ${props.widthStaticDefault && props.widthStaticDefault()}
     ${props.widthDynamicDefault && props.widthDynamicDefault()}
     /*AFTER DEFAULT  */
-    ${props.afterDefault && props.afterDefault()};
+     /*EFFECT DEFAULT */
+     ${props.effectDefault && props.effectDefault()}
+    ${props.effectHoverDefault && props.effectHoverDefault()}
+    ${props.effectHoverBeforeDefault && props.effectHoverBeforeDefault()}
+    ${props.effectHoverAfterDefault && props.effectHoverAfterDefault()}
     /*BEFORE DEFAULT  */
     ${props.beforeDefault && props.beforeDefault()};
     /*FONT DEFAULT  */
@@ -89,23 +94,28 @@ export const BoxDefaultStyle = styled.div<TypeDefault>`
     ${props.parDefault && props.parDefault()}
     ${props.boxShadowDefault && props.boxShadowDefault()}
     ${props.displayDefault && props.displayDefault()}
+    ${props.positionDefault && props.positionDefault()}
+    ${props.visibilityDefault && props.visibilityDefault()}
 
-    ${theme.media.xsmall &&
-    css`
-      @media ${theme.media.xsmall} {
-      }
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) {
+      /* grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); */
+    }
 
-      @media ${theme.media.small} {
-      }
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+    }
 
-      @media ${theme.media.medium} {
-      }
-      @media ${theme.media.large} {
-      }
-      @media ${theme.media.xlarge} {
-      }
-      @media ${theme.media.xxlarge} {
-      }
-    `}
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) {
+    }
+
+    // XX-Large devices (larger desktops, 1400px and up)
+    @media (min-width: 1400px) {
+    }
   `}
 `;

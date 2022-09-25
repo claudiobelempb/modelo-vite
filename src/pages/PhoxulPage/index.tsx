@@ -43,6 +43,7 @@ import {
   flexBasisDefault,
   flexDirectionDefault,
   flexGapDefault,
+  flexWrapDefault,
   justifyContentDefault
 } from '@assets/styles/themes/functions/flexDefault';
 import {
@@ -59,7 +60,10 @@ import {
   gridTemplateRowsDefault,
   overallDefault
 } from '@assets/styles/themes/functions/gridDefault';
-import { heightDynamicDefault } from '@assets/styles/themes/functions/heightDefault';
+import {
+  heightDynamicDefault,
+  heightStaticDefault
+} from '@assets/styles/themes/functions/heightDefault';
 import {
   marginBottomDefault,
   marginTopDefault
@@ -174,7 +178,7 @@ const PhoxulPage: React.FC = () => {
                   paddingDynamicXDefault({ vstatic: 1, vdynamic: 2 })
                 }
                 paddingDynamicYDefault={() =>
-                  paddingDynamicYDefault({ vstatic: 1, vdynamic: 0.5 })
+                  paddingDynamicYDefault({ vstatic: 1, vdynamic: 0.2 })
                 }
                 borderRadiusDefault={() =>
                   borderRadiusDefault({ width: 1, unit: 'rem' })
@@ -197,7 +201,7 @@ const PhoxulPage: React.FC = () => {
                   paddingDynamicXDefault({ vstatic: 1, vdynamic: 2 })
                 }
                 paddingDynamicYDefault={() =>
-                  paddingDynamicYDefault({ vstatic: 1, vdynamic: 0.5 })
+                  paddingDynamicYDefault({ vstatic: 1, vdynamic: 0.2 })
                 }
                 borderRadiusDefault={() =>
                   borderRadiusDefault({ width: 1, unit: 'rem' })
@@ -235,6 +239,7 @@ const PhoxulPage: React.FC = () => {
           paddingDynamicDefault({ value: 2, valueX: 12, valueY: 12 })
         }
         flexGapDefault={() => flexGapDefault({ row: 10 })}
+        flexWrapDefault={() => flexWrapDefault('wrap')}
       >
         <BoxDefault
           displayDefault={() => displayDefault('flex')}
@@ -334,7 +339,7 @@ const PhoxulPage: React.FC = () => {
             flexGapDefault={() => flexGapDefault({ row: 2 })}
             zIndexDefault={() => zIndexDefault(1)}
             heightDynamicDefault={() =>
-              heightDynamicDefault({ value: 5, unit: '%' })
+              heightDynamicDefault({ rem: 5, unit: '%' })
             }
             widthDynamicDefault={() =>
               widthDynamicDefault({ vw: 5, unit: '%' })
@@ -1187,6 +1192,7 @@ const PhoxulPage: React.FC = () => {
             backgroundAttachment: 'fixed'
           })
         }
+        flexWrapDefault={() => flexWrapDefault('wrap')}
       >
         <BoxDefault
           displayDefault={() => displayDefault('flex')}
@@ -1215,7 +1221,7 @@ const PhoxulPage: React.FC = () => {
                 paddingStaticXDefault({ vstatic: 3 })
               }
               paddingStaticYDefault={() =>
-                paddingStaticYDefault({ vstatic: 1.5 })
+                paddingStaticYDefault({ vstatic: 1 })
               }
               borderDefault={() =>
                 borderDefault({
@@ -1277,7 +1283,8 @@ const PhoxulPage: React.FC = () => {
             flexGapDefault={() => flexGapDefault({ column: 2 })}
           >
             <ImgDefault
-              widthStaticDefault={() => widthStaticDefault({ rem: 10 })}
+              widthStaticDefault={() => widthStaticDefault({ rem: 1 })}
+              heightStaticDefault={() => heightStaticDefault({ rem: 0.6 })}
               src={ImgContact}
               borderRadiusDefault={() =>
                 borderRadiusDefault({ type: 'radius', width: 5, unit: '%' })
@@ -1316,7 +1323,7 @@ const PhoxulPage: React.FC = () => {
         }
         textColorDefault={() => textColorDefault({ color: 'grayHsl' })}
         heightDynamicDefault={() =>
-          heightDynamicDefault({ value: 0.5, unit: 'vw' })
+          heightDynamicDefault({ rem: 0.5, unit: 'vw' })
         }
       >
         <ImgDefault src={ImgClient1} />

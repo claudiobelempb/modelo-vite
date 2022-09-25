@@ -3,12 +3,12 @@ import { TypeThemeNumberDefault } from '../ThemeType';
 
 type TypeHeightDefault = {
   unit?: 'px' | '%' | 'rem' | 'vw' | 'vh';
-  value?: TypeThemeNumberDefault;
+  rem?: TypeThemeNumberDefault;
 };
 
-export const heightStaticDefault = ({ value }: TypeHeightDefault) => css`
-  height: ${value}rem;
+export const heightStaticDefault = ({ rem }: TypeHeightDefault) => css`
+  height: calc(16 * ${rem}rem);
 `;
-export const heightDynamicDefault = ({ value, unit }: TypeHeightDefault) => css`
-  height: calc(16 * ${value}${unit});
+export const heightDynamicDefault = ({ rem, unit }: TypeHeightDefault) => css`
+  height: calc(16 * ${rem}${unit});
 `;

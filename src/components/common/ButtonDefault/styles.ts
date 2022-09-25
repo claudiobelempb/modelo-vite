@@ -81,6 +81,10 @@ export const ButtonDefaultContainer = styled.button<TypeDefault>`
     ${props.flexBasisDefault && props.flexBasisDefault()}
     ${props.flexGrowDefault && props.flexGrowDefault()}
 
+    ${props.positionDefault && props.positionDefault()}
+    ${props.zIndexDefault && props.zIndexDefault()}
+
+
     ${props.iconDefault && props.iconDefault()}
     ${props.backgroundColorDefault && props.backgroundColorDefault()}
   `}

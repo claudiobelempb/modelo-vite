@@ -7,7 +7,7 @@ export const ContentDefaultStyle = styled.div<TypeDefault>`
     position: relative;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    /* z-index: -30; */
     /* background-color: green; */
 
     /*UTILS DEFAULT */
@@ -80,6 +80,8 @@ export const ContentDefaultStyle = styled.div<TypeDefault>`
     ${props.flexGapDefault && props.flexGapDefault()}
     ${props.alignItemsDefault && props.alignItemsDefault()}
     ${props.flexBasisDefault && props.flexBasisDefault()}
+    ${props.flexGrowDefault && props.flexGrowDefault()}
+    ${props.flexWrapDefault && props.flexWrapDefault()}
     ${props.backgroundLinearGradientDefault &&
     props.backgroundLinearGradientDefault()};
 

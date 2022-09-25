@@ -141,8 +141,63 @@ export const alignItemsDefault = (value: TypeValueFlexDefault) =>
 export const flexBasisDefault = (value: TypeThemeNumberDefault) =>
   css`
     flex-basis: calc(10 * ${value && value}%);
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) {
+      flex-basis: auto;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+      flex-basis: auto;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) {
+    }
+
+    // XX-Large devices (larger desktops, 1400px and up)
+    @media (min-width: 1400px) {
+    }
   `;
 export const flexGrowDefault = (value: TypeThemeNumberDefault) =>
   css`
     flex-grow: calc(${value && value});
+  `;
+export const flexWrapDefault = (value: 'wrap' | 'nowrap') =>
+  css`
+    flex-wrap: ${value && value};
+
+    // sm applies to x-small devices (portrait phones, less than 576px)
+    @media (max-width: 320px) {
+      flex-wrap: wrap;
+    }
+
+    // md applies to small devices (landscape phones, less than 768px)
+    @media (min-width: 320px) and (max-width: 576px) {
+      flex-wrap: wrap;
+    }
+
+    // lg applies to medium devices (tablets, less than 992px)
+    @media (min-width: 576px) and (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+
+    // xl applies to large devices (desktops, less than 1200px)
+    @media (min-width: 768px) and (max-width: 992px) {
+      flex-wrap: wrap;
+    }
+
+    // xxl applies to x-large devices (large desktops, less than 1400px)
+    @media (min-width: 992px) and (max-width: 1200px) {
+      flex-wrap: nowrap;
+    }
+    // xxl applies to x-large devices (large desktops, less than 1400px)
+    @media (min-width: 1200px) and (max-width: 1400px) {
+      flex-wrap: nowrap;
+    }
   `;

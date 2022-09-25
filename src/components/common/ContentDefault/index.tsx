@@ -24,6 +24,8 @@ const ContentDefault: React.FC<TypeDefault> = ({ children, as, ...props }) => {
       overallDefault={props.overallDefault}
       flexDirectionDefault={props.flexDirectionDefault}
       flexGapDefault={props.flexGapDefault}
+      flexGrowDefault={props.flexGrowDefault}
+      flexWrapDefault={props.flexWrapDefault}
       justifyContentDefault={props.justifyContentDefault}
       alignItemsDefault={props.alignItemsDefault}
       alignSelfDefault={props.alignSelfDefault}

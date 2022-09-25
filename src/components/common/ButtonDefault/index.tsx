@@ -73,6 +73,8 @@ const ButtonDefault: React.FC<TypeDefault> = ({
       marginRightDefault={props.marginRightDefault}
       marginBottomDefault={props.marginBottomDefault}
       marginLeftDefault={props.marginLeftDefault}
+      positionDefault={props.positionDefault}
+      zIndexDefault={props.zIndexDefault}
     >
       {isIconLeft && children}
       {title ? title : ''}

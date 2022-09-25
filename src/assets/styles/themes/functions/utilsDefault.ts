@@ -53,6 +53,38 @@ export const overflowDefault = (
     overflow: ${overflow && overflow};
   `;
 
+export const visibilityDefault = (
+  visibility?: 'hidden' | 'overlay' | 'scroll' | 'visible'
+) =>
+  css`
+    visibility: ${visibility && visibility};
+    display: none;
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) {
+      display: none;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+      display: none;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+      display: flex;
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) {
+      display: flex;
+    }
+
+    // XX-Large devices (larger desktops, 1400px and up)
+    @media (min-width: 1400px) {
+      display: flex;
+    }
+  `;
+
 export const displayDefault = (
   value: 'flex' | 'grid' | 'block' | 'inline-block'
 ) =>

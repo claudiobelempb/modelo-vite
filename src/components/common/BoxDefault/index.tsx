@@ -9,6 +9,9 @@ const BoxDefault: React.FC<TypeDefault> = ({ ...props }) => {
       beforeDefault={props.beforeDefault}
       afterDefault={props.afterDefault}
       effectDefault={props.effectDefault}
+      effectHoverDefault={props.effectHoverDefault}
+      effectHoverBeforeDefault={props.effectHoverBeforeDefault}
+      effectHoverAfterDefault={props.effectHoverAfterDefault}
       heightStaticDefault={props.heightStaticDefault}
       heightDynamicDefault={props.heightDynamicDefault}
       widthDynamicDefault={props.widthDynamicDefault}
@@ -69,6 +72,8 @@ const BoxDefault: React.FC<TypeDefault> = ({ ...props }) => {
       parDefault={props.parDefault}
       boxShadowDefault={props.boxShadowDefault}
       displayDefault={props.displayDefault}
+      positionDefault={props.positionDefault}
+      visibilityDefault={props.visibilityDefault}
     >
       {props.children}
     </Styles.BoxDefaultStyle>

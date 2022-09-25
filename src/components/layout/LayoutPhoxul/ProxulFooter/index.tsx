@@ -105,7 +105,7 @@ const FooterPhoxul: React.FC = () => {
           as='form'
           displayDefault={() => displayDefault('flex')}
           heightDynamicDefault={() =>
-            heightDynamicDefault({ value: 0.5, unit: 'vh' })
+            heightDynamicDefault({ rem: 0.5, unit: 'vh' })
           }
           flexBasisDefault={() => flexBasisDefault(5)}
         >
